@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>生存大陆 - 顶级我的世界基岩版服务器官网</title>
+    <title>Comet 陆上彗星 - 我的世界基岩版服务器官网</title>
     <link rel="icon" href="assets/images/logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -26,15 +26,15 @@
         }
 
         :root {
-            --primary: #5ABD3C;
-            --primary-light: #78E852;
-            --primary-dark: #3A8A2A;
-            --secondary: #40C760;
-            --accent: #FFDF5E;
-            --accent-dark: #DBC074;
-            --dark: #183C28;
-            --darker: #102018;
-            --darkest: #0A1510;
+            --primary: #2c4a8b;
+            --primary-light: #6083cf;
+            --primary-dark: #13264e;
+            --secondary: #1D273C;
+            --accent: #b983ff;
+            --accent-dark: rgb(72, 46, 99);
+            --dark: #1D273C;
+            --darker: #161d2d;
+            --darkest: #091224;
             --light: #f8f9fa;
             --light-green: #E8F5E4;
             --brown: #8B5F3D;
@@ -52,14 +52,14 @@
             --coal: #333333;
             --redstone: #FF3030;
             
-            --gradient-1: linear-gradient(135deg, #5ABD3C 0%, #40C760 100%);
-            --gradient-2: linear-gradient(135deg, #3A8A2A 0%, #5ABD3C 100%);
-            --gradient-3: linear-gradient(90deg, rgba(139, 95, 61, 0.8) 0%, rgba(64, 199, 96, 0.8) 100%);
+            --gradient-1: linear-gradient(135deg, #2c4a8b 0%, #1c3260 100%);
+            --gradient-2: linear-gradient(135deg, #2c4a8b 0%, #1c3260 100%);
+            --gradient-3: linear-gradient(90deg, rgba(139, 95, 61, 0.8) 0%, rgba(64, 102, 199, 0.8) 100%);
             --gradient-diamond: linear-gradient(135deg, #26C6DA 0%, #4AEAFF 100%);
             --gradient-gold: linear-gradient(135deg, #FFC107 0%, #FFEB3B 100%);
             --gradient-redstone: linear-gradient(135deg, #F44336 0%, #FF5252 100%);
             --gradient-obsidian: linear-gradient(135deg, #2D0C3A 0%, #4A148C 100%);
-            --gradient-night: linear-gradient(135deg, #102018 0%, #0F2027 50%, #203A43 100%);
+            --gradient-night: linear-gradient(135deg, #13264e 0%, #0F2027 50%, #203A43 100%);
             
             --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
             --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.15);
@@ -97,6 +97,8 @@
             scroll-behavior: smooth;
             scrollbar-width: thin;
             scrollbar-color: var(--primary) var(--darker);
+            overflow-x: hidden;
+            width: 100%;
         }
         
         ::-webkit-scrollbar {
@@ -137,13 +139,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(16, 32, 24, 0.92) 0%, rgba(24, 60, 40, 0.9) 100%);
+
             z-index: -1;
             pointer-events: none;
         }
         
         .glass {
-            background: rgba(24, 60, 40, 0.4);
+            background: rgba(3, 150, 235, 0.4);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -152,14 +154,14 @@
         }
         
         .glass-dark {
-            background: rgba(16, 32, 24, 0.65);
+            background: rgba(6, 0, 119, 0.65);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .glass-card {
-            background: rgba(24, 60, 40, 0.5);
+            background: rgba(82, 39, 238, 0.);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -175,7 +177,7 @@
         .glass-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            background: rgba(24, 60, 40, 0.6);
+            background: rgba(21, 42, 94, 0.6);
         }
         
         .block-card {
@@ -237,6 +239,7 @@
             color: var(--accent);
             position: relative;
             display: inline-block;
+            bottom: 2px;
         }
         
         .section-title span::after {
@@ -290,8 +293,6 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
             z-index: 1;
             pointer-events: none;
         }
@@ -491,18 +492,18 @@
         .btn-primary {
             background: var(--gradient-1);
             color: var(--light);
-            box-shadow: 0 4px 15px rgba(90, 189, 60, 0.4);
+            box-shadow: 0 4px 15px rgba(57, 60, 228, 0.4);
             border-bottom: 3px solid var(--primary-dark);
         }
         
         .btn-primary:hover {
-            box-shadow: 0 8px 25px rgba(90, 189, 60, 0.6);
+            box-shadow: 0 8px 25px rgba(57, 123, 230, 0.6);
             transform: translateY(-3px);
         }
         
         .btn-primary:active {
             transform: translateY(0);
-            box-shadow: 0 4px 15px rgba(90, 189, 60, 0.4);
+            box-shadow: 0 4px 15px rgba(55, 20, 233, 0.4);
             border-bottom-width: 1px;
         }
         
@@ -581,7 +582,7 @@
         }
         
         .pixel-btn-gold:hover {
-            background-color: #FFEA8C;
+            background-color: #ba8cff;
         }
         
         header {
@@ -595,7 +596,7 @@
         }
         
         header.scrolled {
-            background: rgba(16, 32, 24, 0.9);
+            background: rgba(29, 39, 60, 0.9);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             padding: 10px 0;
@@ -623,6 +624,7 @@
             height: 48px;
             margin-right: 15px;
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            margin-top: -5px;
         }
         
         .logo-text {
@@ -633,11 +635,13 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             font-family: 'Minecraft', sans-serif;
             letter-spacing: 1px;
+            margin-top: 1px;
         }
-
+        
         .logo-text span {
             color: var(--accent);
             position: relative;
+            bottom: 2px;
         }
         
         .logo-text span::after {
@@ -755,7 +759,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(0deg, var(--dark) 0%, rgba(16, 32, 24, 0.7) 100%);
+            background: linear-gradient(0deg, var(--dark) 0%, rgba(28, 21, 81, 0.7) 100%);
             z-index: 1;
         }
         
@@ -771,7 +775,7 @@
             display: inline-flex;
             align-items: center;
             padding: 10px 24px;
-            background: rgba(24, 60, 40, 0.6);
+            background: rgba(119, 63, 216, 0.6);
             border-radius: var(--radius-full);
             margin-bottom: 30px;
             backdrop-filter: blur(10px);
@@ -788,12 +792,12 @@
         }
         
         .hero-badge.online {
-            border-color: rgba(90, 189, 60, 0.3);
+            border-color: rgba(0, 255, 0, 0.3);
         }
         
         .hero-badge.online .status-dot {
             background-color: var(--success);
-            box-shadow: 0 0 0 3px rgba(90, 189, 60, 0.3);
+            box-shadow: 0 0 0 3px rgba(0, 255, 0, 0.3);
         }
         
         .hero-badge.offline {
@@ -841,6 +845,7 @@
             color: var(--accent);
             position: relative;
             display: inline-block;
+            bottom: 8px;
         }
         
         .hero-title span::after {
@@ -1038,7 +1043,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(16, 32, 24, 0.9) 0%, rgba(16, 32, 24, 0.95) 100%);
+            background: linear-gradient(180deg, rgba(12, 10, 59, 0.9) 0%, rgba(31, 15, 73, 0.95) 100%);
             z-index: 1;
         }
         
@@ -1258,16 +1263,6 @@
             border-color: rgba(219, 192, 116, 0.3);
         }
         
-        .status-motd::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--accent), var(--diamond));
-        }
-        
         .status-motd::after {
             content: '';
             position: absolute;
@@ -1348,6 +1343,111 @@
         .offline .indicator-dot::after {
             background: rgba(231, 76, 60, 0.3);
         }
+
+        .gallery {
+            background: var(--dark);
+            position: relative;
+        }
+
+        .gallery::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, var(--dark) 0%, rgba(39, 100, 255, 0.5) 50%, var(--dark) 100%);
+            z-index: 1;
+        }
+
+        .gallery-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            z-index: 1;
+        }
+
+        .gallery-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .gallery-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .gallery-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .gallery-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        .gallery-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .indicator:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
         
         .features {
             background: var(--darker);
@@ -1364,7 +1464,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, var(--dark) 0%, rgba(16, 32, 24, 0.9) 50%, var(--dark) 100%);
+            background: linear-gradient(180deg, var(--dark) 0%, rgba(6, 0, 41, 0.9) 50%, var(--dark) 100%);
             z-index: 1;
         }
         
@@ -1381,7 +1481,7 @@
             padding: 35px 25px;
             position: relative;
             text-align: center;
-            background: rgba(24, 60, 40, 0.4);
+            background: rgba(3, 0, 46, 0.4);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: var(--radius-lg);
@@ -1401,7 +1501,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 20px rgba(90, 189, 60, 0.3);
+            box-shadow: 0 8px 20px rgba(15, 7, 101, 0.3);
             z-index: 2;
             transform: rotate(45deg);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -1410,7 +1510,7 @@
         
         .feature-card:hover .feature-icon-wrapper {
             transform: rotate(0deg);
-            box-shadow: 0 12px 30px rgba(90, 189, 60, 0.5);
+            box-shadow: 0 12px 30px rgba(11, 121, 211, 0.5);
         }
         
         .feature-icon {
@@ -1507,7 +1607,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, var(--dark) 0%, rgba(16, 32, 24, 0.8) 50%, var(--dark) 100%);
+            background: linear-gradient(180deg, var(--dark) 0%, rgba(53, 0, 73, 0.5) 50%, var(--dark) 100%);
             z-index: 1;
         }
         
@@ -1528,7 +1628,7 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             background: rgba(0, 0, 0, 0.3);
             padding: 0;
-            border: 3px solid rgba(90, 189, 60, 0.3);
+            border: 3px solid rgba(0, 151, 245, 0.3);
             transition: all var(--transition-normal) ease;
             transform-style: preserve-3d;
             transform: perspective(1000px) rotateX(0deg);
@@ -1537,7 +1637,7 @@
         .video-player:hover {
             transform: perspective(1000px) rotateX(2deg) translateY(-10px);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-            border-color: rgba(90, 189, 60, 0.5);
+            border-color: rgba(255, 0, 187, 0.5);
         }
         
         .video-wrapper {
@@ -1673,9 +1773,9 @@
             z-index: 1;
         }
 
-        .specs-header {
+        .admins-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin: 60px 0 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1723,10 +1823,10 @@
             text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
         }
 
-        .specs-title {
+        .admins-title {
             font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin: 20px 0 20px;
             font-family: 'Minecraft', sans-serif;
             letter-spacing: 1px;
             color: var(--light);
@@ -1734,16 +1834,17 @@
             line-height: 1.1;
         }
 
-        .specs-title span {
+        .admins-title span {
             background: linear-gradient(135deg, var(--diamond) 0%, var(--info) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent;
             position: relative;
+            bottom: 2px;
         }
 
-        .specs-description {
+        .admins-description {
             color: rgba(255, 255, 255, 0.85);
             font-size: 1.1rem;
             line-height: 1.7;
@@ -1751,14 +1852,14 @@
             margin: 0 auto;
         }
 
-        .specs-blocks {
+        .admins-blocks {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             gap: 30px;
             margin-bottom: 60px;
         }
 
-        .spec-block {
+        .admin-block {
             display: flex;
             background: rgba(24, 60, 40, 0.3);
             border: 2px solid #222;
@@ -1770,7 +1871,7 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .spec-block::before {
+        .admin-block::before {
             content: '';
             position: absolute;
             top: 0;
@@ -1795,69 +1896,85 @@
             background: linear-gradient(90deg, var(--warning), #FFD166);
         }
 
-        .spec-block:hover {
+        .admin-block:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             background: rgba(24, 60, 40, 0.4);
         }
 
-        .spec-icon-container {
-            flex: 0 0 80px;
-            height: 80px;
+        .adm1::before {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .adm2::before {
+            background: linear-gradient(90deg, var(--info), #70DFFF);
+        }
+
+        .adm3::before {
+            background: linear-gradient(90deg, var(--accent), #FFEC99);
+        }
+
+        .adm4::before {
+            background: linear-gradient(90deg, var(--warning), #FFD166);
+        }
+
+        .adm5::before {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .adm6::before {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .admin-icon-container {
+            width: 120px;
+            height: 120px;
             margin-right: 25px;
             background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid rgba(255, 255, 255, 0.05);
         }
 
-        .cpu-block .spec-icon-container i {
-            color: var(--success);
-        }
-
-        .ram-block .spec-icon-container i {
-            color: var(--info);
-        }
-
-        .storage-block .spec-icon-container i {
-            color: var(--accent);
-        }
-
-        .network-block .spec-icon-container i {
-            color: var(--warning);
-        }
-
-        .spec-icon-container i {
+        .admin-icon-container i {
             font-size: 35px;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
-        .spec-content {
+        .admin-content {
             flex: 1;
         }
 
-        .spec-block .spec-title {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+        .admin-block .admin-id {
+            font-size: 1rem;
+            margin-bottom: 4px;
             color: var(--light);
             text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
             font-family: 'Minecraft', sans-serif;
         }
 
-        .spec-model {
+        .admin-name {
             font-size: 1.8rem;
             font-weight: 600;
-            margin-bottom: 15px;
             color: var(--light);
+            margin: 0 0 5px;
         }
 
-        .spec-features {
+        .admin-features {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
             margin-bottom: 15px;
+        }
+
+        .admin-content .member-social {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 0 0 15px;
+            justify-content: left;
         }
 
         .feature-tag {
@@ -1889,20 +2006,20 @@
             border-color: rgba(255, 182, 38, 0.3);
         }
 
-        .spec-desc {
+        .admin-desc {
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.95rem;
             line-height: 1.5;
         }
 
-        .specs-footer {
+        .admins-footer {
             display: flex;
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
         }
 
-        .specs-badge {
+        .admins-badge {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -1917,58 +2034,71 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .specs-badge:hover {
+        .admins-badge:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .specs-badge i {
+        .admins-badge i {
             font-size: 1.6rem;
             color: var(--primary-light);
         }
 
         @media (max-width: 1200px) {
-            .specs-blocks {
+            .admins-blocks {
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 768px) {
-            .specs-title {
+            .admins-title {
                 font-size: 2.8rem;
             }
             
-            .spec-block {
+            .admin-block {
                 flex-direction: column;
             }
             
-            .spec-icon-container {
-                margin-right: 0;
-                margin-bottom: 20px;
+            .admin-icon-container {
+                margin: 0 auto 20px;
             }
             
-            .spec-content {
+            .admin-content {
                 text-align: center;
             }
             
-            .spec-features {
+            .admin-features {
                 justify-content: center;
             }
             
-            .specs-footer {
+            .admins-footer {
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
             }
             
-            .specs-badge {
+            .admins-badge {
                 width: 100%;
+                justify-content: center;
+            }
+
+            .server-indicator {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-bottom: 20px;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .admin-content .member-social {
                 justify-content: center;
             }
         }
 
         @media (max-width: 576px) {
-            .specs-title {
+            .admins-title {
                 font-size: 2.2rem;
             }
             
@@ -2001,7 +2131,7 @@
         
         .team-member:hover {
             transform: translateY(-10px);
-            background: rgba(24, 60, 40, 0.7);
+            background: rgba(255, 0, 0, 0.2);
         }
         
         .member-avatar {
@@ -2015,43 +2145,25 @@
             width: 100%;
             height: 100%;
             background: var(--gradient-2);
-            border-radius: var(--radius-md);
+            border-radius: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px solid var(--primary-dark);
-            box-shadow: var(--shadow-green);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 0px 16px 4px rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            object-fit: cover;
+        }
+
+        .minecraft-avatar img {
+            width: 100%;
+            text-align: center;
         }
         
         .minecraft-avatar i {
             font-size: 40px;
             color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        
-        .team-member:nth-child(1) .minecraft-avatar {
-            background: var(--gradient-gold);
-            border-color: var(--accent-dark);
-            box-shadow: var(--shadow-gold);
-        }
-        
-        .team-member:nth-child(1) .minecraft-avatar i {
-            color: var(--accent);
-        }
-        
-        .team-member:nth-child(3) .minecraft-avatar {
-            background: var(--gradient-diamond);
-            border-color: var(--info);
-            box-shadow: var(--shadow-blue);
-        }
-        
-        .team-member:nth-child(3) .minecraft-avatar i {
-            color: var(--diamond);
-        }
-        
-        .team-member:nth-child(4) .minecraft-avatar {
-            background: var(--gradient-redstone);
-            border-color: var(--danger);
         }
         
         .member-name {
@@ -2066,7 +2178,7 @@
             margin-bottom: 15px;
             padding-bottom: 15px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            width: 70%;
+            width: 80%;
         }
         
         .member-desc {
@@ -2138,7 +2250,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(16, 32, 24, 0.8) 0%, rgba(90, 189, 60, 0.7) 100%);
+            background: linear-gradient(135deg, rgba(0, 13, 43, 0.8) 0%, rgba(60, 60, 189, 0.7) 100%);
             z-index: 1;
         }
         
@@ -2201,21 +2313,21 @@
         
         .btn-join {
             background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%);
-            color: #333;
+            color: #e0e0e0;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 1.1rem;
             padding: 16px 40px;
-            box-shadow: 0 10px 30px rgba(219, 192, 116, 0.4);
-            border-bottom: 4px solid rgba(219, 192, 116, 0.6);
+            box-shadow: 0 10px 30px rgba(58, 6, 229, 0.4);
+            border-bottom: 4px solid rgba(15, 0, 66, 0.6);
             text-shadow: none;
             font-family: 'Minecraft', sans-serif;
         }
         
         .btn-join:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(219, 192, 116, 0.5);
+            box-shadow: 0 15px 35px rgba(64, 53, 231, 0.5);
         }
         
         .btn-join i {
@@ -2268,7 +2380,7 @@
         .minecraft-qr {
             max-width: 200px;
             margin: 0 auto 30px;
-            background: #fff;
+            background: #F5FAFE;
             padding: 15px;
             border-radius: var(--radius-md);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
@@ -2325,11 +2437,83 @@
             position: relative;
             z-index: 10;
         }
+
+        .footer-divider {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: repeating-linear-gradient(
+                -45deg,
+                rgba(60, 60, 189, 0.4),
+                rgba(60, 60, 189, 0.4) 10px,
+                rgba(60, 60, 189, 0.6) 10px,
+                rgba(60, 60, 189, 0.6) 20px
+            );
+            z-index: 2;
+        }
+
+        .subserver-section {
+            position: relative;
+            overflow: hidden; /* 防止缩放时溢出 */
+        }
+
+        .subserver-text {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            line-height: 1.7;
+        }
+
+        .subserver-text span {
+            font-weight: bold;
+            background-size: 200% 100%;
+            background-image: linear-gradient(to right, #E59769, var(--gold), #E59769);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientAnimation 2s linear infinite;
+        }
+
+        .subserver-avatar {
+            width: 150px;
+            height: 150px;
+            margin: auto;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .subserver-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('http://z9e.52mc.pro:34012/2026-03-07_14.37.38.png');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            z-index: 0;
+        }
+
+        .subserver-bg.zoomed {
+            transform: scale(1.03);
+            filter: brightness(0.75);
+        }
+
+        .subserver-section .container {
+            position: relative;
+            z-index: 1;
+        }
         
         footer {
             background: var(--darkest);
-            padding: 100px 0 30px;
+            padding: 60px 0 30px;
             position: relative;
+            box-shadow: 10px 4px 0 rgba(0, 0, 0, 0.2);
         }
 
         footer::before {
@@ -2349,7 +2533,7 @@
         .footer-top {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 60px 40px;
+            gap: 60px 45px;
             margin-bottom: 60px;
             position: relative;
             z-index: 1;
@@ -2365,6 +2549,7 @@
             height: 45px;
             margin-right: 15px;
             filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2));
+            margin-top: -12px;
         }
         
         .footer-logo-text {
@@ -2379,6 +2564,7 @@
         .footer-logo-text span {
             color: var(--accent);
             position: relative;
+            bottom: 2px;
         }
         
         .footer-logo-text span::after {
@@ -2410,6 +2596,7 @@
             width: 45px;
             height: 45px;
             border-radius: 50%;
+            padding: 2px 0 0;
             background: rgba(255, 255, 255, 0.05);
             display: flex;
             align-items: center;
@@ -2421,6 +2608,7 @@
             font-size: 1.2rem;
             position: relative;
             overflow: hidden;
+            text-decoration: none;
         }
         
         .social-icon:hover {
@@ -2438,6 +2626,7 @@
             width: 100%;
             height: 100%;
             background: var(--success);
+            border-radius: 100%;
             animation: ripple 0.7s ease;
         }
         
@@ -2542,7 +2731,7 @@
             z-index: 1;
         }
         
-        .copyright {
+        .copyright .server-uptime {
             color: rgba(255, 255, 255, 0.5);
             font-size: 0.95rem;
         }
@@ -2691,7 +2880,7 @@
         }
 
         .notification {
-            background: rgba(24, 60, 40, 0.9);
+            background: rgba(1, 9, 46, 0.9);
             backdrop-filter: blur(8px);
             border-radius: var(--radius-md);
             padding: 15px 20px;
@@ -2811,7 +3000,7 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .specs-grid {
+            .admins-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
@@ -2863,7 +3052,7 @@
                 right: -100%;
                 width: 300px;
                 height: 100vh;
-                background: rgba(16, 32, 24, 0.95);
+                background: rgba(0, 14, 34, 0.95);
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
                 flex-direction: column;
@@ -2952,7 +3141,7 @@
                 font-size: 1.6rem;
             }
             
-            .features-grid, .specs-grid {
+            .features-grid, .admins-grid {
                 gap: 60px 20px;
             }
             
@@ -2999,18 +3188,19 @@
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">
-                    <img src="assets/images/server-logo.png" alt="生存大陆 Logo">
-                    <div class="logo-text">生存<span>大陆</span></div>
+                    <img src="assets/images/server-logo.png" alt="服务器 Logo">
+                    <div class="logo-text">陆上<span>彗星</span></div>
                 </a>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home" class="active">首页</a></li>
-                    <li><a href="#announcement">公告</a></li>
+                    <li><a href="#announcement">近期公告</a></li>
                     <li><a href="#server-status">服务器状态</a></li>
+                    <li><a href="#gallery">服务器风采</a></li>
                     <li><a href="#features">游戏特色</a></li>
                     <li><a href="#videos">精彩视频</a></li>
-                    <li><a href="#specifications">服务器配置</a></li>
-                    <li><a href="#server-team">服务器团队</a></li>
+                    <li><a href="#server-team">玩家团体</a></li>
                     <li><a href="#join-us">加入服务器</a></li>
+                    <li><a href="#subserver">子服务器</a></li>
                 </ul>
                 <div class="mobile-toggle" id="mobileToggle">
                     <div class="bar"></div>
@@ -3027,8 +3217,8 @@
             <div class="status-dot"></div>
             <span>正在获取服务器状态...</span>
         </div>
-            <h1 class="hero-title">探索无尽<span>生存世界</span></h1>
-            <p class="hero-subtitle">加入中国顶级我的世界基岩版服务器，与数千玩家共同创造，体验前所未有的游戏乐趣</p>
+            <h1 class="hero-title">Comet <span>陆上彗星</span></h1>
+            <p class="hero-subtitle">我的世界国际基岩版服务器<br><font color="#00DFFF"><strong>生存服三周目现已开放</strong></font> - 利用求生的智慧，与其他玩家一同逃出困境、搜寻物资，最终踏入生存之道</p>
             <div class="btn-group hero-buttons">
                 <a href="#join-us" class="btn btn-primary">
                     <i class="fas fa-rocket"></i>立即加入
@@ -3042,10 +3232,10 @@
 
     <section id="announcement" class="announcement">
         <div class="container announcement-container">
-            <h2 class="announcement-title"><i class="fas fa-bullhorn"></i>服务器公告</h2>
+            <h2 class="announcement-title"><i class="fas fa-bullhorn"></i>服务器重要公告</h2>
             <div class="announcement-content glass-card">
-                <p class="announcement-text">亲爱的玩家们，我们的夏日活动"生存大陆冒险季"将于本周五正式开启！参与活动可获得限定皮肤、稀有物品和双倍经验奖励。此外，我们将在活动期间推出全新的生存地图和迷你游戏，敬请期待！</p>
-                <p class="announcement-date">2025年4月15日</p>
+                <p class="announcement-text">经过社区大佬的插件适配，自服务器开服初期就一直陪伴服务器的地图画功能，现已重磅回归！<br>所有玩家可联系任意管理员发送自己喜欢的图片，待管理员将您的图片处理成合适的大小和尺寸后，管理员将给予你该地图画。<br>放置地图画时，摆放足够数量的展示框框架，把获取到的地图画封装放入展示框，即可一键释放地图画。<br>未来若服务器白名单系统重新启动，我们将尝试支持地图画自助上传，以供玩家自主上传图片并随时获取自己上传图片的地图画。</p>
+                <p class="announcement-date">2026年2月25日</p>
             </div>
         </div>
     </section>
@@ -3088,64 +3278,121 @@
                     </div>
                 </div>
                 
-                <div class="status-motd" id="server-motd">欢迎来到生存大陆服务器！公平生存，无管理模式生存体验！</div>
+                <div class="status-motd" id="server-motd">此处显示服务器的 Motd</div>
             </div>
         </div>
     </section>
+
+    <section id="gallery" class="section gallery">
+        <div class="container">
+            <h2 class="section-title">服务器<span>风采</span></h2>
+            <div class="section-title-bg">GALLERY</div>
+            <p class="section-subtitle"></p>
+            
+            <div class="gallery-container">
+                <div class="gallery-slider" id="gallerySlider">
+                    <div class="gallery-slide active">
+                        <img src="http://z9e.52mc.pro:34012/gallery/Screenshots%28408%29.png" alt="玩家和牛头人">
+                </div>
+                    <div class="gallery-slide ">
+                        <img src="http://z9e.52mc.pro:34012/gallery/Minecraft%20Screenshot%202026.02.15%20-%2016.50.57.74.png" alt="玩家日常">
+                </div>
+                    <div class="gallery-slide ">
+                        <img src="http://z9e.52mc.pro:34012/gallery/Screenshots%28558%29.png" alt="出生点风景">
+                </div>
+                    <div class="gallery-slide ">
+                        <img src="http://z9e.52mc.pro:34012/gallery/Cache_-695edafd699b1ce6.png" alt="玩家地下基地">
+                </div>
+                    <div class="gallery-slide ">
+                        <img src="http://z9e.52mc.pro:34012/gallery/Cache_2fb51e8385459a03.png" alt="玩家家园风景">
+                </div>
+                    <div class="gallery-slide ">
+                        <img src="http://z9e.52mc.pro:34012/gallery/Cache_-34cba1aac1c72089.png" alt="玩家家园风景">
+                </div>
+            </div>
+                
+            <div class="gallery-controls">
+                <button class="gallery-btn prev" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="gallery-btn next" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        
+            <div class="gallery-indicators" id="galleryIndicators">
+                <button class="indicator active" data-index="0"></button>
+                <button class="indicator " data-index="1"></button>
+                <button class="indicator " data-index="2"></button>
+                <button class="indicator " data-index="3"></button>
+                <button class="indicator " data-index="4"></button>
+                <button class="indicator " data-index="5"></button>
+            </div>
+        </div>
+    </section>
+
+    <div class="minecraft-divider"></div>
     
     <section id="features" class="section features">
         <div class="container">
-            <h2 class="section-title">服务器<span>规则与说明</span></h2>
-            <div class="section-title-bg">RULES</div>
-            <p class="section-subtitle">了解我们的服务器规则和相关说明，为所有玩家创造一个公平、友好的游戏环境</p>
+            <h2 class="section-title">服务器<span>特色</span></h2>
+            <div class="section-title-bg">SPECIAL</div>
+            <p class="section-subtitle">我们提供独特的游戏体验，让你的冒险更加精彩</p>
             
             <div class="features-grid">
                 <div class="feature-card glass-card">
                     <div class="feature-icon-wrapper">
-                        <i class="fas fa-gavel feature-icon"></i>
+                        <i class="fas fa-building-shield feature-icon"></i>
                     </div>
-                    <h3 class="feature-title">基本规则</h3>
-                    <p>禁止使用任何作弊客户端或模组，禁止恶意攻击服务器，禁止利用游戏漏洞。一经发现，视情节严重程度处以禁止游戏或封禁账号的处罚。</p>
+                    <h3 class="feature-title">特殊出生点</h3>
+                    <p>首次加入服务器的玩家，将出生在<font color="#00DFFF"><strong>深黑古城</strong></font>。这一设定既能有效筛选恶意玩家，也让开局充满挑战性。<br>服务器在每周目换档前，都会开启一次投票活动。而一件令绝大多数新玩家意外的是 ——这个极具特色的出生点，正是由玩家们投票选出的。</p>
                 </div>
                 
                 <div class="feature-card glass-card">
                     <div class="feature-icon-wrapper">
-                        <i class="fas fa-comments feature-icon"></i>
+                        <i class="fas fa-wrench feature-icon"></i>
                     </div>
-                    <h3 class="feature-title">聊天规范</h3>
-                    <p>禁止在公共聊天频道发布广告、钓鱼链接或违法信息，禁止人身攻击、辱骂、歧视等不文明行为，保持友善的交流氛围，违规将被禁言处理。</p>
+                    <h3 class="feature-title">功能与原版特性健全</h3>
+                    <p>服务器配备众多有助于玩家生存的功能：玩家传送、支持Xbox成就、领地系统、领地飞行、移动光源、自动钓鱼等等。同时服务器使用 BDS 与 LeviLamina 插件加载器，在支持所有原生特性的同时提供良好游戏体验，且手机电脑都能加入。</p>
                 </div>
                 
                 <div class="feature-card glass-card">
                     <div class="feature-icon-wrapper">
-                        <i class="fas fa-map-marked-alt feature-icon"></i>
+                        <i class="fas fa-dollar-sign feature-icon"></i>
                     </div>
-                    <h3 class="feature-title">领地系统</h3>
-                    <p>服务器设有完善的领地保护系统，玩家可使用木锄声明领地，领地内物品、建筑不会被其他玩家破坏。新玩家免费赠送基础领地大小，VIP可扩大领地范围。</p>
+                    <h3 class="feature-title">经济系统与商店</h3>
+                    <p>服务器采用金币作为主要货币，可通过回收物品获得金币。玩家之间可自由交易，玩家可花费一定经济创建自己的店铺，或者去逛别人的店铺，看看有什么物美价廉，或是蕴含了玩家满满劳动成果的上品好货。禁止一切RMT（真实货币交易）行为。</p>
+                </div>
+
+                <div class="feature-card glass-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-users feature-icon"></i>
+                    </div>
+                    <h3 class="feature-title">联盟系统</h3>
+                    <p>玩家之间可组建联盟，联盟成员可享受公会锚点、公会存款、团队免伤等一系列福利。联盟名称会显示在你的头顶和聊天栏中，且所有玩家都可见。与之一起的还有联盟等级，高等级尽显联盟逼格，想要升级的话，就需要你和其他盟友一起做贡献，比如搭方块、保持在线等。</p>
+                </div>
+
+                <div class="feature-card glass-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-dove feature-icon"></i>
+                    </div>
+                    <h3 class="feature-title">开放自由</h3>
+                    <p>这是一个自由的世界。服务器开放抄家、PVP等游戏内冲突事件，在这里没有条条框框的限制，无论是交友服、休闲服、国战服，还是群内日常吹水，服务器怎么玩，由玩家说的算。只要是不干扰服务器公平性的行为我们均不过问。若您不想让自己的资产被掠夺，您还可以花费一些服务器经济创建领地。</p>
                 </div>
                 
                 <div class="feature-card glass-card">
                     <div class="feature-icon-wrapper">
-                        <i class="fas fa-coins feature-icon"></i>
+                        <i class="fas fa-compact-disc feature-icon"></i>
                     </div>
-                    <h3 class="feature-title">经济系统</h3>
-                    <p>服务器采用金币作为主要货币，完成任务、参与活动、日常在线均可获得金币。玩家之间可自由交易，也可在系统商店购买物品。禁止RMT（真实货币交易）行为。</p>
+                    <h3 class="feature-title">特色资源包</h3>
+                    <p>服务器配备背景音乐包，玩家在冒险时可聆听到来自提瓦特和泰拉之地的音声。服务器还具有唱片包，音乐由社区举荐，美妙动人的音乐，附和精心制作的唱片材质，在游戏内和小伙伴们共同聆听。<br>（进服需下载约50MB的资源包 ）</p>
                 </div>
-                
-                <div class="feature-card glass-card">
-                    <div class="feature-icon-wrapper">
-                        <i class="fas fa-user-shield feature-icon"></i>
-                    </div>
-                    <h3 class="feature-title">举报与帮助</h3>
-                    <p>遇到不文明行为或作弊玩家，可使用/report指令举报，管理员会及时处理。遇到问题可以使用/help查看帮助，或在QQ群中联系管理员寻求帮助。</p>
-                </div>
-                
-                <div class="feature-card glass-card">
-                    <div class="feature-icon-wrapper">
-                        <i class="fas fa-calendar-alt feature-icon"></i>
-                    </div>
-                    <h3 class="feature-title">活动安排</h3>
-                    <p>服务器每周举办多种活动，包括建筑比赛、PVP竞技、找宝藏等，参与可获得丰厚奖励。关注公告和QQ群通知，不要错过任何精彩活动！</p>
+            </div>
+            <div class="team-join">
+                <div class="team-join-info glass-card">
+                    <h3>前往KLPBBS服务器宣传帖</h3>
+                    <p>苦力怕论坛是我们之前投放宣传的主要位置，我们会将服务器特色详尽地在帖子中表现出来。您也可以登录账号，然后在帖子下发表回复，或打赏我们的帖子，提升帖子热度，吸引更多玩家前来体验服务器。</p>
+                    <a href="https://klpbbs.com/thread-117741-1-1.html" target="_blank" class="pixel-btn pixel-btn-green">立即前往</a>
                 </div>
             </div>
         </div>
@@ -3164,183 +3411,256 @@
             <div class="video-container">
                 <div class="video-player glass-card" id="videoPlayer">
                     <div class="video-wrapper">
-                        <iframe id="videoFrame" src="https://player.bilibili.com/player.html?bvid=BV1bRXsYoEW5&autoplay=1&danmaku=0" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="videoFrame" src="https://player.bilibili.com/player.html?bvid=BV14rfDBeENV&autoplay=1&danmaku=0" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
-                <div class="video-info">
-                    <h3 class="video-title" id="videoTitle">精彩视频</h3>
-                    <p class="video-desc" id="videoDesc">欢迎观看我们的服务器介绍视频，这里展示了服务器的精彩内容和各种特色玩法。</p>
+            </div>
+
+            <div class="team-join">
+                <div class="team-join-info glass-card">
+                    <h3>前往B站主页提供支持</h3>
+                    <p>我们非常需要您的支持！前往B站主页为服主的宣传视频进行一键三连，点点赞、投投币，让更多玩家看到我们。（能关注就更好了）<br><strong>非常感谢！</strong></strong></p>
+                    <a href="https://space.bilibili.com/535053377" target="_blank" class="pixel-btn pixel-btn-green">立即前往</a>
                 </div>
             </div>
+            
         </div>
     </section>
     
     <div class="minecraft-divider"></div>
     
-    <section id="specifications" class="section specifications">
-        <div class="container">
-            <div class="specs-header">
-                <div class="minecraft-item">
-                    <i class="fas fa-server"></i>
-                </div>
-                <h2 class="specs-title">顶级<span>硬件配置</span></h2>
-                <p class="specs-description">我们的服务器拥有顶级配置，确保你的游戏体验无比流畅</p>
-            </div>
-            
-            <div class="specs-blocks">
-                <div class="spec-block cpu-block">
-                    <div class="spec-icon-container">
-                        <i class="fas fa-microchip"></i>
-                    </div>
-                    <div class="spec-content">
-                        <h3 class="spec-title">处理器</h3>
-                        <div class="spec-model">AMD 7500F</div>
-                        <div class="spec-features">
-                            <div class="feature-tag">多核心</div>
-                            <div class="feature-tag">高性能</div>
-                            <div class="feature-tag">专业级</div>
-                        </div>
-                        <p class="spec-desc">强大的多线程处理器，让服务器能够同时处理上百名玩家的请求，确保即使在高峰期也能流畅运行</p>
-                    </div>
-                </div>
-                
-                <div class="spec-block ram-block">
-                    <div class="spec-icon-container">
-                        <i class="fas fa-memory"></i>
-                    </div>
-                    <div class="spec-content">
-                        <h3 class="spec-title">内存</h3>
-                        <div class="spec-model">32GB 6000MHz</div>
-                        <div class="spec-features">
-                            <div class="feature-tag">6000MHz</div>
-                            <div class="feature-tag">大容量</div>
-                            <div class="feature-tag">高速</div>
-                        </div>
-                        <p class="spec-desc">大容量高速内存，为服务器提供充足的运行空间，确保地图加载迅速，并支持更多玩家同时在线</p>
-                    </div>
-                </div>
-                
-                <div class="spec-block storage-block">
-                    <div class="spec-icon-container">
-                        <i class="fas fa-hdd"></i>
-                    </div>
-                    <div class="spec-content">
-                        <h3 class="spec-title">存储</h3>
-                        <div class="spec-model">SSD 7000MB/s</div>
-                        <div class="spec-features">
-                            <div class="feature-tag">7000MB/s</div>
-                            <div class="feature-tag">高速SSD</div>
-                            <div class="feature-tag">超低延迟</div>
-                        </div>
-                        <p class="spec-desc">高速固态硬盘，提供极速的数据读写能力，让世界生成、区块加载和玩家数据存取都能瞬间完成</p>
-                    </div>
-                </div>
-                
-                <div class="spec-block network-block">
-                    <div class="spec-icon-container">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <div class="spec-content">
-                        <h3 class="spec-title">网络</h3>
-                        <div class="spec-model">50MB 专线</div>
-                        <div class="spec-features">
-                            <div class="feature-tag">多线接入</div>
-                            <div class="feature-tag">全球加速</div>
-                            <div class="feature-tag">低延迟</div>
-                        </div>
-                        <p class="spec-desc">高速稳定的网络连接，确保你的游戏体验没有卡顿和延迟，支持来自全球各地的玩家流畅连接</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="specs-footer">
-                <div class="specs-badge">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>99.9% 可用性保证</span>
-                </div>
-                <div class="specs-badge">
-                    <i class="fas fa-bolt"></i>
-                    <span>高性能优化</span>
-                </div>
-                <div class="specs-badge">
-                    <i class="fas fa-lock"></i>
-                    <span>DDoS防护</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="minecraft-divider-accent"></div>
-    
     <section id="server-team" class="server-team">
         <div class="container">
-            <h2 class="section-title">服务器<span>团队</span></h2>
-            <p class="section-desc">我们拥有一支专业且富有激情的团队，致力于为所有玩家提供最优质的游戏体验</p>
+
+            <h2 class="section-title">优秀<span>玩家</span></h2>
+            <p class="section-subtitle">认识我们服务器中最出色的玩家，他们为社区做出了重要贡献</p>
             
             <div class="team-grid">
-                <div class="team-member glass-card floating">
-                    <div class="member-avatar">
-                        <div class="minecraft-avatar">
-                            <i class="fas fa-crown"></i>
-                        </div>
-                    </div>
-                    <h3 class="member-name">子峫</h3>
-                    <div class="member-role">服务器主理人</div>
-                    <p class="member-desc">服务器创始人，拥有5年MC运营经验，精通红石技术与建筑设计，致力于打造最好的MC社区。</p>
-                    <div class="member-social">
-                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="QQ: 2990621753"><i class="fab fa-qq"></i></a>
-                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="微信: IIlIIlIIllIlIlII"><i class="fab fa-weixin"></i></a>
-                    </div>
-                </div>
-                
-                <div class="team-member glass-card floating-slow">
-                    <div class="member-avatar">
-                        <div class="minecraft-avatar">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                    </div>
-                    <h3 class="member-name">管理员小A</h3>
-                    <div class="member-role">首席管理员</div>
-                    <p class="member-desc">负责维护服务器秩序，处理玩家纠纷，拥有丰富的服务器管理经验，亲切友善的解决问题高手。</p>
-                    <div class="member-social">
-                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="QQ群: 817794727"><i class="fab fa-qq"></i></a>
-                    </div>
-                </div>
-                
-                <div class="team-member glass-card floating-fast">
-                    <div class="member-avatar">
-                        <div class="minecraft-avatar">
-                            <i class="fas fa-code"></i>
-                        </div>
-                    </div>
-                    <h3 class="member-name">技术大神</h3>
-                    <div class="member-role">技术总监</div>
-                    <p class="member-desc">服务器插件开发与维护专家，保障服务器稳定运行，创新游戏玩法，提升玩家体验。</p>
-                    <div class="member-social">
-                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="哔哩哔哩: 子峫"><i class="fab fa-bilibili"></i></a>
-                    </div>
-                </div>
                 
                 <div class="team-member glass-card floating">
                     <div class="member-avatar">
                         <div class="minecraft-avatar">
-                            <i class="fas fa-hammer"></i>
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=17658365&s=640"></img>
                         </div>
                     </div>
-                    <h3 class="member-name">建筑大师</h3>
-                    <div class="member-role">首席建筑师</div>
-                    <p class="member-desc">专业MC建筑设计师，负责服务器地标建筑与场景设计，作品曾获多项建筑大赛奖项。</p>
+                    <h3 class="member-name">Cheyi</h3>
+                    <div class="member-role">退休负责人、活动策划、服务器法务部</div>
+                    <p class="member-desc">自2021年接触开服，拥有丰富开服经验，曾担任 Comet 管理组总负责人。擅长活动策划与现代建筑等，目前仍活跃在 Comet，并负责玩家纠纷之间的调解，战绩可查。</p>
                     <div class="member-social">
-                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="抖音: 子峫"><i class="fab fa-tiktok"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="17658365"><i class="fab fa-qq"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/433777079"><i class="fab fa-bilibili"></i></a>
                     </div>
                 </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=640913103&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">xbh666nb</h3>
+                    <div class="member-role">活跃玩家、服务器元老</div>
+                    <p class="member-desc">服务器元老级玩家，是服务器老牌公会[只因]的创始人（因服务器的鸡叫声音很特殊，所以叫这个名字），自服务器混沌时期就已经存在，对服务器的前身相当了解，和服主关系特别好，对其他人也很通融。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="640913103"><i class="fab fa-qq"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/2109625418"><i class="fab fa-bilibili"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="640913103@qq.com"><i class="fab fa-at"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=3529336723&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">forever1592</h3>
+                    <div class="member-role">活跃玩家、Comet Java 私服服主</div>
+                    <p class="member-desc">服务器活跃玩家，服务器老牌公会[只因]的管理员，善于使用手机版Java我的世界，喜欢研究开服相关事物，是个正在不断学习的苗子服主。曾开过的临时 Java 服务器，依托主服提供的玩家与相关支持，收获了玩家们的一致好评，现负责<a href="#subserver"><font color="#E59769"> Comet Java 私服 2.0 </font></a>的主要开服工作。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="3529336723"><i class="fab fa-qq"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=1097131173&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">RYD8325</h3>
+                    <div class="member-role">活跃玩家、生电大佬</div>
+                    <p class="member-desc">服务器活跃玩家、肝帝，曾为服务器提过许多建设性意见。非常擅长常见生电设施的建造，为服务器提供丰富物资，运行起来高效不卡。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="1097131173"><i class="fab fa-qq"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2669817322&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">FL.玛丽安</h3>
+                    <div class="member-role">活跃玩家</div>
+                    <p class="member-desc">肝帝一枚，经常活跃在服务器，喜欢跑图、建筑、做雕像，非常喜欢狐狸（也喜欢养很多狐狸让服务器撑爆）。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2669817322"><i class="fab fa-qq"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=3530611703&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">神楽七奈</h3>
+                    <div class="member-role">活跃玩家、技术大神、私服赞助商</div>
+                    <p class="member-desc">曾负责过服务器一个大型建筑的建造，开设过其他我的世界 Java 服务器，并早在 2022 年就与管理组有过合作，资历深厚。<br>自愿为 Comet 提供服务器硬件，是团队中值得信赖的力量，目前的<a href="#subserver"><font color="#E59769">  Comet Java 私服</font></a>正是运行在他所提供的服务器设施之上。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="3530611703"><i class="fab fa-qq"></i></a>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="admins-header">
+                <h2 class="admins-title">服务器<span>管理组</span></h2>
+                <p class="section-subtitle">我们拥有一支专业且富有激情的团队，致力于为所有玩家提供最优质的游戏体验</p>
             </div>
             
-            <div class="team-join">
-                <div class="team-join-info glass-card">
-                    <h3>加入我们的团队</h3>
-                    <p>我们始终欢迎有才华、有热情的玩家加入服务器团队，共同建设这个美好的世界。</p>
-                    <a href="https://qm.qq.com/q/TYPPvYOwa4" target="_blank" class="pixel-btn pixel-btn-green">加入官方QQ群</a>
+            <div class="admins-blocks">
+                <div class="admin-block adm4">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2985143951&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服务器负责人、服主、插件管理、服务器宣传</h3>
+                        <div class="admin-name">Yanda</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2985143951"><i class="fab fa-qq"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="lydwx888886"><i class="fab fa-weixin"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/535053377"><i class="fab fa-bilibili"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2985143951@qq.com"><i class="fab fa-at"></i></a>
+                        </div>
+                        <p class="admin-desc">服务器创始人之一，自2022年初接触开服，2023年和其他服主共同运营 Comet，2026年初正式继任负责人。<br>掌管服务器几乎全部插件的配置运行，擅长指令，待人亲切友善，拥有比较丰富的服务器管理经验，但非常不擅长建筑。<br>虽然他是服主，但也在玩家群体之间相当活跃，是服务器老牌公会[只因]的二把手。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm1">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2186840955&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服主、建筑师、活动策划、玩法策划</h3>
+                        <div class="admin-name">Kongtou</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2186840955"><i class="fab fa-qq"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2186840955@qq.com"><i class="fab fa-at"></i></a>
+                        </div>
+                        <p class="admin-desc">服务器创始人之一，自2022年初接触开服，2023年和其他服主共同运营 Comet 至今。<br>在自己的服务器总是不惜代价折磨其他玩家以此取乐，是一位背后藏着诸多故事的人。负责服务器的项目策划，擅长自然建筑与做旧，因此还成为了基岩版一个比较大型的综合Addon的项目成员。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm2">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2421583465&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服务器管理、指令员、插件管理</h3>
+                        <div class="admin-name">无情兰剑</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2421583465"><i class="fab fa-qq"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/1708811335"><i class="fab fa-bilibili"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2421583465@qq.com"><i class="fab fa-at"></i></a>
+                        </div>
+                        <p class="admin-desc">服务器活跃玩家、服务器老牌公会[只因]的二把手，始终活跃在服务器前线。擅长指令、插件编辑等，是亲切友善的解决问题高手。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm1">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2112839310&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服主、首席建筑师</h3>
+                        <div class="admin-name">YanziHa0</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2112839310"><i class="fab fa-qq"></i></a>
+                        </div>
+                            <p class="admin-desc">拥有丰富开服经验，自2022年接触开服，2023年和其他服主共同运营 Comet 至今。<br>擅长现代建筑设计，曾在服务器一周目造出了规模宏大的现代城市和商业区，并设置地皮出售，和以此作为出生点（以至于新玩家开局找不到路去挖木头）。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm1">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=168897951&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服主</h3>
+                        <div class="admin-name">Yhrfi</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="168897951"><i class="fab fa-qq"></i></a>
+                        </div>
+                        <p class="admin-desc">自2022年接触开服，2023年和其他服主共同运营 Comet 至今。<br>擅长处理服务器纠纷和引导新玩家、帮新玩家答疑解惑，是玩家们亲切的朋友。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm1">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2132704105&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服主、活动策划</h3>
+                        <div class="admin-name">DanWeiXianYu</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2132704105"><i class="fab fa-qq"></i></a>
+                        </div>
+                            <p class="admin-desc">自2022年接触开服，2023年和其他服主共同运营 Comet 至今。<br>擅长活动策划，曾在服务器一周目设计出了玩家们感到讨喜的通行证活动。</p>
+                    </div>
+                </div>
+                
+                <div class="admin-block adm3">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=1689492644&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服务器查服机器人、白名单机器人</h3>
+                        <div class="admin-name">MerryGo</div>
+                        <p class="admin-desc">在服务器中充当机器人的角色，7x24小时不间断为群内玩家提供查服服务，可实时查询在线玩家列表、服务器 TPS 等信息。同时她也会热情欢迎每一位新玩家的加入。人家全年无休很累的，平时请不要私信骚扰她。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm2">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=939194395&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服务器管理、宣传分发</h3>
+                        <div class="admin-name">FourWater</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="939194395"><i class="fab fa-qq"></i></a>
+                        </div>
+                        <p class="admin-desc">一个很出色的管理员，自2022年加入我们，担任活动策划、宣传分发等。曾在服务器主要管理均忙于学业没空搭理服务器时独自管理服务器，发布过数个群公告。</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3350,61 +3670,73 @@
     
     <section id="join-us" class="join-us">
         <div class="container join-content">
-            <h2 class="join-title">加入<span>生存大陆</span></h2>
-            <p class="join-text">准备好开始你的冒险了吗？立即加入我们，与数千玩家一起探索，创造，征服这个神奇的世界！</p>
+            <h2 class="join-title">加入<span>Comet</span></h2>
+            <p class="join-text">使用手机或电脑，输入群号或扫码加入QQ群，阅读群公告，即刻获取服务器IP端口。<br>准备好开始你的冒险了吗？立即加入我们，与其他的冒险家一起探索，创造，征服这个神奇的世界！</p>
             
             <div class="btn-group">
-                <a href="minecraft://?addExternalServer=生存大陆|scdalu.ddns.net:19132" class="btn btn-join">
+                <a href="minecraft://?addExternalServer=Comet 陆上彗星|mc.mccomet.xyz:34004" class="btn btn-join">
                     <i class="fas fa-gamepad"></i>立即加入服务器
                 </a>
-                <a href="https://qm.qq.com/q/TYPPvYOwa4" target="_blank" class="btn btn-secondary">
+                <a href="https://qm.qq.com/q/WfAt2eh7u6" target="_blank" class="btn btn-secondary">
                     <i class="fab fa-qq"></i>加入官方QQ群
                 </a>
             </div>
-            
+
             <div class="join-info">
-                <div class="join-info-item glass-card">
-                    <h3 class="join-info-title">服务器地址</h3>
-                    <p class="join-info-value" id="join-server-host">scdalu.ddns.net</p>
-                </div>
-                <div class="join-info-item glass-card">
-                    <h3 class="join-info-title">服务器端口</h3>
-                    <p class="join-info-value" id="join-server-port">19132</p>
-                </div>
-                <div class="join-info-item glass-card">
-                    <h3 class="join-info-title">一键加入</h3>
-                    <a href="minecraft://?addExternalServer=生存大陆|scdalu.ddns.net:19132" class="pixel-btn pixel-btn-gold">
-                        点击添加服务器
-                    </a>
-                </div>
+                <div><h3 class="join-info-title"></h3></div>
+                <div><h3 class="join-info-title"></h3></div>
             </div>
             
             <div class="minecraft-qr">
-                <img src="assets/images/qr-code.png" alt="服务器QR码">
+                <img src="assets/images/qr-code.jpg" alt="服务器QR码">
             </div>
         </div>
     </section>
+
+    <div class="minecraft-divider"></div>
+
+    <section id="subserver" class="join-us subserver-section">
+        <div class="container join-content">
+            <div class="subserver-avatar">
+                <div class="minecraft-avatar">
+                    <img src="https://p.qlogo.cn/gh/785391389/785391389/640/"></img>
+                </div>
+            </div>
+            <h2 class="section-title">体验一下我们的 <span> Java 服务器</span></h2>
+            <p class="subserver-text"><span>Comet Java 私服 2.0 </span>—— 体验由社区强力驱动，且运行在物理机的插件模组混合的养老生存服，无论电脑手机均可（爱来自手机服主<font color="#ECBBBC">❤</font>）<br><strong>这是我们新的尝试！</strong></p>
+
+            <div class="btn-group">
+                <a href="https://server.feather.qzz.io" target="_blank" class="btn btn-join">
+                    <i class="fas fa-external-link-alt"></i>前往服务器网站
+                </a>
+                <a href="https://qm.qq.com/q/PAGjOt4p6S" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-qq"></i>加入QQ群
+                </a>
+            </div>
+
+        </div>
+        <div class="subserver-bg" id="subserverBg"></div>
+    </section>
+
+    <div class="footer-divider"></div>
     
     <footer>
         <div class="container">
             <div class="footer-top">
                 <div class="footer-col">
                     <div class="footer-logo">
-                        <img src="assets/images/server-logo.png" alt="生存大陆 Logo">
-                        <div class="footer-logo-text">生存<span>大陆</span></div>
+                        <img src="assets/images/server-logo.png" alt="服务器 Logo">
+                        <div class="footer-logo-text">Comet <span> 陆上彗星</span></div>
                     </div>
-                    <p class="footer-desc">中国顶级我的世界基岩版服务器，为玩家提供最优质的游戏体验和社区环境。我们致力于打造一个友好、创新、多样化的游戏平台，让每位玩家都能找到属于自己的乐趣。</p>
+                    <p class="footer-desc">Comet（陆上彗星）是基于 Minecraft 基岩版环境（BDS）运维的云服务器群组。我们设置有生存服务器、小游戏服务器等，以丰富玩家的游戏体验，但我们仍然以打造稳定、清爽、原汁原味的基岩版生存服务器为主。</p>
                     <div class="footer-social">
-                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="微信: IIlIIlIIllIlIlII">
-                            <i class="fab fa-weixin"></i>
-                        </a>
-                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="QQ群: 817794727">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="674767893">
                             <i class="fab fa-qq"></i>
                         </a>
-                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="哔哩哔哩: 子峫">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/535053377">
                             <i class="fab fa-bilibili"></i>
                         </a>
-                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="抖音: 子峫">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="达达源">
                             <i class="fab fa-tiktok"></i>
                         </a>
                     </div>
@@ -3413,50 +3745,36 @@
                 <div class="footer-col">
                     <h3 class="footer-title">快速链接</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">首页</a></li>
+                        <li><a href="#home">回到顶部</a></li>
                         <li><a href="#announcement">公告</a></li>
                         <li><a href="#server-status">服务器状态</a></li>
-                        <li><a href="#features">游戏特色</a></li>
-                        <li><a href="#videos">精彩视频</a></li>
-                        <li><a href="#specifications">服务器配置</a></li>
-                        <li><a href="#server-team">服务器团队</a></li>
-                        <li><a href="#join-us">加入服务器</a></li>
+                        <li><a href="#">苦力怕论坛宣传帖</a></li>
+                        <li><a href="#">MineBBS宣传帖</a></li>
+                        <li><a href="#">BiliBili宣传帖</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
-                    <h3 class="footer-title">帮助中心</h3>
+                    <h3 class="footer-title">更多服务器</h3>
                     <ul class="footer-links">
-                        <li><a href="#">新手指南</a></li>
-                        <li><a href="#">服务器规则</a></li>
-                        <li><a href="#">常见问题</a></li>
-                        <li><a href="#">充值指南</a></li>
-                        <li><a href="#">隐私政策</a></li>
-                        <li><a href="#">用户协议</a></li>
-                        <li><a href="#">联系我们</a></li>
+                        <li><a href="https://server.feather.qzz.io" target="_blank">Comet Java 私服</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <h3 class="footer-title">联系我们</h3>
                     <ul class="footer-contact">
-                        <li><i class="fas fa-envelope"></i> 服务器邮箱: 2990621753@qq.com</li>
-                        <li><i class="fab fa-qq"></i> QQ群: 817794727</li>
-                        <li><i class="fab fa-weixin"></i> 微信: IIlIIlIIllIlIlII</li>
+                        <li><i class="fas fa-envelope"></i> 服务器邮箱: createtop@yeah.net</li>
+                        <li><i class="fab fa-qq"></i> QQ群: 674767893</li>
                         <li><i class="fas fa-headset"></i>在线时间: 7*24运行</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 中国·北京</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 中国·江苏</li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p class="copyright">&copy; 2025 生存大陆 Minecraft 服务器. 保留所有权利. Minecraft是Mojang Studios的商标，本站与Mojang和Microsoft没有从属关系。</p>
-                <div class="footer-links-bottom">
-                    <a href="#">隐私政策</a>
-                    <a href="#">服务条款</a>
-                    <a href="#">法律声明</a>
-                    <a href="#">网站地图</a>
-                </div>
+                <div class="server-uptime" id="serverUptime"></div>
+                <p class="copyright">&copy; 2026 Comet Minecraft 服务器. 保留所有权利. Minecraft是Mojang Studios的商标，本站与Mojang和Microsoft没有从属关系。</p>
             </div>
         </div>
     </footer>
@@ -3479,6 +3797,7 @@
             initBackToTop();
             initVideoPlayer();
             initNotifications();
+            initGallery();
             initCopyContact();
             
             fetchServerStatus();
@@ -3527,13 +3846,19 @@
         }
         
         function showNotification(message, type = 'info') {
+            // 将消息中的 URL 转换为可点击链接
+            function linkify(text) {
+                const urlRegex = /(https?:\/\/[^\s]+)/g;
+                return text.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener" style="color: #0C6EA9; text-decoration: underline;">$1</a>');
+            }
+            
             const notification = document.createElement('div');
             notification.className = `notification notification-${type}`;
             notification.innerHTML = `
                 <div class="notification-icon">
                     <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
                 </div>
-                <div class="notification-message">${message}</div>
+                <div class="notification-message">${linkify(message)}</div>
             `;
             
             const container = document.getElementById('notificationContainer');
@@ -3548,7 +3873,7 @@
                 setTimeout(() => {
                     container.removeChild(notification);
                 }, 300);
-            }, 3000);
+            }, 5000);
         }
         
         function initNavigation() {
@@ -3813,7 +4138,7 @@
         
         function fetchServerStatus() {
             try {
-                const serverAddress = "scdalu.ddns.net:19132";
+                const serverAddress = "z9e.52mc.pro:34004";
                 
                 fetch(`https://api.mcstatus.io/v2/status/bedrock/${serverAddress}`)
                     .then(response => response.json())
@@ -3922,9 +4247,11 @@
                                     entry.target.classList.add('animate__fadeIn');
                                 } else if (entry.target.classList.contains('video-player')) {
                                     entry.target.classList.add('animate__zoomIn');
-                                } else if (entry.target.classList.contains('spec-card')) {
+                                } else if (entry.target.classList.contains('admin-card')) {
                                     entry.target.classList.add('animate__fadeInUp');
                                 } else if (entry.target.classList.contains('section-title')) {
+                                    entry.target.classList.add('animate__fadeInDown');
+                                } else if (entry.target.classList.contains('subserver-text')) {
                                     entry.target.classList.add('animate__fadeInDown');
                                 } else {
                                     entry.target.classList.add('animate__fadeIn');
@@ -3935,17 +4262,17 @@
                         });
                     }, { threshold: 0.1 });
                     
-                    document.querySelectorAll('.feature-card, .status-card, .video-player, .spec-card, .section-title, .glass-card').forEach(element => {
+                    document.querySelectorAll('.feature-card, .status-card, .video-player, .admin-card, .section-title, .glass-card, .subserver-text').forEach(element => {
                         observer.observe(element);
                     });
                 } else {
-                    document.querySelectorAll('.feature-card, .status-card, .video-player, .spec-card, .section-title, .glass-card').forEach(element => {
+                    document.querySelectorAll('.feature-card, .status-card, .video-player, .admin-card, .section-title, .glass-card, .subserver-text').forEach(element => {
                         element.style.opacity = '1';
                     });
                 }
             } catch (err) {
                 console.error('初始化滚动动画失败:', err);
-                document.querySelectorAll('.feature-card, .status-card, .video-player, .spec-card, .section-title, .glass-card').forEach(element => {
+                document.querySelectorAll('.feature-card, .status-card, .video-player, .admin-card, .section-title, .glass-card, .subserver-text').forEach(element => {
                     element.style.opacity = '1';
                 });
             }
@@ -3995,15 +4322,170 @@
                 console.error('初始化返回顶部按钮失败:', err);
             }
         }
+
+        const subserverSection = document.getElementById('subserver');
+        const subserverBg = document.getElementById('subserverBg');
+        if (subserverSection && subserverBg) {
+            subserverSection.addEventListener('mouseenter', () => {
+                subserverBg.classList.add('zoomed');
+            });
+            subserverSection.addEventListener('mouseleave', () => {
+                subserverBg.classList.remove('zoomed');
+            });
+        }
         
         function initNotifications() {
             try {
                 setTimeout(() => {
-                    showNotification('欢迎来到生存大陆', '畅享多样玩法与精彩活动，立即加入冒险！', 'info');
+                    showNotification('欢迎来到 Comet 服务器官网！', '畅享多样玩法与精彩活动，立即加入冒险！', 'info');
                 }, 2000);
             } catch (err) {
                 console.error('初始化通知系统失败:', err);
             }
+        }
+
+        // 服务器成立正计时
+        function updateServerUptime() {
+            // 需要配置的部分：设置服务器成立日期和时间
+            const serverStartDate = new Date('2023-02-01T00:00:00'); // 格式：YYYY-MM-DDTHH:MM:SS，按需修改
+
+            const now = new Date();
+            const diffMs = now - serverStartDate; // 相差毫秒数
+
+            if (diffMs < 0) {
+                document.getElementById('serverUptime').innerText = '服务器即将上线，敬请期待！';
+                return;
+            }
+
+            const totalSeconds = Math.floor(diffMs / 1000);
+            const days = Math.floor(totalSeconds / 86400);
+            const hours = Math.floor((totalSeconds % 86400) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            document.getElementById('serverUptime').innerHTML = 
+                `陆上彗星服务器已成立 <strong>${days}天${hours}小时${minutes}分${seconds}秒</strong>`;
+        }
+
+        // 立即执行一次
+        updateServerUptime();
+
+        // 每秒更新一次
+        setInterval(updateServerUptime, 1000);
+
+        function initGallery() {
+            const slider = document.getElementById('gallerySlider');
+            if (!slider) return;
+            const slides = document.querySelectorAll('.gallery-slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const indicators = document.querySelectorAll('.indicator');
+            if (!slides.length) return;
+
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            let autoPlayInterval = null;
+            const autoPlayDelay = 5000; // 5秒自动轮播
+
+            // 更新轮播显示
+            function updateGallery() {
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+                slides.forEach((slide, idx) => {
+                    slide.classList.toggle('active', idx === currentIndex);
+                });
+                indicators.forEach((indicator, idx) => {
+                    indicator.classList.toggle('active', idx === currentIndex);
+                });
+            }
+
+            // 下一张
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateGallery();
+            }
+
+            // 上一张
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateGallery();
+            }
+
+            // 重置自动轮播定时器
+            function resetAutoPlay() {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                }
+                autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
+            }
+
+            // 启动自动轮播
+            resetAutoPlay();
+
+            // 按钮事件（重置定时器）
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    resetAutoPlay();
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    resetAutoPlay();
+                });
+            }
+
+            // 指示器点击（重置定时器）
+            indicators.forEach((indicator, idx) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = idx;
+                    updateGallery();
+                    resetAutoPlay();
+                });
+            });
+
+            // 触摸滑动支持
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            slider.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            slider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                const swipeThreshold = 50; // 滑动距离阈值
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // 向左滑动 -> 下一张
+                        nextSlide();
+                    } else {
+                        // 向右滑动 -> 上一张
+                        prevSlide();
+                    }
+                    resetAutoPlay(); // 手动滑动后重置定时器
+                }
+            }
+
+            // 当页面隐藏时暂停自动轮播（可选优化）
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    if (autoPlayInterval) {
+                        clearInterval(autoPlayInterval);
+                        autoPlayInterval = null;
+                    }
+                } else {
+                    resetAutoPlay();
+                }
+            });
+
+            // 初始化显示
+            updateGallery();
         }
     </script>
 </body>
