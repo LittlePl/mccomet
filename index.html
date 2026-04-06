@@ -1,0 +1,4494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comet 陆上彗星 - 我的世界基岩版服务器官网</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <style>
+        @font-face {
+            font-family: 'MinecraftTen';
+            src: url('assets/fonts/Cubic_11.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('assets/fonts/Minecraft.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --primary: #2c4a8b;
+            --primary-light: #6083cf;
+            --primary-dark: #13264e;
+            --secondary: #1D273C;
+            --accent: #b983ff;
+            --accent-dark: rgb(72, 46, 99);
+            --dark: #1D273C;
+            --darker: #161d2d;
+            --darkest: #091224;
+            --light: #f8f9fa;
+            --light-green: #E8F5E4;
+            --brown: #8B5F3D;
+            --dirt: #866043;
+            --stone: #7A7A7A;
+            --obsidian: #2D0C3A;
+            
+            --success: #63AF5E;
+            --info: #3896D3;
+            --warning: #FFB626;
+            --danger: #ED4A4C;
+            --diamond: #4AEAFF;
+            --emerald: #00E676;
+            --gold: #FFCC00;
+            --coal: #333333;
+            --redstone: #FF3030;
+            
+            --gradient-1: linear-gradient(135deg, #2c4a8b 0%, #1c3260 100%);
+            --gradient-2: linear-gradient(135deg, #2c4a8b 0%, #1c3260 100%);
+            --gradient-3: linear-gradient(90deg, rgba(139, 95, 61, 0.8) 0%, rgba(64, 102, 199, 0.8) 100%);
+            --gradient-diamond: linear-gradient(135deg, #26C6DA 0%, #4AEAFF 100%);
+            --gradient-gold: linear-gradient(135deg, #FFC107 0%, #FFEB3B 100%);
+            --gradient-redstone: linear-gradient(135deg, #F44336 0%, #FF5252 100%);
+            --gradient-obsidian: linear-gradient(135deg, #2D0C3A 0%, #4A148C 100%);
+            --gradient-night: linear-gradient(135deg, #13264e 0%, #0F2027 50%, #203A43 100%);
+            
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.25);
+            --shadow-xl: 0 15px 60px rgba(0, 0, 0, 0.3);
+            --shadow-glass: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --shadow-inset: inset 0 2px 10px rgba(0, 0, 0, 0.2);
+            --shadow-green: 0 5px 20px rgba(90, 189, 60, 0.3);
+            --shadow-gold: 0 5px 20px rgba(255, 193, 7, 0.3);
+            --shadow-blue: 0 5px 20px rgba(38, 198, 218, 0.3);
+            
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-full: 9999px;
+            --radius-minecraft: 0px;
+            
+            --transition-fast: 0.2s;
+            --transition-normal: 0.3s;
+            --transition-slow: 0.5s;
+            
+            --block-border: 3px solid #111;
+            --block-border-light: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'MinecraftTen', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--darker);
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--primary);
+            border-radius: var(--radius-full);
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: var(--primary-light);
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background-image: url('https://cdnjs.cloudflare.com/ajax/libs/16bpp-noise/1.0.0/noise.min.svg');
+            background-attachment: fixed;
+            background-size: 200px;
+            background-position: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .glass {
+            background: rgba(3, 150, 235, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-glass);
+        }
+        
+        .glass-dark {
+            background: rgba(6, 0, 119, 0.65);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glass-card {
+            background: rgba(82, 39, 238, 0.);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-glass);
+            padding: 30px;
+            transition: transform var(--transition-normal) ease, 
+                        box-shadow var(--transition-normal) ease,
+                        background-color var(--transition-normal) ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(21, 42, 94, 0.6);
+        }
+        
+        .block-card {
+            background-color: var(--darker);
+            border: var(--block-border);
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+            position: relative;
+            transform-style: preserve-3d;
+            padding: 20px;
+            transition: all var(--transition-normal) ease;
+        }
+        
+        .block-card::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            right: -3px;
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+            transform: translateZ(-1px);
+        }
+        
+        .block-card:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section {
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--light);
+            position: relative;
+            z-index: 1;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+            font-family: 'Minecraft', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .section-title span {
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+            bottom: 2px;
+        }
+        
+        .section-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+            opacity: 0.5;
+            border-radius: var(--radius-full);
+        }
+
+        .section-title-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10rem;
+            font-weight: 900;
+            opacity: 0.03;
+            white-space: nowrap;
+            text-transform: uppercase;
+            z-index: 0;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -15px;
+        }
+        
+        .col {
+            padding: 15px;
+            flex: 1 0 100%;
+        }
+        
+        .bg-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .bg-decoration {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .deco-1 {
+            top: 10%;
+            left: -150px;
+            background: radial-gradient(circle, var(--primary), transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+        
+        .deco-2 {
+            bottom: 10%;
+            right: -150px;
+            background: radial-gradient(circle, var(--secondary), transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .deco-3 {
+            top: 40%;
+            right: -100px;
+            background: radial-gradient(circle, var(--accent), transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .deco-4 {
+            bottom: 30%;
+            left: -100px;
+            background: radial-gradient(circle, var(--brown), transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .deco-diamond {
+            top: 20%;
+            right: 10%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--diamond), transparent 70%);
+            filter: blur(40px);
+            animation: pulse 8s ease-in-out infinite alternate;
+        }
+
+        .deco-gold {
+            bottom: 20%;
+            left: 10%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, var(--gold), transparent 70%);
+            filter: blur(40px);
+            animation: pulse 10s ease-in-out infinite alternate-reverse;
+        }
+        
+        .deco-redstone {
+            top: 60%;
+            left: 20%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--redstone), transparent 70%);
+            filter: blur(30px);
+            animation: pulse 7s ease-in-out infinite alternate;
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-slow {
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .floating-fast {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0.1;
+                transform: scale(0.95);
+            }
+            50% {
+                opacity: 0.15;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.1;
+                transform: scale(0.95);
+            }
+        }
+        
+        .minecraft-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.04;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 16px 16px;
+            pointer-events: none;
+        }
+        
+        .falling-blocks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .falling-block {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            opacity: 0.1;
+            background-color: var(--primary);
+            top: -30px;
+            transform: rotate(0deg);
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(calc(100vh + 30px)) rotate(360deg);
+            }
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 30px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-normal) ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            z-index: 1;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: transform var(--transition-normal) ease;
+            z-index: -1;
+            transform: skewX(-15deg);
+        }
+        
+        .btn:hover::before {
+            transform: skewX(-15deg) translateX(100%);
+        }
+        
+        .btn-primary {
+            background: var(--gradient-1);
+            color: var(--light);
+            box-shadow: 0 4px 15px rgba(57, 60, 228, 0.4);
+            border-bottom: 3px solid var(--primary-dark);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 8px 25px rgba(57, 123, 230, 0.6);
+            transform: translateY(-3px);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(55, 20, 233, 0.4);
+            border-bottom-width: 1px;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 3px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-secondary:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-bottom-width: 1px;
+        }
+        
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%);
+            color: #333;
+            box-shadow: 0 4px 15px rgba(219, 192, 116, 0.4);
+            border-bottom: 3px solid rgba(219, 192, 116, 0.6);
+            font-weight: 700;
+        }
+        
+        .btn-accent:hover {
+            box-shadow: 0 8px 25px rgba(219, 192, 116, 0.6);
+            transform: translateY(-3px);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .pixel-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            font-family: 'Minecraft', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 2px solid #000;
+            box-shadow: 4px 4px 0px #000;
+            position: relative;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .pixel-btn:hover {
+            background-color: var(--secondary);
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000;
+        }
+        
+        .pixel-btn-gold {
+            background-color: var(--accent);
+            color: #333;
+        }
+        
+        .pixel-btn-gold:hover {
+            background-color: #ba8cff;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all var(--transition-normal) ease;
+            padding: 20px 0;
+        }
+        
+        header.scrolled {
+            background: rgba(29, 39, 60, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform var(--transition-normal) ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo img {
+            height: 48px;
+            margin-right: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            margin-top: -5px;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--light);
+            transition: all var(--transition-normal) ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Minecraft', sans-serif;
+            letter-spacing: 1px;
+            margin-top: 1px;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+            position: relative;
+            bottom: 2px;
+        }
+        
+        .logo-text span::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            opacity: 0.5;
+            border-radius: var(--radius-full);
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            margin: 0 5px;
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: all var(--transition-normal) ease;
+            padding: 10px 15px;
+            position: relative;
+            display: inline-block;
+            border-radius: var(--radius-md);
+            z-index: 1;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-md);
+            opacity: 0;
+            z-index: -1;
+            transform: scale(0.8);
+            transition: all var(--transition-normal) ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .nav-links a.active {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+            width: 35px;
+            height: 35px;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-normal) ease;
+        }
+        
+        .mobile-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .bar {
+            width: 24px;
+            height: 3px;
+            background-color: var(--light);
+            border-radius: 3px;
+            transition: all var(--transition-normal) ease;
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, var(--dark) 0%, rgba(28, 21, 81, 0.7) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 24px;
+            background: rgba(119, 63, 216, 0.6);
+            border-radius: var(--radius-full);
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: all var(--transition-normal) ease;
+        }
+        
+        .hero-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-badge.online {
+            border-color: rgba(0, 255, 0, 0.3);
+        }
+        
+        .hero-badge.online .status-dot {
+            background-color: var(--success);
+            box-shadow: 0 0 0 3px rgba(0, 255, 0, 0.3);
+        }
+        
+        .hero-badge.offline {
+            border-color: rgba(237, 74, 76, 0.3);
+        }
+        
+        .hero-badge.offline .status-dot {
+            background-color: var(--danger);
+            box-shadow: 0 0 0 3px rgba(237, 74, 76, 0.3);
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--info);
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(90, 189, 60, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 6px rgba(90, 189, 60, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(90, 189, 60, 0);
+            }
+        }
+        
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+            animation: fadeInDown 1s ease;
+            font-family: 'Minecraft', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+            bottom: 7px;
+        }
+        
+        .hero-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--accent);
+            opacity: 0.5;
+            border-radius: var(--radius-full);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-buttons {
+            animation: fadeIn 1.5s ease;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .pixel-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent);
+            opacity: 0.2;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .announcement {
+            background: linear-gradient(135deg, rgba(16, 32, 24, 0.9) 0%, rgba(24, 60, 40, 0.9) 100%);
+            padding: 40px 0;
+            position: relative;
+            border-top: 4px solid var(--primary);
+            border-bottom: 4px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 -10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .announcement::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://cdnjs.cloudflare.com/ajax/libs/16bpp-noise/1.0.0/noise.min.svg');
+            background-size: 100px;
+            opacity: 0.05;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .announcement-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        .announcement-title {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--accent);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Minecraft', sans-serif;
+        }
+
+        .announcement-title i {
+            margin-right: 15px;
+            color: var(--accent);
+            font-size: 1.8rem;
+            filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+            animation: pulseIcon 2s infinite;
+        }
+        
+        @keyframes pulseIcon {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .announcement-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transition: all var(--transition-normal) ease;
+            position: relative;
+        }
+        
+        .announcement-content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .announcement-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .announcement-text {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--light);
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .announcement-date {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+        
+        .server-status {
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .server-status::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(12, 10, 59, 0.9) 0%, rgba(31, 15, 73, 0.95) 100%);
+            z-index: 1;
+        }
+        
+        .server-status::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: repeating-linear-gradient(
+                -45deg,
+                rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, 0.2) 10px,
+                rgba(0, 0, 0, 0.3) 10px,
+                rgba(0, 0, 0, 0.3) 20px
+            );
+            z-index: 2;
+        }
+        
+        .status-card {
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            z-index: 2;
+            padding: 40px 20px;
+        }
+        
+        .status-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 35px;
+            width: 100%;
+            position: relative;
+            border-left: 4px solid var(--accent);
+            padding-left: 20px;
+        }
+        
+        .status-header::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent), transparent);
+        }
+        
+        .status-icon {
+            font-size: 2.2rem;
+            width: 75px;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            margin-right: 25px;
+            color: var(--accent);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(219, 192, 116, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(219, 192, 116, 0.3);
+        }
+        
+        .status-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(219, 192, 116, 0.1);
+            transform: rotate(45deg);
+            animation: shimmer 3s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+        
+        .status-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--light);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(219, 192, 116, 0.3);
+            font-family: 'Minecraft', sans-serif;
+        }
+        
+        .status-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            width: 100%;
+            margin-bottom: 35px;
+        }
+        
+        .status-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: all var(--transition-normal) ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .status-item:hover {
+            transform: translateY(-7px);
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            border-color: rgba(219, 192, 116, 0.3);
+        }
+        
+        .status-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        .status-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+        }
+        
+        .status-item:nth-child(1)::after {
+            background: linear-gradient(to right, #5c913b, #7bc450);
+        }
+        
+        .status-item:nth-child(2)::after {
+            background: linear-gradient(to right, var(--accent-dark), var(--accent));
+        }
+        
+        .status-item:nth-child(3)::after {
+            background: linear-gradient(to right, #3b6e9e, #5cabff);
+        }
+        
+        .status-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: 'Minecraft', sans-serif;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .status-label::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .status-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--light);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+        }
+        
+        .status-motd {
+            width: 100%;
+            padding: 30px 25px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius-lg);
+            word-break: break-word;
+            font-family: 'Minecraft', sans-serif;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            color: #a8e890;
+            transition: all var(--transition-normal) ease;
+            line-height: 1.7;
+            font-size: 1.15rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-motd:hover {
+            transform: translateY(-7px);
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            border-color: rgba(219, 192, 116, 0.3);
+        }
+        
+        .status-motd::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent), var(--diamond), var(--primary));
+            background-size: 200% 100%;
+            animation: gradientAnimation 8s linear infinite;
+        }
+        
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 200% 0%;
+            }
+        }
+        
+        .server-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px 15px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .indicator-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #5c913b;
+            margin-right: 10px;
+            position: relative;
+        }
+        
+        .indicator-dot::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(92, 145, 59, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+        
+        .indicator-text {
+            font-size: 0.9rem;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .offline .indicator-dot {
+            background: #e74c3c;
+        }
+        
+        .offline .indicator-dot::after {
+            background: rgba(231, 76, 60, 0.3);
+        }
+
+        .gallery {
+            background: var(--dark);
+            position: relative;
+        }
+
+        .gallery::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, var(--dark) 0%, rgba(39, 100, 255, 0.5) 50%, var(--dark) 100%);
+            z-index: 1;
+        }
+
+        .gallery-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            z-index: 1;
+        }
+
+        .gallery-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .gallery-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .gallery-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .gallery-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        .gallery-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .indicator:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .features {
+            background: var(--darker);
+            position: relative;
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, var(--dark) 0%, rgba(6, 0, 41, 0.9) 50%, var(--dark) 100%);
+            z-index: 1;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .feature-card {
+            padding: 35px 25px;
+            position: relative;
+            text-align: center;
+            background: rgba(3, 0, 46, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: visible;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            z-index: 2;
+        }
+        
+        .feature-icon-wrapper {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            background: var(--gradient-1);
+            border-radius: 20px;
+            margin: -70px auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(15, 7, 101, 0.3);
+            z-index: 2;
+            transform: rotate(45deg);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .feature-card:hover .feature-icon-wrapper {
+            transform: rotate(0deg);
+            box-shadow: 0 12px 30px rgba(11, 121, 211, 0.5);
+        }
+        
+        .feature-icon {
+            font-size: 2.2rem;
+            color: var(--light);
+            transform: rotate(-45deg);
+            transition: transform 0.4s ease;
+            filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3));
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: rotate(0deg) scale(1.1);
+        }
+        
+        .feature-title {
+            font-size: 1.6rem;
+            margin: 15px 0;
+            font-weight: 700;
+            color: var(--accent);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+            font-family: 'Minecraft', sans-serif;
+        }
+        
+        .feature-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: var(--accent);
+            opacity: 0.5;
+            border-radius: var(--radius-full);
+        }
+        
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .block-border-1 {
+            --block-color: var(--primary);
+            --block-size: 16px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .block-border-1::before,
+        .block-border-1::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: var(--block-size);
+            background-image: 
+                repeating-linear-gradient(
+                    to right,
+                    var(--block-color) 0,
+                    var(--block-color) var(--block-size),
+                    transparent var(--block-size),
+                    transparent calc(var(--block-size) * 2)
+                );
+            opacity: 0.1;
+        }
+        
+        .block-border-1::before {
+            top: 0;
+        }
+        
+        .block-border-1::after {
+            bottom: 0;
+        }
+        
+        .videos {
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .videos::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, var(--dark) 0%, rgba(53, 0, 73, 0.5) 50%, var(--dark) 100%);
+            z-index: 1;
+        }
+        
+        .video-container {
+            margin-top: 60px;
+            position: relative;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            z-index: 2;
+        }
+        
+        .video-player {
+            position: relative;
+            margin-bottom: 40px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0;
+            border: 3px solid rgba(0, 151, 245, 0.3);
+            transition: all var(--transition-normal) ease;
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateX(0deg);
+        }
+        
+        .video-player:hover {
+            transform: perspective(1000px) rotateX(2deg) translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 0, 187, 0.5);
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: #000;
+        }
+        
+        .video-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .video-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: var(--light);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Minecraft', sans-serif;
+        }
+        
+        .video-desc {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+        
+        .video-control {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all var(--transition-normal) ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .video-control:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .video-thumbnails {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .video-thumbnail {
+            width: 80px;
+            height: 45px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all var(--transition-normal) ease;
+            opacity: 0.6;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-thumbnail.active {
+            border-color: var(--accent);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .video-thumbnail:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .specifications {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            background-image: url('https://cdnjs.cloudflare.com/ajax/libs/16bpp-noise/1.0.0/noise.min.svg');
+            background-size: 200px;
+            background-attachment: fixed;
+        }
+
+        .specifications::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(16, 32, 24, 0.92) 0%, rgba(10, 21, 16, 0.95) 100%);
+            z-index: 0;
+        }
+
+        .specifications .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .admins-header {
+            text-align: center;
+            margin: 60px 0 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .minecraft-item {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border: 4px solid #222;
+            box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2), 0 10px 20px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            position: relative;
+            transform: rotate(45deg);
+        }
+
+        .minecraft-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.2) 50%, transparent 60%);
+            background-size: 250% 250%;
+            animation: shine 3s infinite linear;
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 200% 200%;
+            }
+        }
+
+        .minecraft-item i {
+            font-size: 32px;
+            color: #111;
+            transform: rotate(-45deg);
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .admins-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 20px 0 20px;
+            font-family: 'Minecraft', sans-serif;
+            letter-spacing: 1px;
+            color: var(--light);
+            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+            line-height: 1.1;
+        }
+
+        .admins-title span {
+            background: linear-gradient(135deg, var(--diamond) 0%, var(--info) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            position: relative;
+            bottom: 2px;
+        }
+
+        .admins-description {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .admins-blocks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .admin-block {
+            display: flex;
+            background: rgba(24, 60, 40, 0.3);
+            border: 2px solid #222;
+            border-radius: 8px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .admin-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+
+        .cpu-block::before {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .ram-block::before {
+            background: linear-gradient(90deg, var(--info), #70DFFF);
+        }
+
+        .storage-block::before {
+            background: linear-gradient(90deg, var(--accent), #FFEC99);
+        }
+
+        .network-block::before {
+            background: linear-gradient(90deg, var(--warning), #FFD166);
+        }
+
+        .admin-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(24, 60, 40, 0.4);
+        }
+
+        .adm1::before {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .adm2::before {
+            background: linear-gradient(90deg, var(--info), #70DFFF);
+        }
+
+        .adm3::before {
+            background: linear-gradient(90deg, var(--accent), #FFEC99);
+        }
+
+        .adm4::before {
+            background: linear-gradient(90deg, var(--warning), #FFD166);
+        }
+
+        .adm5::before {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .adm6::before {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .admin-icon-container {
+            width: 120px;
+            height: 120px;
+            margin-right: 25px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .admin-icon-container i {
+            font-size: 35px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .admin-content {
+            flex: 1;
+        }
+
+        .admin-block .admin-id {
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: var(--light);
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+            font-family: 'Minecraft', sans-serif;
+        }
+
+        .admin-name {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--light);
+            margin: 0 0 5px;
+        }
+
+        .admin-features {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .admin-content .member-social {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 0 0 15px;
+            justify-content: left;
+        }
+
+        .feature-tag {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            color: var(--light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cpu-block .feature-tag {
+            background: rgba(90, 189, 60, 0.2);
+            border-color: rgba(90, 189, 60, 0.3);
+        }
+
+        .ram-block .feature-tag {
+            background: rgba(56, 150, 211, 0.2);
+            border-color: rgba(56, 150, 211, 0.3);
+        }
+
+        .storage-block .feature-tag {
+            background: rgba(255, 223, 94, 0.2);
+            border-color: rgba(255, 223, 94, 0.3);
+        }
+
+        .network-block .feature-tag {
+            background: rgba(255, 182, 38, 0.2);
+            border-color: rgba(255, 182, 38, 0.3);
+        }
+
+        .admin-desc {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .admins-footer {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .admins-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--light);
+            border: 2px solid #222;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .admins-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .admins-badge i {
+            font-size: 1.6rem;
+            color: var(--primary-light);
+        }
+
+        @media (max-width: 1200px) {
+            .admins-blocks {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .admins-title {
+                font-size: 2.8rem;
+            }
+            
+            .admin-block {
+                flex-direction: column;
+            }
+            
+            .admin-icon-container {
+                margin: 0 auto 20px;
+            }
+            
+            .admin-content {
+                text-align: center;
+            }
+            
+            .admin-features {
+                justify-content: center;
+            }
+            
+            .admins-footer {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .admins-badge {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .server-indicator {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-bottom: 20px;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .admin-content .member-social {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .admins-title {
+                font-size: 2.2rem;
+            }
+            
+            .specifications {
+                padding: 70px 0;
+            }
+        }
+        
+        .server-team {
+            padding: 90px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            text-align: center;
+            padding: 30px;
+            transition: all var(--transition-normal) ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 0, 0, 0.2);
+        }
+        
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .minecraft-avatar {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-2);
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 0px 16px 4px rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            object-fit: cover;
+        }
+
+        .minecraft-avatar img {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .minecraft-avatar i {
+            font-size: 40px;
+            color: var(--light);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .member-name {
+            font-size: 22px;
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+        
+        .member-role {
+            font-size: 16px;
+            color: var(--primary-light);
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            width: 80%;
+        }
+        
+        .member-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .member-social {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .member-social .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            transition: all var(--transition-normal) ease;
+        }
+        
+        .member-social .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .team-join {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .team-join-info {
+            text-align: center;
+            padding: 30px;
+            max-width: 600px;
+        }
+        
+        .team-join-info h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+        
+        .team-join-info p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+
+        .join-us {
+            position: relative;
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0;
+            text-align: center;
+        }
+        
+        .join-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 13, 43, 0.8) 0%, rgba(60, 60, 189, 0.7) 100%);
+            z-index: 1;
+        }
+        
+        .join-us::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://cdnjs.cloudflare.com/ajax/libs/16bpp-noise/1.0.0/noise.min.svg');
+            background-size: 100px;
+            opacity: 0.05;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .join-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .join-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--light);
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+            font-family: 'Minecraft', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .join-title span {
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .join-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--accent);
+            opacity: 0.5;
+            border-radius: var(--radius-full);
+        }
+        
+        .join-text {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            line-height: 1.7;
+        }
+        
+        .btn-join {
+            background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%);
+            color: #e0e0e0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+            padding: 16px 40px;
+            box-shadow: 0 10px 30px rgba(58, 6, 229, 0.4);
+            border-bottom: 4px solid rgba(15, 0, 66, 0.6);
+            text-shadow: none;
+            font-family: 'Minecraft', sans-serif;
+        }
+        
+        .btn-join:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(64, 53, 231, 0.5);
+        }
+        
+        .btn-join i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .join-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .join-info-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: 25px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            min-width: 240px;
+            transition: all var(--transition-normal) ease;
+        }
+        
+        .join-info-item:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .join-info-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: var(--accent);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-family: 'Minecraft', sans-serif;
+        }
+        
+        .join-info-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--light);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .minecraft-qr {
+            max-width: 200px;
+            margin: 0 auto 30px;
+            background: #F5FAFE;
+            padding: 15px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border: 5px solid var(--primary);
+            position: relative;
+        }
+        
+        .minecraft-qr img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .minecraft-qr::before {
+            content: '扫码加入';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .minecraft-divider {
+            height: 8px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--primary) 0px,
+                var(--primary) 16px,
+                var(--primary-dark) 16px,
+                var(--primary-dark) 32px
+            );
+            margin: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .minecraft-divider-accent {
+            height: 8px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--accent) 0px,
+                var(--accent) 16px,
+                var(--accent-dark) 16px,
+                var(--accent-dark) 32px
+            );
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-divider {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: repeating-linear-gradient(
+                -45deg,
+                rgba(60, 60, 189, 0.4),
+                rgba(60, 60, 189, 0.4) 10px,
+                rgba(60, 60, 189, 0.6) 10px,
+                rgba(60, 60, 189, 0.6) 20px
+            );
+            z-index: 2;
+        }
+
+        .subserver-section {
+            position: relative;
+            overflow: hidden; /* 防止缩放时溢出 */
+        }
+
+        .subserver-text {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            line-height: 1.7;
+        }
+
+        .subserver-text span {
+            font-weight: bold;
+            background-size: 200% 100%;
+            background-image: linear-gradient(to right, #E59769, var(--gold), #E59769);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientAnimation 2s linear infinite;
+        }
+
+        .subserver-avatar {
+            width: 150px;
+            height: 150px;
+            margin: auto;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .subserver-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://image.baidu.com/search/down?url=https://wx4.sinaimg.cn/large/008EsglKly1ib5lqr9atqj31410u010i.jpg');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            z-index: 0;
+        }
+
+        .subserver-bg.zoomed {
+            transform: scale(1.03);
+            filter: brightness(0.75);
+        }
+
+        .subserver-section .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        footer {
+            background: var(--darkest);
+            padding: 60px 0 30px;
+            position: relative;
+            box-shadow: 10px 4px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px 45px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .footer-logo img {
+            height: 45px;
+            margin-right: 15px;
+            filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2));
+            margin-top: -12px;
+        }
+        
+        .footer-logo-text {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--light);
+            font-family: 'Minecraft', sans-serif;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-logo-text span {
+            color: var(--accent);
+            position: relative;
+            bottom: 2px;
+        }
+        
+        .footer-logo-text span::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            opacity: 0.5;
+            border-radius: var(--radius-full);
+        }
+        
+        .footer-desc {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+            font-size: 1rem;
+            line-height: 1.7;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            padding: 2px 0 0;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            transition: all var(--transition-normal) ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 8px 20px rgba(90, 189, 60, 0.3);
+            color: #fff;
+        }
+        
+        .social-icon.copied::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--success);
+            border-radius: 100%;
+            animation: ripple 0.7s ease;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        .footer-title {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: var(--light);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Minecraft', sans-serif;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: var(--radius-full);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .footer-links li::before {
+            content: '\f138';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 0.8rem;
+            transition: all var(--transition-normal) ease;
+        }
+        
+        .footer-links li:hover::before {
+            color: var(--accent);
+            transform: translateY(-50%) translateX(3px);
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            transition: color var(--transition-normal) ease, transform var(--transition-normal) ease;
+            font-size: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        .footer-contact i {
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .copyright .server-uptime {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
+        }
+        
+        .footer-links-bottom {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color var(--transition-normal) ease;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links-bottom a:hover {
+            color: var(--accent);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-normal) ease;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.2rem;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--primary-light);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--darkest);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loader.loaded {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .minecraft-loader {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            transform: rotate(45deg);
+            animation: rotateBlock 2s infinite linear;
+        }
+        
+        .minecraft-loader-block {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background-color: var(--primary);
+        }
+        
+        .minecraft-loader-block:nth-child(1) {
+            top: 0;
+            left: 0;
+            animation: loaderBlockAnimation 1s infinite alternate;
+            background-color: var(--primary);
+        }
+        
+        .minecraft-loader-block:nth-child(2) {
+            top: 0;
+            right: 0;
+            animation: loaderBlockAnimation 1s infinite 0.2s alternate;
+            background-color: var(--accent);
+        }
+        
+        .minecraft-loader-block:nth-child(3) {
+            bottom: 0;
+            left: 0;
+            animation: loaderBlockAnimation 1s infinite 0.4s alternate;
+            background-color: var(--redstone);
+        }
+        
+        .minecraft-loader-block:nth-child(4) {
+            bottom: 0;
+            right: 0;
+            animation: loaderBlockAnimation 1s infinite 0.6s alternate;
+            background-color: var(--diamond);
+        }
+        
+        @keyframes loaderBlockAnimation {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(0.8);
+            }
+        }
+        
+        @keyframes rotateBlock {
+            0% {
+                transform: rotate(45deg);
+            }
+            100% {
+                transform: rotate(405deg);
+            }
+        }
+        
+        .notification-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .notification {
+            background: rgba(1, 9, 46, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: var(--radius-md);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--primary);
+            max-width: 350px;
+            pointer-events: auto;
+            transform: translateX(100%);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .notification-success {
+            border-left-color: var(--success);
+        }
+
+        .notification-info {
+            border-left-color: var(--info);
+        }
+
+        .notification-warning {
+            border-left-color: var(--warning);
+        }
+
+        .notification-error {
+            border-left-color: var(--danger);
+        }
+
+        .notification-icon {
+            font-size: 20px;
+            color: var(--light);
+        }
+
+        .notification-success .notification-icon {
+            color: var(--success);
+        }
+
+        .notification-info .notification-icon {
+            color: var(--info);
+        }
+
+        .notification-warning .notification-icon {
+            color: var(--warning);
+        }
+
+        .notification-error .notification-icon {
+            color: var(--danger);
+        }
+
+        .notification-message {
+            color: var(--light);
+            font-size: 15px;
+            flex: 1;
+        }
+        
+        @media (min-width: 768px) {
+            .col-md-6 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+            
+            .col-md-4 {
+                flex: 0 0 33.333333%;
+                max-width: 33.333333%;
+            }
+            
+            .col-md-3 {
+                flex: 0 0 25%;
+                max-width: 25%;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .section-title {
+                font-size: 3rem;
+            }
+            
+            .hero-title {
+                font-size: 4rem;
+            }
+            
+            .join-title {
+                font-size: 3.5rem;
+            }
+            
+            .footer-top {
+                gap: 40px 30px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .section {
+                padding: 100px 0;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .join-title {
+                font-size: 3rem;
+            }
+            
+            .status-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .admins-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .features-grid {
+                gap: 60px 30px;
+            }
+            
+            .video-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .join-title {
+                font-size: 2.5rem;
+            }
+            
+            .join-text {
+                font-size: 1.1rem;
+            }
+            
+            .status-value {
+                font-size: 1.8rem;
+            }
+
+            .status-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background: rgba(0, 14, 34, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 30px;
+                transition: right var(--transition-normal) ease;
+                z-index: 1000;
+                box-shadow: none;
+            }
+            
+            .nav-links.active {
+                right: 0;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+            }
+            
+            .mobile-toggle {
+                display: flex;
+            }
+            
+            .mobile-toggle.active .bar:nth-child(1) {
+                transform: rotate(-45deg) translate(-7px, 6px);
+            }
+            
+            .mobile-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-toggle.active .bar:nth-child(3) {
+                transform: rotate(45deg) translate(-7px, -6px);
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .join-title {
+                font-size: 2.2rem;
+            }
+            
+            .join-text {
+                font-size: 1rem;
+            }
+            
+            .video-title {
+                font-size: 1.6rem;
+            }
+            
+            .features-grid, .admins-grid {
+                gap: 60px 20px;
+            }
+            
+            .join-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .join-info-item {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .notification-container {
+                max-width: 280px;
+                left: 20px;
+                bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader" id="siteLoader">
+        <div class="minecraft-loader">
+            <div class="minecraft-loader-block"></div>
+            <div class="minecraft-loader-block"></div>
+            <div class="minecraft-loader-block"></div>
+            <div class="minecraft-loader-block"></div>
+        </div>
+    </div>
+
+    <div class="bg-decoration deco-1"></div>
+    <div class="bg-decoration deco-2"></div>
+    <div class="bg-decoration deco-3"></div>
+    <div class="bg-decoration deco-4"></div>
+    <div class="bg-decoration deco-diamond"></div>
+    <div class="bg-decoration deco-gold"></div>
+    <div class="bg-decoration deco-redstone"></div>
+    <div class="minecraft-bg"></div>
+    
+    <div class="falling-blocks" id="fallingBlocks"></div>
+    
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="assets/images/server-logo.png" alt="服务器 Logo">
+                    <div class="logo-text">陆上<span>彗星</span></div>
+                </a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#announcement">近期公告</a></li>
+                    <li><a href="#server-status">服务器状态</a></li>
+                    <li><a href="#gallery">服务器风采</a></li>
+                    <li><a href="#features">游戏特色</a></li>
+                    <li><a href="#videos">精彩视频</a></li>
+                    <li><a href="#server-team">玩家团体</a></li>
+                    <li><a href="#join-us">加入服务器</a></li>
+                    <li><a href="#subserver">子服务器</a></li>
+                </ul>
+                <div class="mobile-toggle" id="mobileToggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section id="home" class="hero">
+        <div class="container hero-content">
+        <div class="hero-badge">
+            <div class="status-dot"></div>
+            <span>正在获取服务器状态...</span>
+        </div>
+            <h1 class="hero-title">Comet <span>陆上彗星</span></h1>
+            <p class="hero-subtitle">我的世界国际基岩版服务器<br><font color="#00DFFF"><strong>生存服三周目现已开放</strong></font> - 利用求生的智慧，与其他玩家一同逃出困境、搜寻物资，最终踏入生存之道<br>（现已支持最新版本加入游戏）</p>
+            <div class="btn-group hero-buttons">
+                <a href="#join-us" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>立即加入
+                </a>
+                <a href="#server-status" class="btn btn-secondary">
+                    <i class="fas fa-info-circle"></i>查看服务器状态
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="announcement" class="announcement">
+        <div class="container announcement-container">
+            <h2 class="announcement-title"><i class="fas fa-bullhorn"></i>服务器重要公告</h2>
+            <div class="announcement-content glass-card">
+                <p class="announcement-text">服务器将开启创作激励，奖励玩家在宣传服务器方面做出的卓越贡献:<br>1、在任意视频平台发布视频，累计获得500及以上播放量奖励8元；1000及以上播放量奖励12元5000及以上播放量奖励30元，1万及以上播放量奖励70元，以此类推（若一人发布多个视频则每个视频单独计算播放量）<br>2、在任意平台发布帖子，吸引常期玩家（在线游玩2个月及以上的）超过3人（不包括三人）一人奖励1.5元<br>3、邀请身边好友游玩服务器，若其成为常驻玩家，则按人头数1人2元<br>活动截止时间另行通知，领取激励请联系相关管理（🐮，严打）。<br>本公告最终解释权归Comet管理组所有。</p>
+                <p class="announcement-date">2025年1月30日</p>
+            </div>
+        </div>
+    </section>
+    
+    <div class="minecraft-divider"></div>
+    
+    <section id="server-status" class="section server-status">
+        <div class="container">
+            <h2 class="section-title">实时<span>服务器状态</span></h2>
+            <div class="section-title-bg">STATUS</div>
+            <p class="section-subtitle">获取最新的服务器运行信息，随时了解服务器状态和玩家数量</p>
+            
+            <div class="server-indicator" id="serverIndicator">
+                <div class="indicator-dot"></div>
+                <div class="indicator-text">服务器运行中</div>
+            </div>
+            
+            <div class="status-card glass-card floating">
+                <div class="status-header">
+                    <div class="status-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="status-title">服务器状态监控</h3>
+                </div>
+                
+                <div class="status-info">
+                    <div class="status-item">
+                        <div class="status-label">在线玩家</div>
+                        <div class="status-value" id="online-players">0</div>
+                    </div>
+                    
+                    <div class="status-item">
+                        <div class="status-label">最大容量</div>
+                        <div class="status-value" id="max-players">0</div>
+                    </div>
+                    
+                    <div class="status-item">
+                        <div class="status-label">游戏版本</div>
+                        <div class="status-value" id="game-version">-</div>
+                    </div>
+                </div>
+                
+                <div class="status-motd" id="server-motd">此处显示服务器的 Motd</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section gallery">
+        <div class="container">
+            <h2 class="section-title">服务器<span>风采</span></h2>
+            <div class="section-title-bg">GALLERY</div>
+            <p class="section-subtitle"></p>
+            
+            <div class="gallery-container">
+                <div class="gallery-slider" id="gallerySlider">
+                    <div class="gallery-slide active">
+                        <img src="https://image.baidu.com/search/down?url=https://wx1.sinaimg.cn/large/008EsglKly1ib5lu4ebr2j31c00u0thh.jpg" alt="玩家和牛头人">
+                </div>
+                    <div class="gallery-slide ">
+                        <img src="https://image.baidu.com/search/down?url=https://wx1.sinaimg.cn/large/008EsglKly1ib5lu74wjkj31vl0u0dum.jpg" alt="玩家日常">
+                </div>
+                    <div class="gallery-slide ">
+                        <img src="https://image.baidu.com/search/down?url=https://wx1.sinaimg.cn/large/008EsglKly1ib5luee68ej31hc0u0wmw.jpg" alt="出生点风景">
+                </div>
+                    <div class="gallery-slide ">
+                        <img src="https://image.baidu.com/search/down?url=https://wx2.sinaimg.cn/large/008EsglKly1ib5luqb8hgj30zk0k0dkd.jpg" alt="玩家地下基地">
+                </div>
+                    <div class="gallery-slide ">
+                        <img src="https://image.baidu.com/search/down?url=https://wx3.sinaimg.cn/large/008EsglKly1ib5lut9ladj30zk0kgdlc.jpg" alt="玩家家园风景">
+                </div>
+                    <div class="gallery-slide ">
+                        <img src="https://image.baidu.com/search/down?url=https://wx2.sinaimg.cn/large/008EsglKly1ib5lvg1vfxj30zk0k0783.jpg" alt="玩家家园风景">
+                </div>
+            </div>
+                
+            <div class="gallery-controls">
+                <button class="gallery-btn prev" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="gallery-btn next" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        
+            <div class="gallery-indicators" id="galleryIndicators">
+                <button class="indicator active" data-index="0"></button>
+                <button class="indicator " data-index="1"></button>
+                <button class="indicator " data-index="2"></button>
+                <button class="indicator " data-index="3"></button>
+                <button class="indicator " data-index="4"></button>
+                <button class="indicator " data-index="5"></button>
+            </div>
+        </div>
+    </section>
+
+    <div class="minecraft-divider"></div>
+    
+    <section id="features" class="section features">
+        <div class="container">
+            <h2 class="section-title">服务器<span>特色</span></h2>
+            <div class="section-title-bg">SPECIAL</div>
+            <p class="section-subtitle">我们提供独特的游戏体验，让你的冒险更加精彩</p>
+            
+            <div class="features-grid">
+                <div class="feature-card glass-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-building-shield feature-icon"></i>
+                    </div>
+                    <h3 class="feature-title">特殊出生点</h3>
+                    <p>首次加入服务器的玩家，将出生在<font color="#00DFFF"><strong>深黑古城</strong></font>。这一设定既能有效筛选恶意玩家，也让开局充满挑战性。<br>服务器在每周目换档前，都会开启一次投票活动。而一件令绝大多数新玩家意外的是 ——这个极具特色的出生点，正是由玩家们投票选出的。</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-wrench feature-icon"></i>
+                    </div>
+                    <h3 class="feature-title">功能与原版特性健全</h3>
+                    <p>服务器配备众多有助于玩家生存的功能：玩家传送、支持Xbox成就、领地系统、领地飞行、移动光源、自动钓鱼等等。同时服务器使用 BDS 与 LeviLamina 插件加载器，在支持所有原生特性的同时提供良好游戏体验，且手机电脑都能加入。</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-dollar-sign feature-icon"></i>
+                    </div>
+                    <h3 class="feature-title">经济系统与商店</h3>
+                    <p>服务器采用金币作为主要货币，可通过回收物品获得金币。玩家之间可自由交易，玩家可花费一定经济创建自己的店铺，或者去逛别人的店铺，看看有什么物美价廉，或是蕴含了玩家满满劳动成果的上品好货。禁止一切RMT（真实货币交易）行为。</p>
+                </div>
+
+                <div class="feature-card glass-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-users feature-icon"></i>
+                    </div>
+                    <h3 class="feature-title">联盟系统</h3>
+                    <p>玩家之间可组建联盟，联盟成员可享受公会锚点、公会存款、团队免伤等一系列福利。联盟名称会显示在你的头顶和聊天栏中，且所有玩家都可见。与之一起的还有联盟等级，高等级尽显联盟逼格，想要升级的话，就需要你和其他盟友一起做贡献，比如搭方块、保持在线等。</p>
+                </div>
+
+                <div class="feature-card glass-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-dove feature-icon"></i>
+                    </div>
+                    <h3 class="feature-title">开放自由</h3>
+                    <p>这是一个自由的世界。服务器开放抄家、PVP等游戏内冲突事件，在这里没有条条框框的限制，无论是交友服、休闲服、国战服，还是群内日常吹水，服务器怎么玩，由玩家说的算。只要是不干扰服务器公平性的行为我们均不过问。若您不想让自己的资产被掠夺，您还可以花费一些服务器经济创建领地。</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-compact-disc feature-icon"></i>
+                    </div>
+                    <h3 class="feature-title">特色资源包</h3>
+                    <p>服务器配备背景音乐包，玩家在冒险时可聆听到来自提瓦特和泰拉之地的音声。服务器还具有唱片包，音乐由社区举荐，美妙动人的音乐，附和精心制作的唱片材质，在游戏内和小伙伴们共同聆听。<br>（进服需下载约50MB的资源包 ）</p>
+                </div>
+            </div>
+            <div class="team-join">
+                <div class="team-join-info glass-card">
+                    <h3>前往KLPBBS服务器宣传帖</h3>
+                    <p>苦力怕论坛是我们之前投放宣传的主要位置，我们会将服务器特色详尽地在帖子中表现出来。您也可以登录账号，然后在帖子下发表回复，或打赏我们的帖子，提升帖子热度，吸引更多玩家前来体验服务器。</p>
+                    <a href="https://klpbbs.com/thread-117741-1-1.html" target="_blank" class="pixel-btn pixel-btn-green">立即前往</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="block-border-1"></div>
+    </section>
+    
+    <div class="minecraft-divider-accent"></div>
+    
+    <section id="videos" class="section videos">
+        <div class="container">
+            <h2 class="section-title">精彩<span>视频展示</span></h2>
+            <div class="section-title-bg">VIDEO</div>
+            <p class="section-subtitle">观看服务器精彩视频，了解游戏玩法和最新活动</p>
+            
+            <div class="video-container">
+                <div class="video-player glass-card" id="videoPlayer">
+                    <div class="video-wrapper">
+                        <iframe id="videoFrame" src="https://player.bilibili.com/player.html?bvid=BV14rfDBeENV&autoplay=1&danmaku=0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-join">
+                <div class="team-join-info glass-card">
+                    <h3>前往B站主页提供支持</h3>
+                    <p>我们非常需要您的支持！前往B站主页为服主的宣传视频进行一键三连，点点赞、投投币，让更多玩家看到我们。（能关注就更好了）<br><strong>非常感谢！</strong></strong></p>
+                    <a href="https://space.bilibili.com/535053377" target="_blank" class="pixel-btn pixel-btn-green">立即前往</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <div class="minecraft-divider"></div>
+    
+    <section id="server-team" class="server-team">
+        <div class="container">
+
+            <h2 class="section-title">优秀<span>玩家</span></h2>
+            <p class="section-subtitle">认识我们服务器中最出色的玩家，他们为社区做出了重要贡献</p>
+            
+            <div class="team-grid">
+                
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=17658365&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">Cheyi</h3>
+                    <div class="member-role">退休负责人、活动策划、服务器法务部</div>
+                    <p class="member-desc">自2021年接触开服，拥有丰富开服经验，曾担任 Comet 管理组总负责人。擅长活动策划与现代建筑等，目前仍活跃在 Comet，并负责玩家纠纷之间的调解，战绩可查。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="17658365"><i class="fab fa-qq"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/433777079"><i class="fab fa-bilibili"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="cheyiem@88.com"><i class="fab fa-at"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=640913103&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">xbh6661800</h3>
+                    <div class="member-role">活跃玩家、服务器元老</div>
+                    <p class="member-desc">服务器元老级玩家，是服务器老牌公会[只因]的创始人（因服务器的鸡叫声音很特殊，所以叫这个名字），自服务器混沌时期就已经存在，对服务器的前身相当了解，和服主关系特别好，对其他人也很通融。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="640913103"><i class="fab fa-qq"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/2109625418"><i class="fab fa-bilibili"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="640913103@qq.com"><i class="fab fa-at"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=3529336723&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">鸡蛋</h3>
+                    <div class="member-role">活跃玩家、Comet Java 私服服主</div>
+                    <p class="member-desc">服务器活跃玩家，服务器老牌公会[只因]的管理员，善于使用手机版Java我的世界，喜欢研究开服相关事物，是个正在不断学习的苗子服主。曾开过的临时 Java 服务器，依托主服提供的玩家与相关支持，收获了玩家们的一致好评，现负责<a href="#subserver"><font color="#E59769"> Comet Java 私服 2.0 </font></a>的主要开服工作。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="3529336723"><i class="fab fa-qq"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=1097131173&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">RYD</h3>
+                    <div class="member-role">活跃玩家、生电大佬</div>
+                    <p class="member-desc">服务器活跃玩家、肝帝，曾为服务器提过许多建设性意见。非常擅长常见生电设施的建造，为服务器提供丰富物资，运行起来高效不卡。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="1097131173"><i class="fab fa-qq"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2669817322&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">玛丽安</h3>
+                    <div class="member-role">活跃玩家</div>
+                    <p class="member-desc">肝帝一枚，经常活跃在服务器，喜欢跑图、建筑、做雕像，非常喜欢狐狸（也喜欢养很多狐狸让服务器撑爆）。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2669817322"><i class="fab fa-qq"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=3530611703&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">神楽七奈</h3>
+                    <div class="member-role">建筑师、技术大神、私服赞助商</div>
+                    <p class="member-desc">曾负责过服务器一个大型建筑的建造，开设过其他我的世界 Java 服务器，并早在 2022 年就与管理组有过合作，资历深厚。<br>自愿为 Comet 提供服务器硬件，是团队中值得信赖的力量，目前的<a href="#subserver"><font color="#E59769">  Comet Java 私服</font></a>正是运行在他所提供的服务器设施之上。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="3530611703"><i class="fab fa-qq"></i></a>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="admins-header">
+                <h2 class="admins-title">服务器<span>管理组</span></h2>
+                <p class="section-subtitle">我们拥有一支专业且富有激情的团队，致力于为所有玩家提供最优质的游戏体验</p>
+            </div>
+            
+            <div class="admins-blocks">
+                <div class="admin-block adm4">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2985143951&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服务器负责人、服主、插件管理、服务器宣传</h3>
+                        <div class="admin-name">Yanda</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2985143951"><i class="fab fa-qq"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="lydwx888886"><i class="fab fa-weixin"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/535053377"><i class="fab fa-bilibili"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2985143951@qq.com"><i class="fab fa-at"></i></a>
+                        </div>
+                        <p class="admin-desc">服务器创始人之一，自2022年初接触开服，2023年和其他服主共同运营 Comet，2026年初正式继任负责人。<br>掌管服务器几乎全部插件的配置运行，擅长指令，待人亲切友善，拥有比较丰富的服务器管理经验，但非常不擅长建筑。<br>虽然他是服主，但也在玩家群体之间相当活跃，是服务器老牌公会[只因]的二把手。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm1">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2186840955&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服主、建筑师、活动策划、玩法策划</h3>
+                        <div class="admin-name">Kongtou</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2186840955"><i class="fab fa-qq"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2186840955@qq.com"><i class="fab fa-at"></i></a>
+                        </div>
+                        <p class="admin-desc">服务器创始人之一，自2022年初接触开服，2023年和其他服主共同运营 Comet 至今。<br>在自己的服务器总是不惜代价折磨其他玩家以此取乐，是一位背后藏着诸多故事的人。他在游戏里的形象是一顶哞菇头，因此被玩家们亲切称作牛头人，也常被称为🐮。又因他平日里那些搞怪整活的行事风格，还被大家冠以红色牛头恶魔人的称号。负责服务器的项目策划，擅长自然建筑与做旧，因此还成为了基岩版一个比较大型的综合Addon的项目成员。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm2">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2421583465&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服务器管理、指令员、插件管理</h3>
+                        <div class="admin-name">无情兰剑</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2421583465"><i class="fab fa-qq"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/1708811335"><i class="fab fa-bilibili"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2421583465@qq.com"><i class="fab fa-at"></i></a>
+                        </div>
+                        <p class="admin-desc">服务器活跃玩家、服务器老牌公会[只因]的二把手，始终活跃在服务器前线。擅长指令、插件编辑等，是亲切友善的解决问题高手。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm1">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2112839310&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服主、首席建筑师</h3>
+                        <div class="admin-name">YanziHa0</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2112839310"><i class="fab fa-qq"></i></a>
+                        </div>
+                            <p class="admin-desc">拥有丰富开服经验，自2022年接触开服，2023年和其他服主共同运营 Comet 至今。<br>擅长现代建筑设计，曾在服务器一周目造出了规模宏大的现代城市和商业区，并设置地皮出售，和以此作为出生点（以至于新玩家开局找不到路去挖木头）。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm1">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=168897951&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服主</h3>
+                        <div class="admin-name">Yhrfi</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="168897951"><i class="fab fa-qq"></i></a>
+                        </div>
+                        <p class="admin-desc">自2022年接触开服，2023年和其他服主共同运营 Comet 至今。<br>擅长处理服务器纠纷和引导新玩家、帮新玩家答疑解惑，是玩家们亲切的朋友。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm1">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2132704105&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服主、活动策划</h3>
+                        <div class="admin-name">DanWeiXianYu</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2132704105"><i class="fab fa-qq"></i></a>
+                        </div>
+                            <p class="admin-desc">自2022年接触开服，2023年和其他服主共同运营 Comet 至今。<br>擅长活动策划，曾在服务器一周目设计出了玩家们感到讨喜的通行证活动。</p>
+                    </div>
+                </div>
+                
+                <div class="admin-block adm3">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=1689492644&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服务器查服机器人、白名单机器人</h3>
+                        <div class="admin-name">MerryGo</div>
+                        <p class="admin-desc">在服务器中充当机器人的角色，7x24小时不间断为群内玩家提供查服与白名单服务，可实时查询在线玩家列表、服务器 TPS 等信息。同时她也会热情欢迎每一位新玩家的加入。人家全年无休很累的，平时请不要私信骚扰她。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm2">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=939194395&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服务器管理、宣传分发</h3>
+                        <div class="admin-name">FourWater</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="939194395"><i class="fab fa-qq"></i></a>
+                        </div>
+                        <p class="admin-desc">一个很出色的管理员，自2022年加入我们，担任活动策划、宣传分发等。曾在服务器主要管理均忙于学业没空搭理服务器时独自管理服务器，发布过数个群公告。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="minecraft-divider-accent"></div>
+    
+    <section id="join-us" class="join-us">
+        <div class="container join-content">
+            <h2 class="join-title">加入<span>Comet</span></h2>
+            <p class="join-text">使用手机或电脑，输入群号或扫码加入QQ群，阅读群公告，即刻获取服务器IP端口。<br>准备好开始你的冒险了吗？立即加入我们，与其他的冒险家一起探索，创造，征服这个神奇的世界！</p>
+            
+            <div class="btn-group">
+                <a href="minecraft://?addExternalServer=Comet 陆上彗星|mcbe.mccomet.top:34004" class="btn btn-join">
+                    <i class="fas fa-gamepad"></i>立即加入服务器
+                </a>
+                <a href="https://qm.qq.com/q/WfAt2eh7u6" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-qq"></i>加入官方QQ群
+                </a>
+            </div>
+
+            <div class="join-info">
+                <div><h3 class="join-info-title"></h3></div>
+                <div><h3 class="join-info-title"></h3></div>
+            </div>
+            
+            <div class="minecraft-qr">
+                <img src="assets/images/qr-code.jpg" alt="服务器QR码">
+            </div>
+        </div>
+    </section>
+
+    <div class="minecraft-divider"></div>
+
+    <section id="subserver" class="join-us subserver-section">
+        <div class="container join-content">
+            <div class="subserver-avatar">
+                <div class="minecraft-avatar">
+                    <img src="https://p.qlogo.cn/gh/785391389/785391389/640/"></img>
+                </div>
+            </div>
+            <h2 class="section-title">体验一下我们的 <span> Java 服务器</span></h2>
+            <p class="subserver-text"><span>Comet Java 私服 2.0 </span>—— 体验由社区强力驱动，且运行在物理机的插件模组混合的养老生存服，无论电脑手机均可（爱来自手机服主<font color="#ECBBBC">❤</font>）<br><strong>这是我们新的尝试！</strong></p>
+
+            <div class="btn-group">
+                <a href="https://server.comet.qzz.io" target="_blank" class="btn btn-join">
+                    <i class="fas fa-external-link-alt"></i>前往服务器网站
+                </a>
+                <a href="https://qm.qq.com/q/PAGjOt4p6S" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-qq"></i>加入QQ群
+                </a>
+            </div>
+
+        </div>
+        <div class="subserver-bg" id="subserverBg"></div>
+    </section>
+
+    <div class="footer-divider"></div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/images/server-logo.png" alt="服务器 Logo">
+                        <div class="footer-logo-text">Comet <span> 陆上彗星</span></div>
+                    </div>
+                    <p class="footer-desc">Comet（陆上彗星）是基于 Minecraft 基岩版环境（BDS）运维的云服务器群组。我们设置有生存服务器、小游戏服务器等，以丰富玩家的游戏体验，但我们仍然以打造稳定、清爽、原汁原味的基岩版生存服务器为主。</p>
+                    <div class="footer-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="674767893">
+                            <i class="fab fa-qq"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/535053377">
+                            <i class="fab fa-bilibili"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="达达源">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">服务器文档站</a></li>
+                        <li><a href="#home">支持我们</a></li>
+                        <li><a href="https://uniteban.megastudio.cn/" target="_blank">UniteBan 联合封禁</a></li>
+                        <li><a href="https://klpbbs.com/thread-117741-1-1.html" target="_blank">苦力怕论坛宣传帖</a></li>
+                        <li><a href="https://www.minebbs.com/threads/comet.24000/" target="_blank">MineBBS宣传帖</a></li>
+                        <li><a href="https://www.bilibili.com/opus/1171471653064933381?spm_id_from=333.1387.0.0" target="_blank">BiliBili宣传帖</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">更多服务器</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://server.feather.qzz.io" target="_blank">Comet Java 私服</a></li>
+                        <li><a href="https://qm.qq.com/q/cMJbLsZi6c" target="_blank">SlimeCraft 互通服</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">联系我们</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-envelope"></i> 服务器邮箱: createtop@yeah.net</li>
+                        <li><i class="fab fa-qq"></i> QQ群: 674767893</li>
+                        <li><i class="fas fa-headset"></i>在线时间: 7*24运行</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 中国·江苏</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="server-uptime" id="serverUptime"></div>
+                <p class="copyright">&copy; 2026 Comet Minecraft 服务器. 保留所有权利. Minecraft是Mojang Studios的商标，本站与Mojang和Microsoft没有从属关系。</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    
+    <div class="notification-container" id="notificationContainer"></div>
+    
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('siteLoader').classList.add('loaded');
+            }, 1000);
+            
+            initNavigation();
+            initFallingBlocks();
+            initScrollAnimations();
+            initBackToTop();
+            initVideoPlayer();
+            initNotifications();
+            initGallery();
+            initCopyContact();
+            
+            fetchServerStatus();
+            
+            setInterval(fetchServerStatus, 60000);
+            
+            try {
+                new SimpleParticles();
+            } catch (err) {
+                console.log('粒子效果初始化失败，不影响网站使用');
+            }
+            
+            try {
+                initPixelParticles();
+            } catch (err) {
+                console.log('像素粒子初始化失败，不影响网站使用');
+            }
+        });
+        
+        function initCopyContact() {
+            document.querySelectorAll('.copy-contact').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const contactInfo = this.getAttribute('data-copy');
+                    
+                    const tempInput = document.createElement('input');
+                    tempInput.value = contactInfo;
+                    tempInput.style.position = 'absolute';
+                    tempInput.style.left = '-9999px';
+                    document.body.appendChild(tempInput);
+                    
+                    tempInput.select();
+                    document.execCommand('copy');
+                    
+                    document.body.removeChild(tempInput);
+                    
+                    showNotification(`已复制: ${contactInfo}`, 'success');
+                    
+                    this.classList.add('copied');
+                    setTimeout(() => {
+                        this.classList.remove('copied');
+                    }, 700);
+                });
+            });
+        }
+        
+        function showNotification(message, type = 'info') {
+            // 将消息中的 URL 转换为可点击链接
+            function linkify(text) {
+                const urlRegex = /(https?:\/\/[^\s]+)/g;
+                return text.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener" style="color: #0C6EA9; text-decoration: underline;">$1</a>');
+            }
+            
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <div class="notification-icon">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+                </div>
+                <div class="notification-message">${linkify(message)}</div>
+            `;
+            
+            const container = document.getElementById('notificationContainer');
+            container.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    container.removeChild(notification);
+                }, 300);
+            }, 5000);
+        }
+        
+        function initNavigation() {
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                const scrollPosition = window.scrollY;
+                
+                header.classList.toggle('scrolled', scrollPosition > 10);
+                
+                try {
+                    updateActiveNavItem();
+                } catch (err) {
+                    console.log('导航项更新失败');
+                }
+                
+                const backToTop = document.getElementById('backToTop');
+                if (backToTop) {
+                    backToTop.classList.toggle('active', scrollPosition > 500);
+                }
+            });
+            
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+                
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            const headerHeight = document.querySelector('header').offsetHeight;
+                            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                            
+                            mobileToggle.classList.remove('active');
+                            navLinks.classList.remove('active');
+                            
+                            history.pushState(null, null, targetId);
+                            
+                            updateActiveNavItem(targetId);
+                        }
+                    });
+                });
+            }
+        }
+        
+        function updateActiveNavItem(forcedTarget = null) {
+            try {
+                const scrollPosition = window.scrollY;
+                const headerHeight = document.querySelector('header').offsetHeight;
+                
+                const sections = document.querySelectorAll('section[id]');
+                
+                if (forcedTarget) {
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === forcedTarget);
+                    });
+                    return;
+                }
+                
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - headerHeight - 100;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentSection = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === currentSection);
+                });
+            } catch (err) {
+                console.log('导航项更新出错，不影响网站使用');
+            }
+        }
+        
+        class SimpleParticles {
+            constructor() {
+                this.canvas = document.createElement('canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.canvas.className = 'bg-particles';
+                document.body.appendChild(this.canvas);
+                
+                this.particles = [];
+                this.particleCount = window.innerWidth < 768 ? 30 : 60;
+                
+                this.resize();
+                this.init();
+                this.animate();
+                
+                window.addEventListener('resize', () => this.resize());
+            }
+            
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+                this.particleCount = window.innerWidth < 768 ? 30 : 60;
+                this.init();
+            }
+            
+            init() {
+                this.particles = [];
+                for (let i = 0; i < this.particleCount; i++) {
+                    const size = Math.random() * 3 + 1;
+                    const colors = [
+                        'rgba(90, 189, 60, ',
+                        'rgba(219, 192, 116, ',
+                        'rgba(74, 234, 255, ',
+                        'rgba(139, 95, 61, '
+                    ];
+                    
+                    const colorIndex = Math.floor(Math.random() * colors.length);
+                    const opacity = Math.random() * 0.3 + 0.1;
+                    
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        radius: size,
+                        color: colors[colorIndex] + opacity + ')',
+                        speed: Math.random() * 0.6 + 0.2,
+                        direction: Math.random() * Math.PI * 2
+                    });
+                }
+            }
+            
+            animate() {
+                if (document.hidden) {
+                    setTimeout(() => requestAnimationFrame(() => this.animate()), 1000);
+                    return;
+                }
+                
+                requestAnimationFrame(() => this.animate());
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                this.particles.forEach(particle => {
+                    particle.x += Math.cos(particle.direction) * particle.speed;
+                    particle.y += Math.sin(particle.direction) * particle.speed;
+                    
+                    if (particle.x < 0) particle.x = this.canvas.width;
+                    if (particle.x > this.canvas.width) particle.x = 0;
+                    if (particle.y < 0) particle.y = this.canvas.height;
+                    if (particle.y > this.canvas.height) particle.y = 0;
+                    
+                    this.ctx.beginPath();
+                    this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                    this.ctx.fillStyle = particle.color;
+                    this.ctx.fill();
+                });
+                
+                if (window.innerWidth > 768) {
+                    let maxConnections = 3;
+                    
+                    this.particles.forEach((particle, i) => {
+                        let connections = 0;
+                        for (let j = i + 1; j < this.particles.length && connections < maxConnections; j++) {
+                            const otherParticle = this.particles[j];
+                            const dx = particle.x - otherParticle.x;
+                            const dy = particle.y - otherParticle.y;
+                            const distance = Math.sqrt(dx * dx + dy * dy);
+                            
+                            if (distance < 100) {
+                                this.ctx.beginPath();
+                                this.ctx.moveTo(particle.x, particle.y);
+                                this.ctx.lineTo(otherParticle.x, otherParticle.y);
+                                
+                                const opacity = 0.15 * (1 - distance / 100);
+                                this.ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+                                this.ctx.lineWidth = 0.5;
+                                this.ctx.stroke();
+                                connections++;
+                            }
+                        }
+                    });
+                }
+            }
+        }
+        
+        function initFallingBlocks() {
+            try {
+                const container = document.getElementById('fallingBlocks');
+                if (!container) return;
+                
+                const blockColors = [
+                    'var(--primary)',
+                    'var(--accent)',
+                    'var(--info)',
+                    'var(--stone)',
+                    'var(--redstone)',
+                    'var(--diamond)',
+                    'var(--brown)'
+                ];
+                
+                const blockCount = window.innerWidth < 768 ? 8 : 15;
+                
+                for (let i = 0; i < blockCount; i++) {
+                    const block = document.createElement('div');
+                    block.className = 'falling-block';
+                    
+                    const size = Math.random() * 15 + 10;
+                    const positionX = Math.random() * 100;
+                    const duration = Math.random() * 20 + 10;
+                    const delay = Math.random() * 15;
+                    const colorIndex = Math.floor(Math.random() * blockColors.length);
+                    
+                    block.style.width = `${size}px`;
+                    block.style.height = `${size}px`;
+                    block.style.left = `${positionX}%`;
+                    block.style.animationDuration = `${duration}s`;
+                    block.style.animationDelay = `${delay}s`;
+                    block.style.backgroundColor = blockColors[colorIndex];
+                    
+                    container.appendChild(block);
+                }
+            } catch (err) {
+                console.log('飘落服务器初始化失败，不影响网站使用');
+            }
+        }
+        
+        function initPixelParticles() {
+            try {
+                const heroSection = document.querySelector('.hero');
+                if (!heroSection) return;
+                
+                const particleCount = window.innerWidth < 768 ? 15 : 30;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'pixel-particle';
+                    
+                    const x = Math.random() * 100;
+                    const y = Math.random() * 100;
+                    
+                    const duration = Math.random() * 40 + 20;
+                    const delay = Math.random() * 10;
+                    
+                    particle.style.left = `${x}%`;
+                    particle.style.top = `${y}%`;
+                    particle.style.backgroundColor = Math.random() > 0.5 ? 'var(--primary)' : 'var(--accent)';
+                    particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                    particle.style.opacity = Math.random() * 0.2 + 0.1;
+                    
+                    heroSection.appendChild(particle);
+                }
+            } catch (err) {
+                console.log('像素粒子初始化失败，不影响网站使用');
+            }
+        }
+        
+        function fetchServerStatus() {
+            try {
+                const serverAddress = "z9e.52mc.pro:34004";
+                
+                fetch(`https://api.mcstatus.io/v2/status/bedrock/${serverAddress}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.online) {
+                            updateServerStatus(data);
+                        } else {
+                            updateServerOfflineStatus();
+                        }
+                    })
+                    .catch(error => {
+                        console.error("获取服务器状态失败:", error);
+                        updateServerOfflineStatus();
+                    });
+            } catch (error) {
+                console.error("获取服务器状态失败:", error);
+                updateServerOfflineStatus();
+            }
+        }
+        
+        function updateServerStatus(data) {
+            try {
+                const heroStatus = document.querySelector('.hero-badge');
+                if (heroStatus) {
+                    heroStatus.classList.add('online');
+                    heroStatus.classList.remove('offline');
+                    heroStatus.innerHTML = '<div class="status-dot"></div><span>服务器在线 - <span id="online-count">' + data.players.online + '</span>/<span id="max-count">' + data.players.max + '</span> 玩家</span>';
+                }
+                
+                const serverIndicator = document.getElementById('serverIndicator');
+                if (serverIndicator) {
+                    serverIndicator.classList.remove('offline');
+                    serverIndicator.querySelector('.indicator-text').textContent = '服务器运行中 - ' + data.players.online + '/' + data.players.max;
+                }
+                
+                const onlinePlayers = document.getElementById('online-players');
+                if (onlinePlayers) onlinePlayers.textContent = data.players.online;
+                
+                const maxPlayers = document.getElementById('max-players');
+                if (maxPlayers) maxPlayers.textContent = data.players.max;
+                
+                const gameVersion = document.getElementById('game-version');
+                if (gameVersion) gameVersion.textContent = data.version.name || "未知";
+                
+                const serverHost = document.getElementById('join-server-host');
+                if (serverHost) serverHost.textContent = data.host;
+                
+                const serverPort = document.getElementById('join-server-port');
+                if (serverPort) serverPort.textContent = data.port;
+                
+                const serverMotd = document.getElementById('server-motd');
+                if (serverMotd) {
+                    if (data.motd && data.motd.html) {
+                        serverMotd.innerHTML = data.motd.html.replace(/\\n/g, '<br>');
+                    } else if (data.motd && data.motd.clean) {
+                        serverMotd.textContent = data.motd.clean.replace(/\\n/g, '\n');
+                    }
+                }
+            } catch (err) {
+                console.error('更新服务器状态失败:', err);
+            }
+        }
+        
+        function updateServerOfflineStatus() {
+            try {
+                const heroStatus = document.querySelector('.hero-badge');
+                if (heroStatus) {
+                    heroStatus.classList.remove('online');
+                    heroStatus.classList.add('offline');
+                    heroStatus.innerHTML = '<div class="status-dot"></div><span>服务器当前离线</span>';
+                }
+                
+                const serverIndicator = document.getElementById('serverIndicator');
+                if (serverIndicator) {
+                    serverIndicator.classList.add('offline');
+                    serverIndicator.querySelector('.indicator-text').textContent = '服务器当前离线';
+                }
+                
+                const onlinePlayers = document.getElementById('online-players');
+                if (onlinePlayers) onlinePlayers.textContent = '0';
+                
+                const maxPlayers = document.getElementById('max-players');
+                if (maxPlayers) maxPlayers.textContent = '0';
+                
+                const gameVersion = document.getElementById('game-version');
+                if (gameVersion) gameVersion.textContent = '未知';
+                
+                const serverMotd = document.getElementById('server-motd');
+                if (serverMotd) serverMotd.textContent = '服务器当前离线，请稍后再试';
+            } catch (err) {
+                console.error('更新服务器离线状态失败:', err);
+            }
+        }
+        
+        function initScrollAnimations() {
+            try {
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('animate__animated');
+                                
+                                if (entry.target.classList.contains('feature-card')) {
+                                    entry.target.classList.add('animate__fadeInUp');
+                                } else if (entry.target.classList.contains('status-card')) {
+                                    entry.target.classList.add('animate__fadeIn');
+                                } else if (entry.target.classList.contains('video-player')) {
+                                    entry.target.classList.add('animate__zoomIn');
+                                } else if (entry.target.classList.contains('admin-card')) {
+                                    entry.target.classList.add('animate__fadeInUp');
+                                } else if (entry.target.classList.contains('section-title')) {
+                                    entry.target.classList.add('animate__fadeInDown');
+                                } else if (entry.target.classList.contains('subserver-text')) {
+                                    entry.target.classList.add('animate__fadeInDown');
+                                } else {
+                                    entry.target.classList.add('animate__fadeIn');
+                                }
+                                
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.1 });
+                    
+                    document.querySelectorAll('.feature-card, .status-card, .video-player, .admin-card, .section-title, .glass-card, .subserver-text').forEach(element => {
+                        observer.observe(element);
+                    });
+                } else {
+                    document.querySelectorAll('.feature-card, .status-card, .video-player, .admin-card, .section-title, .glass-card, .subserver-text').forEach(element => {
+                        element.style.opacity = '1';
+                    });
+                }
+            } catch (err) {
+                console.error('初始化滚动动画失败:', err);
+                document.querySelectorAll('.feature-card, .status-card, .video-player, .admin-card, .section-title, .glass-card, .subserver-text').forEach(element => {
+                    element.style.opacity = '1';
+                });
+            }
+        }
+        
+        function initVideoPlayer() {
+            try {
+                const videoFrame = document.getElementById('videoFrame');
+                if (videoFrame) {
+                    videoFrame.setAttribute('frameborder', '0');
+                    
+                    const resizeVideo = () => {
+                        const wrapper = videoFrame.parentElement;
+                        if (wrapper) {
+                            const width = wrapper.offsetWidth;
+                            const height = width * 0.5625;
+                            videoFrame.style.width = '100%';
+                            videoFrame.style.height = '100%';
+                        }
+                    };
+                    
+                    resizeVideo();
+                    window.addEventListener('resize', resizeVideo);
+                }
+            } catch (err) {
+                console.error('初始化视频播放器失败:', err);
+            }
+        }
+        
+        function initBackToTop() {
+            try {
+                const backToTopBtn = document.getElementById('backToTop');
+                if (!backToTopBtn) return;
+                
+                backToTopBtn.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                    
+                    this.classList.add('animate__animated', 'animate__fadeOutUp');
+                    setTimeout(() => {
+                        this.classList.remove('animate__animated', 'animate__fadeOutUp');
+                    }, 1000);
+                });
+            } catch (err) {
+                console.error('初始化返回顶部按钮失败:', err);
+            }
+        }
+
+        const subserverSection = document.getElementById('subserver');
+        const subserverBg = document.getElementById('subserverBg');
+        if (subserverSection && subserverBg) {
+            subserverSection.addEventListener('mouseenter', () => {
+                subserverBg.classList.add('zoomed');
+            });
+            subserverSection.addEventListener('mouseleave', () => {
+                subserverBg.classList.remove('zoomed');
+            });
+        }
+        
+        function initNotifications() {
+            try {
+                setTimeout(() => {
+                    showNotification('欢迎来到 Comet 服务器官网！', '畅享多样玩法与精彩活动，立即加入冒险！', 'info');
+                }, 2000);
+            } catch (err) {
+                console.error('初始化通知系统失败:', err);
+            }
+        }
+
+        // 服务器成立正计时
+        function updateServerUptime() {
+            // 需要配置的部分：设置服务器成立日期和时间
+            const serverStartDate = new Date('2023-02-01T00:00:00'); // 格式：YYYY-MM-DDTHH:MM:SS，按需修改
+
+            const now = new Date();
+            const diffMs = now - serverStartDate; // 相差毫秒数
+
+            if (diffMs < 0) {
+                document.getElementById('serverUptime').innerText = '服务器即将上线，敬请期待！';
+                return;
+            }
+
+            const totalSeconds = Math.floor(diffMs / 1000);
+            const days = Math.floor(totalSeconds / 86400);
+            const hours = Math.floor((totalSeconds % 86400) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            document.getElementById('serverUptime').innerHTML = 
+                `陆上彗星服务器已成立 <strong>${days}天${hours}小时${minutes}分${seconds}秒</strong>`;
+        }
+
+        // 立即执行一次
+        updateServerUptime();
+
+        // 每秒更新一次
+        setInterval(updateServerUptime, 1000);
+
+        function initGallery() {
+            const slider = document.getElementById('gallerySlider');
+            if (!slider) return;
+            const slides = document.querySelectorAll('.gallery-slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const indicators = document.querySelectorAll('.indicator');
+            if (!slides.length) return;
+
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            let autoPlayInterval = null;
+            const autoPlayDelay = 5000; // 5秒自动轮播
+
+            // 更新轮播显示
+            function updateGallery() {
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+                slides.forEach((slide, idx) => {
+                    slide.classList.toggle('active', idx === currentIndex);
+                });
+                indicators.forEach((indicator, idx) => {
+                    indicator.classList.toggle('active', idx === currentIndex);
+                });
+            }
+
+            // 下一张
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateGallery();
+            }
+
+            // 上一张
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateGallery();
+            }
+
+            // 重置自动轮播定时器
+            function resetAutoPlay() {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                }
+                autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
+            }
+
+            // 启动自动轮播
+            resetAutoPlay();
+
+            // 按钮事件（重置定时器）
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    resetAutoPlay();
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    resetAutoPlay();
+                });
+            }
+
+            // 指示器点击（重置定时器）
+            indicators.forEach((indicator, idx) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = idx;
+                    updateGallery();
+                    resetAutoPlay();
+                });
+            });
+
+            // 触摸滑动支持
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            slider.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            slider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                const swipeThreshold = 50; // 滑动距离阈值
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // 向左滑动 -> 下一张
+                        nextSlide();
+                    } else {
+                        // 向右滑动 -> 上一张
+                        prevSlide();
+                    }
+                    resetAutoPlay(); // 手动滑动后重置定时器
+                }
+            }
+
+            // 当页面隐藏时暂停自动轮播（可选优化）
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    if (autoPlayInterval) {
+                        clearInterval(autoPlayInterval);
+                        autoPlayInterval = null;
+                    }
+                } else {
+                    resetAutoPlay();
+                }
+            });
+
+            // 初始化显示
+            updateGallery();
+        }
+    </script>
+</body>
+</html>
