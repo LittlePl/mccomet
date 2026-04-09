@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comet 陆上彗星 - 玩家团体</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<style>
+    .falling-blocks {
+        position: fixed;    /* 原为 absolute */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+        pointer-events: none;
+    }
+    .bg-decoration {
+        position: fixed;
+        width: 300px;
+        height: 300px;
+        opacity: 0.15;
+        z-index: 0;
+        pointer-events: none;
+    }
+</style>
+</style>
+<body>
+    <div class="loader" id="siteLoader">
+        <div class="minecraft-loader">
+            <div class="minecraft-loader-block"></div>
+            <div class="minecraft-loader-block"></div>
+            <div class="minecraft-loader-block"></div>
+            <div class="minecraft-loader-block"></div>
+        </div>
+    </div>
+
+    <div class="bg-decoration deco-1"></div>
+    <div class="bg-decoration deco-2"></div>
+    <div class="bg-decoration deco-3"></div>
+    <div class="bg-decoration deco-4"></div>
+    <div class="bg-decoration deco-diamond"></div>
+    <div class="bg-decoration deco-gold"></div>
+    <div class="bg-decoration deco-redstone"></div>
+    <div class="minecraft-bg"></div>
+    <div class="falling-blocks" id="fallingBlocks"></div>
+
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="assets/images/server-logo.png" alt="服务器 Logo">
+                    <div class="logo-text">陆上<span>彗星</span></div>
+                </a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html#home">首页</a></li>
+                    <li><a href="https://doc.mccomet.top/" target="_blank">文档站</a></li>
+                    <li><a href="#server-team">玩家团体</a></li>
+                    <li><a href="./maintenance.html">时间线</a></li>
+                    <li><a href="./donate.html">赞助支持</a></li>
+                    <li><a href="index.html#join-us">加入服务器</a></li>
+                </ul>
+                <div class="mobile-toggle" id="mobileToggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="server-team" class="server-team" style="padding-top: 120px;">
+        <div class="container">
+            <h2 class="section-title">优秀<span>玩家</span></h2>
+            <p class="section-subtitle">认识我们服务器中最出色的玩家，他们为社区做出了重要贡献</p>
+            
+            <div class="team-grid">
+                
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=17658365&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">Cheyi</h3>
+                    <div class="member-role">退休负责人、活动策划、服务器法务部</div>
+                    <p class="member-desc">自2021年接触开服，拥有丰富开服经验，曾担任 Comet 管理组总负责人。擅长活动策划与现代建筑等，目前仍活跃在 Comet，并负责玩家纠纷之间的调解，战绩可查。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="17658365"><i class="fab fa-qq"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/433777079"><i class="fab fa-bilibili"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="cheyiem@88.com"><i class="fab fa-at"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=640913103&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">xbh6661800</h3>
+                    <div class="member-role">活跃玩家、服务器元老</div>
+                    <p class="member-desc">服务器元老级玩家，是服务器老牌公会[只因]的创始人（因服务器的鸡叫声音很特殊，所以叫这个名字），自服务器混沌时期就已经存在，对服务器的前身相当了解，和服主关系特别好，对其他人也很通融。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="640913103"><i class="fab fa-qq"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/2109625418"><i class="fab fa-bilibili"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="640913103@qq.com"><i class="fab fa-at"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=3529336723&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">鸡蛋</h3>
+                    <div class="member-role">活跃玩家、Comet Java 私服服主</div>
+                    <p class="member-desc">服务器活跃玩家，服务器老牌公会[只因]的管理员，善于使用手机版Java我的世界，喜欢研究开服相关事物，是个正在不断学习的苗子服主。曾开过的临时 Java 服务器，依托主服提供的玩家与相关支持，收获了玩家们的一致好评，现负责<a href="index.html#subserver"><font color="#E59769"> Comet Java 私服 2.0 </font></a>的主要开服工作。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="3529336723"><i class="fab fa-qq"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=1097131173&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">RYD</h3>
+                    <div class="member-role">活跃玩家、生电大佬</div>
+                    <p class="member-desc">服务器活跃玩家、肝帝，曾为服务器提过许多建设性意见。非常擅长常见生电设施的建造，为服务器提供丰富物资，运行起来高效不卡。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="1097131173"><i class="fab fa-qq"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2669817322&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">玛丽安</h3>
+                    <div class="member-role">活跃玩家</div>
+                    <p class="member-desc">肝帝一枚，经常活跃在服务器，喜欢跑图、建筑、做雕像，非常喜欢狐狸（也喜欢养很多狐狸让服务器撑爆）。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2669817322"><i class="fab fa-qq"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member glass-card floating">
+                    <div class="member-avatar">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=3530611703&s=640"></img>
+                        </div>
+                    </div>
+                    <h3 class="member-name">神楽七奈</h3>
+                    <div class="member-role">建筑师、技术大神、私服赞助商</div>
+                    <p class="member-desc">曾负责过服务器一个大型建筑的建造，开设过其他我的世界 Java 服务器，并早在 2022 年就与管理组有过合作，资历深厚。<br>自愿为 Comet 提供服务器硬件，是团队中值得信赖的力量，目前的<a href="index.html#subserver"><font color="#E59769">  Comet Java 私服</font></a>正是运行在他所提供的服务器设施之上。</p>
+                    <div class="member-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="3530611703"><i class="fab fa-qq"></i></a>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="admins-header">
+                <h2 class="admins-title">服务器<span>管理组</span></h2>
+                <p class="section-subtitle">我们拥有一支专业且富有激情的团队，致力于为所有玩家提供最优质的游戏体验</p>
+            </div>
+            
+            <div class="admins-blocks">
+                <div class="admin-block adm4">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2985143951&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服务器负责人、服主、插件管理、服务器宣传</h3>
+                        <div class="admin-name">Yanda</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2985143951"><i class="fab fa-qq"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="lydwx888886"><i class="fab fa-weixin"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/535053377"><i class="fab fa-bilibili"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2985143951@qq.com"><i class="fab fa-at"></i></a>
+                        </div>
+                        <p class="admin-desc">服务器创始人之一，自2022年初接触开服，2023年和其他服主共同运营 Comet，2026年初正式继任负责人。<br>掌管服务器几乎全部插件的配置运行，擅长指令，待人亲切友善，拥有比较丰富的服务器管理经验，但非常不擅长建筑。<br>虽然他是服主，但也在玩家群体之间相当活跃，是服务器老牌公会[只因]的二把手。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm1">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2186840955&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服主、建筑师、活动策划、玩法策划</h3>
+                        <div class="admin-name">Kongtou</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2186840955"><i class="fab fa-qq"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2186840955@qq.com"><i class="fab fa-at"></i></a>
+                        </div>
+                        <p class="admin-desc">服务器创始人之一，自2022年初接触开服，2023年和其他服主共同运营 Comet 至今。<br>在自己的服务器总是不惜代价折磨其他玩家以此取乐，是一位背后藏着诸多故事的人。他在游戏里的形象是一顶哞菇头，因此被玩家们亲切称作牛头人，也常被称为🐮。又因他平日里那些搞怪整活的行事风格，还被大家冠以红色牛头恶魔人的称号。负责服务器的项目策划，擅长自然建筑与做旧，因此还成为了基岩版一个比较大型的综合Addon的项目成员。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm2">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2421583465&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服务器管理、指令员、插件管理</h3>
+                        <div class="admin-name">无情兰剑</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2421583465"><i class="fab fa-qq"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/1708811335"><i class="fab fa-bilibili"></i></a>
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2421583465@qq.com"><i class="fab fa-at"></i></a>
+                        </div>
+                        <p class="admin-desc">服务器活跃玩家、服务器老牌公会[只因]的二把手，始终活跃在服务器前线。擅长指令、插件编辑等，是亲切友善的解决问题高手。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm1">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2112839310&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服主、首席建筑师</h3>
+                        <div class="admin-name">YanziHa0</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2112839310"><i class="fab fa-qq"></i></a>
+                        </div>
+                            <p class="admin-desc">拥有丰富开服经验，自2022年接触开服，2023年和其他服主共同运营 Comet 至今。<br>擅长现代建筑设计，曾在服务器一周目造出了规模宏大的现代城市和商业区，并设置地皮出售，和以此作为出生点（以至于新玩家开局找不到路去挖木头）。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm1">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=168897951&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服主</h3>
+                        <div class="admin-name">Yhrfi</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="168897951"><i class="fab fa-qq"></i></a>
+                        </div>
+                        <p class="admin-desc">自2022年接触开服，2023年和其他服主共同运营 Comet 至今。<br>擅长处理服务器纠纷和引导新玩家、帮新玩家答疑解惑，是玩家们亲切的朋友。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm1">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=2132704105&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服主、活动策划</h3>
+                        <div class="admin-name">DanWeiXianYu</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="2132704105"><i class="fab fa-qq"></i></a>
+                        </div>
+                            <p class="admin-desc">自2022年接触开服，2023年和其他服主共同运营 Comet 至今。<br>擅长活动策划，曾在服务器一周目设计出了玩家们感到讨喜的通行证活动。</p>
+                    </div>
+                </div>
+                
+                <div class="admin-block adm3">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=1689492644&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服务器查服机器人、白名单机器人</h3>
+                        <div class="admin-name">MerryGo</div>
+                        <p class="admin-desc">在服务器中充当机器人的角色，7x24小时不间断为群内玩家提供查服与白名单服务，可实时查询在线玩家列表、服务器 TPS 等信息。同时她也会热情欢迎每一位新玩家的加入。人家全年无休很累的，平时请不要私信骚扰她。</p>
+                    </div>
+                </div>
+
+                <div class="admin-block adm2">
+                    <div class="admin-icon-container">
+                        <div class="minecraft-avatar">
+                            <img src="http://q.qlogo.cn/g?b=qq&nk=939194395&s=640"></img>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <h3 class="admin-id">服务器管理、宣传分发</h3>
+                        <div class="admin-name">FourWater</div>
+                        <div class="member-social">
+                            <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="939194395"><i class="fab fa-qq"></i></a>
+                        </div>
+                        <p class="admin-desc">一个很出色的管理员，非常关爱新玩家，自2022年9月加入我们，担任活动策划、宣传分发等。曾在服务器主要管理均忙于学业没空搭理服务器时独自管理服务器，解决过数起案件、发布过数个群公告。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="btn-group">
+        <a href="index.html" class="btn btn-primary" style="margin: 0 0 90px 0;">
+            <i class="fas fa-angle-left"></i>返回官网
+        </a>
+    </div>
+
+    <div class="minecraft-divider"></div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/images/server-logo.png" alt="服务器 Logo">
+                        <div class="footer-logo-text">Comet <span> 陆上彗星</span></div>
+                    </div>
+                    <p class="footer-desc">Comet（陆上彗星）是基于 Minecraft 基岩版环境（BDS）运维的云服务器群组。我们设置有生存服务器、小游戏服务器等，以丰富玩家的游戏体验，但我们仍然以打造稳定、清爽、原汁原味的基岩版生存服务器为主。</p>
+                    <div class="footer-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="674767893"><i class="fab fa-qq"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/535053377"><i class="fab fa-bilibili"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="达达源"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://doc.mccomet.top/" target="_blank">服务器文档站</a></li>
+                        <li><a href="./donate.html">支持我们</a></li>
+                        <li><a href="https://uniteban.megastudio.cn/" target="_blank">UniteBan 联合封禁</a></li>
+                        <li><a href="https://klpbbs.com/thread-117741-1-1.html" target="_blank">苦力怕论坛宣传帖</a></li>
+                        <li><a href="https://www.minebbs.com/threads/comet.24000/" target="_blank">MineBBS宣传帖</a></li>
+                        <li><a href="https://www.bilibili.com/opus/1171471653064933381" target="_blank">BiliBili宣传帖</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">更多服务器</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://server.feather.qzz.io" target="_blank">Comet Java 私服</a></li>
+                        <li><a href="https://qm.qq.com/q/cMJbLsZi6c" target="_blank">SlimeCraft 互通服</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">联系我们</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-envelope"></i> 服务器邮箱: createtop@yeah.net</li>
+                        <li><i class="fab fa-qq"></i> QQ群: 674767893</li>
+                        <li><i class="fas fa-headset"></i>在线时间: 7*24运行</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 中国·江苏</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="server-uptime" id="serverUptime"></div>
+                <p class="copyright">&copy; 2026 Comet Minecraft 服务器. 保留所有权利. Minecraft是Mojang Studios的商标，本站与Mojang和Microsoft没有从属关系。</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <script>
+        (function() {
+            // 加载器隐藏
+            setTimeout(function() {
+                var loader = document.getElementById('siteLoader');
+                if (loader) loader.classList.add('loaded');
+            }, 500);
+
+            // 移动端菜单
+            var mobileToggle = document.getElementById('mobileToggle');
+            var navLinks = document.getElementById('navLinks');
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            // 导航点击：外部链接正常跳转，内部锚点平滑滚动并关闭菜单
+            function initNavLinks() {
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        var href = this.getAttribute('href');
+                        var isInternal = href && href.startsWith('#');
+                        // 先关闭移动菜单
+                        if (mobileToggle && navLinks) {
+                            mobileToggle.classList.remove('active');
+                            navLinks.classList.remove('active');
+                        }
+                        if (isInternal) {
+                            e.preventDefault();
+                            var targetId = href;
+                            var targetEl = document.querySelector(targetId);
+                            if (targetEl) {
+                                var headerHeight = document.querySelector('header').offsetHeight;
+                                var targetPos = targetEl.getBoundingClientRect().top + window.scrollY - headerHeight;
+                                window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                                history.pushState(null, null, targetId);
+                                updateActiveNavItem(targetId);
+                            }
+                        }
+                        // 外部链接不做任何阻止
+                    });
+                });
+            }
+
+            function updateActiveNavItem(forcedTarget) {
+                var current = forcedTarget || window.location.hash;
+                if (!current) current = '#server-team';
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    var href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        link.classList.toggle('active', href === current);
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+
+            // 复制联系方式
+            function initCopyContact() {
+                document.querySelectorAll('.copy-contact').forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const contactInfo = this.getAttribute('data-copy');
+                        
+                        const tempInput = document.createElement('input');
+                        tempInput.value = contactInfo;
+                        tempInput.style.position = 'absolute';
+                        tempInput.style.left = '-9999px';
+                        document.body.appendChild(tempInput);
+                        
+                        tempInput.select();
+                        document.execCommand('copy');
+                        
+                        document.body.removeChild(tempInput);
+                        
+                        showNotification(`已复制: ${contactInfo}`, 'success');
+                        
+                        this.classList.add('copied');
+                        setTimeout(() => {
+                            this.classList.remove('copied');
+                        }, 700);
+                    });
+                });
+            }
+
+            // 通知
+            function showNotification(message, type = 'info') {
+                // 将消息中的 URL 转换为可点击链接
+                function linkify(text) {
+                    const urlRegex = /(https?:\/\/[^\s]+)/g;
+                    return text.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener" style="color: #0C6EA9; text-decoration: underline;">$1</a>');
+                }
+                
+                const notification = document.createElement('div');
+                notification.className = `notification notification-${type}`;
+                notification.innerHTML = `
+                    <div class="notification-icon">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+                    </div>
+                    <div class="notification-message">${linkify(message)}</div>
+                `;
+                
+                const container = document.getElementById('notificationContainer');
+                container.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 10);
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => {
+                        container.removeChild(notification);
+                    }, 300);
+                }, 5000);
+            }
+
+            // 返回顶部按钮
+            function initBackToTop() {
+                var btn = document.getElementById('backToTop');
+                if (!btn) return;
+                
+                window.addEventListener('scroll', function() {
+                    btn.classList.toggle('active', window.scrollY > 500);
+                });
+                btn.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                    this.classList.add('animate__animated', 'animate__fadeOutUp');
+                    setTimeout(() => {
+                        this.classList.remove('animate__animated', 'animate__fadeOutUp');
+                    }, 1000);
+                });
+            }
+
+            // 飘落方块装饰（简单版，避免报错）
+            function initFallingBlocks() {
+                var container = document.getElementById('fallingBlocks');
+                if (!container) return;
+                var colors = ['var(--primary)', 'var(--accent)', 'var(--info)', 'var(--stone)', 'var(--redstone)', 'var(--diamond)'];
+                var count = window.innerWidth < 768 ? 8 : 15;
+                for (var i = 0; i < count; i++) {
+                    var block = document.createElement('div');
+                    block.className = 'falling-block';
+                    var size = Math.random() * 15 + 10;
+                    block.style.width = size + 'px';
+                    block.style.height = size + 'px';
+                    block.style.left = Math.random() * 100 + '%';
+                    block.style.animationDuration = Math.random() * 20 + 10 + 's';
+                    block.style.animationDelay = Math.random() * 15 + 's';
+                    block.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    container.appendChild(block);
+                }
+            }
+
+            // 服务器成立正计时
+            function updateServerUptime() {
+                // 需要配置的部分：设置服务器成立日期和时间
+                const serverStartDate = new Date('2023-02-01T00:00:00'); // 格式：YYYY-MM-DDTHH:MM:SS，按需修改
+
+                const now = new Date();
+                const diffMs = now - serverStartDate; // 相差毫秒数
+
+                if (diffMs < 0) {
+                    document.getElementById('serverUptime').innerText = '服务器即将上线，敬请期待！';
+                    return;
+                }
+
+                const totalSeconds = Math.floor(diffMs / 1000);
+                const days = Math.floor(totalSeconds / 86400);
+                const hours = Math.floor((totalSeconds % 86400) / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+
+                document.getElementById('serverUptime').innerHTML = 
+                    `陆上彗星服务器已成立 <strong>${days}天${hours}小时${minutes}分${seconds}秒</strong>`;
+            }
+
+            // 立即执行一次
+            updateServerUptime();
+
+            // 每秒更新一次
+            setInterval(updateServerUptime, 1000);
+
+            // 滚动动画
+            // 滚动动画：为卡片添加入场动画，动画结束后移除类，避免干扰 hover 效果
+            function initScrollAnimations() {
+                // 动态注入隐藏样式（仅针对管理组卡片）
+                if (!document.getElementById('dynamic-animation-style')) {
+                    var style = document.createElement('style');
+                    style.id = 'dynamic-animation-style';
+                    style.textContent = `
+                        /* 默认隐藏管理组卡片 */
+                        .admin-block {
+                            opacity: 0;
+                        }
+                        /* 滚动显示后的可见状态 */
+                        .admin-block.shown {
+                            opacity: 1;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+
+                if ('IntersectionObserver' in window) {
+                    var observer = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                var el = entry.target;
+                                // 添加 animate.css 的淡入上浮动画
+                                el.classList.add('animate__animated', 'animate__fadeInUp');
+                                var onAnimEnd = function() {
+                                    el.classList.remove('animate__animated', 'animate__fadeInUp');
+                                    el.classList.add('shown');
+                                    el.removeEventListener('animationend', onAnimEnd);
+                                };
+                                el.addEventListener('animationend', onAnimEnd);
+                                observer.unobserve(el);
+                            }
+                        });
+                    }, { threshold: 0.1 });
+                    // 只观察管理组卡片，优秀玩家卡片保持原样
+                    document.querySelectorAll('.admin-block').forEach(function(el) {
+                        observer.observe(el);
+                    });
+                }
+            }
+            
+            // 顶栏动态变化
+            function initNavigation() {
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                const scrollPosition = window.scrollY;
+                
+                header.classList.toggle('scrolled', scrollPosition > 10);
+            })}
+
+            // 页面启动
+            window.addEventListener('DOMContentLoaded', function() {
+                initNavLinks();
+                initCopyContact();
+                initBackToTop();
+                initFallingBlocks();
+                initScrollAnimations();
+                initNavigation();
+                // 确保高亮玩家团体
+                updateActiveNavItem('#server-team');
+                // 如果页面滚动导致菜单残留，强制重置
+                window.addEventListener('scroll', function() {
+                    if (mobileToggle && navLinks && navLinks.classList.contains('active')) {
+                        // 如果滚动时菜单开着，自动关闭（提升体验）
+                        mobileToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
