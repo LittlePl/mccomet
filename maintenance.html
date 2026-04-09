@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comet 陆上彗星 - 网站建设中</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: -var(--primary);
+            color: #fff;
+            text-align: center;
+        }
+        .container {
+            position: relative;
+            height: 100vh;
+        }
+        .content {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .btn-group {
+            margin: auto;
+        }
+        .pickaxe-swing {
+            font-size: 5rem;
+            animation: swing 1.8s ease-in-out infinite;
+            transform-origin: top center;
+            margin: 2rem 0;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.5em;
+        }
+        .content span {
+            animation: blink 1.5s linear infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        @keyframes swing {
+            0%, 100% {
+                transform: rotate(-8deg);
+            }
+            50% {
+                transform: rotate(8deg);
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="content">
+            <i class="fas fa-hard-hat pickaxe-swing"></i>
+            <h1>网站建设中</h1>
+            <p>谢谢你的访问！网站还在建设中，<span><font color='red'><b>敬请期待</b></font></span>！</p>
+            <div class="btn-group">
+                <a href="index.html" class="btn btn-primary" style="margin: 30px auto;">
+                    <i class="fas fa-angle-left"></i>返回官网
+                </a>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comet 陆上彗星 - 赞助支持</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<style>
+    .container {
+        max-width: 1300px;
+    }
+    .falling-blocks {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+        pointer-events: none;
+    }
+    .bg-decoration {
+        position: fixed;
+        width: 300px;
+        height: 300px;
+        opacity: 0.15;
+        z-index: 0;
+        pointer-events: none;
+    }
+    body {
+        background-color: #183C28;
+        background: linear-gradient(0deg, #183C28 0%, rgb(16, 32, 24) 100%);
+    }
+    .donate-intro {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+    .donate-intro h3{
+        font-size: 1.5rem;
+        margin: 0px 0 7px;
+    }
+    .donate-intro-card {
+        text-align: center;
+        padding: 40px 33px;
+        margin: 0 2em 0;
+        max-width: 830px;
+    }
+    .donate-icon-container {
+        width: 80px;
+        height: 80px;
+        margin: -5px auto 20px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid rgba(255, 255, 255, 0.05);
+        font-size: 1.5rem;
+        color: var(--primary-light)
+    }
+    .donate-tips {
+        margin: 5px 5px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .donate-tips-text {
+        margin: 0 8px 0;
+        font-size: 0.85rem;
+    }
+    .donate-tips-text i {
+        position: relative;
+        color: #5ABD3C;
+        bottom: -0.09rem;
+    }
+    .glass-card:hover {
+        background: rgba(24, 60, 40, 0.6);
+    }
+    .donate-main {
+        display: grid;
+        padding: 0 2rem 0;
+        margin: 0 auto 0;
+        gap: 2rem;
+        grid-template-columns: 3fr 5fr;
+        margin-top: 4rem;
+    }
+    .donate-main h3 {
+        text-align: center;
+        font-size: 1.3em;
+        margin: 0 0 20px;
+    }
+    .donate-main i {
+        position: relative;
+        bottom: -0.1rem;
+    }
+    .qr-card-container {
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 20px; 
+        justify-content: center;
+    }
+    .qr-card {
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        min-width: 220px;
+    }
+    .qr-icon-container {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 0;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid rgba(255, 255, 255, 0.05);
+        font-size: 1.6rem;
+        color: var(--primary-light);
+    }
+    .qr-icon {
+        position: relative;
+        bottom: -0.1rem;
+    }
+    .qr-img {
+        width: 180px;
+        height: 180px;
+        object-fit: contain;
+        margin: 0 auto 10px;
+        background: white;
+        padding: 12px;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.2s;
+    }
+    .donate-card {
+        padding: 25px;
+        margin-bottom: 2rem;
+    }
+    .donate-stats-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 25px;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+    .donate-stats-item {
+        text-align: center;
+        padding: 15px;
+        background: rgba(0,0,0,0.25);
+        border-radius: var(--radius-lg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        flex-grow: 1;
+        transition: all 0.3s ease;
+    }
+    .donate-stats-item i {
+        font-size: 1rem;
+        margin: 8px 0 0;
+    }
+    .donate-stats-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .donate-amount {
+        font-size: 1.8rem;
+        margin: 8px 0 0;
+    }
+    .level-badge-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: space-between;
+        align-items: stretch;
+        margin-top: 20px;
+    }
+    .level-badge {
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 40px;
+        padding: 9px 22px 6px;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+    }
+    .level-badge i {
+        font-size: 1.2rem;
+        margin: auto 16px auto 0;
+        position: relative;
+        bottom: 0.8px;
+    }
+    .level-badge-sub {
+        color: gray;
+    }
+    /* 搜索排序栏 */
+    .search-sort-bar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .sort-buttons button {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 6px 18px;
+        border-radius: 40px;
+        color: #eee;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-right: 8px;
+    }
+
+    .sort-buttons button.active {
+        background: #b983ff;
+        color: #111;
+        border-color: #b983ff;
+    }
+
+    .search-input-wrapper {
+        position: relative;
+    }
+
+    .search-input-wrapper i {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #aaa;
+    }
+
+    .donor-search-input {
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 40px;
+        padding: 8px 18px 8px 40px;
+        color: white;
+        width: 220px;
+        backdrop-filter: blur(4px);
+    }
+
+    .donor-search-input:focus {
+        outline: none;
+        border-color: #b983ff;
+    }
+
+    /* 赞助列表项 */
+    .donors-list {
+        max-height: 550px;
+        overflow-y: auto;
+        padding: 8px 5px 0 8px;
+        background: rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+    }
+
+    .donor-item {
+        background: rgba(24, 60, 40, 0.5);
+        backdrop-filter: blur(4px);
+        border-radius: 18px;
+        padding: 16px 20px;
+        margin-bottom: 12px;
+        margin-right: 6px;
+        border-left: 5px solid var(--emerald);
+        transition: all 0.2s;
+    }
+
+    .donor-item:hover {
+        background: rgba(30, 73, 49, 0.8);
+        transform: translateX(5px);
+    }
+
+    .donor-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 8px;
+    }
+
+    .donor-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+    }
+
+    .donor-amount {
+        color: #b983ff;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .donor-message {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.9rem;
+        margin: 8px 0 6px;
+        padding-left: 12px;
+        border-left: 2px solid rgba(90, 189, 60, 0.5);
+        word-break: break-word;
+    }
+
+    .donor-date {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 10px;
+    }
+
+    .donor-date i {
+        position: relative;
+        bottom: 0rem;
+    }
+
+    .btn-loadmore {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 24px;
+        border-radius: 40px;
+        color: white;
+        cursor: pointer;
+        transition: 0.2s;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    /* 滚动条 */
+    .donors-list::-webkit-scrollbar {
+        width: 5px;
+    }
+    .donors-list::-webkit-scrollbar-track {
+        background: #1a3a2a;
+        border-radius: 10px;
+    }
+    .donors-list::-webkit-scrollbar-thumb {
+        background: #b983ff;
+        border-radius: 10px;
+    }
+
+    .btn-loadmore:hover {
+        background: #b983ff;
+        color: #111;
+    }
+
+    .faq-item {
+        background: rgba(0,0,0,0.2);
+        border-radius: 16px;
+        padding: 14px 18px;
+        margin-bottom: 12px;
+        transition: all 0.2s;
+    }
+    
+    .faq-item:hover {
+        background: rgba(0,0,0,0.35);
+    }
+
+    @media (max-width: 1024px) {
+    .donate-main {
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin-top: 2rem;
+    }
+    @media (max-width: 768px) {
+        .level-badge-container {
+            flex-direction: column;
+            gap: 8px;
+        }
+        .search-sort-bar {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .donor-search-input {
+            width: 100%;
+        }
+        .level-badges {
+            flex-direction: column;
+            gap: 8px;
+        }
+    }
+}
+</style>
+<body>
+    <div class="loader" id="siteLoader">
+        <div class="minecraft-loader">
+            <div class="minecraft-loader-block"></div>
+            <div class="minecraft-loader-block"></div>
+            <div class="minecraft-loader-block"></div>
+            <div class="minecraft-loader-block"></div>
+        </div>
+    </div>
+
+    <div class="bg-decoration deco-1"></div>
+    <div class="bg-decoration deco-2"></div>
+    <div class="bg-decoration deco-3"></div>
+    <div class="bg-decoration deco-4"></div>
+    <div class="bg-decoration deco-diamond"></div>
+    <div class="bg-decoration deco-gold"></div>
+    <div class="bg-decoration deco-redstone"></div>
+    <div class="minecraft-bg"></div>
+    <div class="falling-blocks" id="fallingBlocks"></div>
+
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="assets/images/server-logo.png" alt="服务器 Logo">
+                    <div class="logo-text">陆上<span>彗星</span></div>
+                </a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html#home">首页</a></li>
+                    <li><a href="https://doc.mccomet.top/" target="_blank">文档站</a></li>
+                    <li><a href="./team.html">玩家团体</a></li>
+                    <li><a href="./maintenance.html">时间线</a></li>
+                    <li><a href="#donate">赞助支持</a></li>
+                    <li><a href="index.html#join-us">加入服务器</a></li>
+                </ul>
+                <div class="mobile-toggle" id="mobileToggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="donate" style="padding-top: 160px;">
+            <h2 class="section-title">赞助支持我们的<span>服务器</span></h2>
+            <p class="section-subtitle">你的每一份支持，都能帮助服务器持续运营和发展，为大家提供更好的游戏体验</p>
+            <div class="donate-intro">
+                <div class="donate-intro-card glass-card">
+                    <div class="donate-icon-container">
+                        <i class="fa fa-heart"></i>
+                    </div>
+                    <h3>为什么需要赞助？</h3>
+                    <p>服务器的运行需要服务器租赁、带宽、维护等费用。你的每一份赞助都将用于服务器的维护和升级，
+                    为大家提供更稳定、更好的游戏体验。所有赞助金额将公开透明地用于服务器运营。</p>
+                    <div class="donate-tips">
+                        <div class="donate-tips-text">
+                            <i class="fa fa-check-circle"></i>
+                            <span>服务器租赁费用</span>
+                        </div>
+                        <div class="donate-tips-text">
+                            <i class="fa fa-check-circle"></i>
+                            <span>带宽和网络优化</span>
+                        </div>
+                        <div class="donate-tips-text">
+                            <i class="fa fa-check-circle"></i>
+                            <span>插件和功能升级</span>
+                        </div>
+                        <div class="donate-tips-text">
+                            <i class="fa fa-check-circle"></i>
+                            <span>举办活动和奖励</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 双栏布局：左侧二维码 + 右侧统计/列表 -->
+        <section id="donate-main" class="donate-main">
+            <!-- 左侧：赞助方式（微信+支付宝） -->
+            <div style="grid-area: 1 1;">
+                <div class="donate-card glass-card">
+                    <h3><i class="fas fa-qrcode"></i> 赞助方式</h3>
+                    <div class="qr-card-container">
+                        <!-- 微信支付卡片 -->
+                        <div class="qr-card">
+                            <div class="qr-icon-container">
+                                <div class="qr-icon"><i class="fab fa-weixin" style="color: #2DC100;"></i></div>
+                            </div>
+                            <h4 style="margin: 12px 0;">微信支付</h4>
+                            <img id="wechat-qrcode" class="qr-img" src="./assets/images/微信收款码.png" alt="微信收款码">
+                            <p class="donate-tips-text" style="font-size: 0.8rem;">扫码后备注<b>游戏ID+留言</b></p>
+                        </div>
+                        <!-- 支付宝卡片 -->
+                        <div class="qr-card">
+                            <div class="qr-icon-container">
+                                  <div class="qr-icon"><i class="fab fa-alipay" style="color: #1677FF;"></i></div>
+                            </div>
+                            <h4 style="margin: 12px 0;">支付宝</h4>
+                            <img id="alipay-qrcode" class="qr-img" src="./assets/images/支付宝收款码.png" alt="支付宝收款码">
+                            <p class="donate-tips-text" style="font-size: 0.8rem;">扫码后备注<b>游戏ID+留言</b></p>
+                        </div>
+                    </div>
+                    <div class="donate-tips" style="margin-top: 15px;">
+                        <div class="donate-tips-text"><i class="fa fa-star"></i>
+                            <span>10元以上可显示留言</span>
+                        </div>
+                        <div class="donate-tips-text"><i class="fa fa-clock"></i>
+                            <span>24h内审核显示</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="donate-card glass-card">
+                    <h3><i class="fas fa-list-ol"></i> 赞助指南</h3>
+                    <ol style="margin-top: 18px; padding-left: 20px; color: rgba(255,255,255,0.85);">
+                        <li>选择微信或支付宝扫描上方二维码</li>
+                        <li>输入金额（≥10元可显示留言内容）</li>
+                        <li>备注栏填写：<strong>游戏ID + 想说的话</strong>（例如：彗星玩家_祝服务器越来越好）</li>
+                        <li>完成支付，管理员审核后自动展示在赞助榜</li>
+                    </ol>
+                    <div class="donate-tips">
+                        <div class="donate-tips-text" style="margin-top: 20px;">
+                            <i class="fa fa-shield-alt"></i> 所有赞助均用于服务器运营，公开透明。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧：统计 + 等级 + 赞助列表 + 常见问题 -->
+            <div style="grid-area: 1 2;">
+                <div class="donate-card card-dark glass-card">
+                    <h3><i class="fas fa-chart-line"></i> 赞助统计</h3>
+                    <div class="donate-stats-container">
+                        <div class="donate-stats-item">
+                            <i class="fas fa-coins" style="font-size: 28px; color: var(--gold);"></i>
+                            <p style="margin-top: 8px; font-size: 0.9rem;">总赞助金额</p>
+                            <p class="donate-amount" id="totalAmount" style="color: #DDD605;">¥0</p>
+                        </div>
+                        <div class="donate-stats-item">
+                            <i class="fas fa-users" style="font-size: 28px; color: var(--primary-light);"></i>
+                            <p style="margin-top: 8px; font-size: 0.9rem;">赞助人数</p>
+                            <p class="donate-amount" id="donorCount" style="color: #55FFFF">0</p>
+                        </div>
+                        <div class="donate-stats-item">
+                            <i class="fas fa-calendar-alt" style="font-size: 28px; color: var(--emerald);"></i>
+                            <p style="margin-top: 8px; font-size: 0.9rem;">最新赞助</p>
+                            <p id="lastUpdate" class="donate-amount" style="color: #55FF55">--</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="donate-card glass-card">
+                    <h3><i class="fas fa-atom"></i> 赞助等级说明</h3>
+                    <div class="level-badge-container">
+                        <div class="level-badge">
+                            <i class="fas fa-gem" style="color: #5EEBD2;"></i>
+                            <div>
+                                <span>钻石赞助者</span>
+                                <div class="level-badge-sub">100元以上</div>
+                            </div>
+                        </div>
+                        <div class="level-badge"><i class="fas fa-crown" style="color: #d4af37;"></i>
+                            <div>
+                                <span>黄金赞助者</span>
+                                <div class="level-badge-sub">50-99元</div>
+                            </div>
+                        </div>
+                        <div class="level-badge"><i class="fas fa-medal" style="color: #dadada;"></i>
+                            <div>
+                                <span>白银赞助者</span>
+                                <div class="level-badge-sub">10-49元</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="donate-card glass-card">
+                    <h3 style="margin-bottom: 0.2rem;"><i class="fas fa-trophy"></i> 赞助列表</h3>
+                    <div style="font-size: 0.8rem; text-align: center; margin-bottom: 0.8rem; opacity: 0.8;">
+                        感谢所有支持服务器的玩家
+                    </div>
+
+                    <!-- 搜索和排序栏 -->
+                    <div class="search-sort-bar">
+                        <div class="sort-buttons">
+                            <button id="sortByAmount" class="sort-btn">💰 按金额</button>
+                            <button id="sortByDate" class="sort-btn active">🕒 按时间</button>
+                        </div>
+                        <div class="search-input-wrapper">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" class="donor-search-input" placeholder="搜索赞助者ID或留言...">
+                        </div>
+                    </div>
+
+                    <!-- 列表容器 -->
+                    <div id="donorsList" class="donors-list">
+                        <div style="text-align: center; padding: 40px;">
+                            <i class="fas fa-circle-notch fa-spin" style="font-size: 28px;"></i>
+                            <p style="margin-top: 12px;">正在加载赞助记录...</p>
+                            <p style="opacity: 0.7; font-size: 0.9rem; margin-top: 3px;">如果长时间未加载出来，请联系管理员。</p>
+                        </div>
+                    </div>
+
+                    <!-- 加载更多按钮 -->
+                    <button id="loadMoreBtn" class="btn-loadmore">
+                        <i class="fas fa-arrow-down" style="margin: 0 5px 0 0;"></i> 加载更多
+                    </button>
+                </div>
+
+                <div class="donate-card card-dark glass-card" style="padding: 25px;">
+                    <h3><i class="fas fa-question-circle"></i> 常见问题</h3>
+                    <div style="margin-top: 20px;">
+                        <div class="faq-item">
+                            <strong><i class="fas fa-gift"></i> 赞助后有什么福利？</strong>
+                            <p style="font-size: 0.85rem; margin-top: 6px;">所有赞助者会在群聊内获得群荣誉，除此之外无任何影响平衡的奖励，纯属支持服务器运营。</p>
+                        </div>
+                        <div class="faq-item">
+                            <strong><i class="fas fa-comment"></i> 留言会显示在哪里？</strong>
+                            <p style="font-size: 0.85rem; margin-top: 6px;">10元以上赞助的留言会出现在本页赞助列表，经管理员审核后展示。</p>
+                        </div>
+                        <div class="faq-item">
+                            <strong><i class="fas fa-clock"></i> 如何确认我的赞助已被收到？</strong>
+                            <p style="font-size: 0.85rem; margin-top: 6px;">每日晚间统一审核处理，管理员会通过游戏内邮件或社区私信与你确认，赞助榜同步更新。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <div class="btn-group">
+        <a href="index.html" class="btn btn-primary" style="margin: 90px 0 90px 0;">
+            <i class="fas fa-angle-left"></i>返回官网
+        </a>
+    </div>
+
+    <div class="minecraft-divider"></div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/images/server-logo.png" alt="服务器 Logo">
+                        <div class="footer-logo-text">Comet <span> 陆上彗星</span></div>
+                    </div>
+                    <p class="footer-desc">Comet（陆上彗星）是基于 Minecraft 基岩版环境（BDS）运维的云服务器群组。我们设置有生存服务器、小游戏服务器等，以丰富玩家的游戏体验，但我们仍然以打造稳定、清爽、原汁原味的基岩版生存服务器为主。</p>
+                    <div class="footer-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="674767893"><i class="fab fa-qq"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/535053377"><i class="fab fa-bilibili"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="达达源"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://doc.mccomet.top/" target="_blank">服务器文档站</a></li>
+                        <li><a href="#">支持我们</a></li>
+                        <li><a href="https://uniteban.megastudio.cn/" target="_blank">UniteBan 联合封禁</a></li>
+                        <li><a href="https://klpbbs.com/thread-117741-1-1.html" target="_blank">苦力怕论坛宣传帖</a></li>
+                        <li><a href="https://www.minebbs.com/threads/comet.24000/" target="_blank">MineBBS宣传帖</a></li>
+                        <li><a href="https://www.bilibili.com/opus/1171471653064933381" target="_blank">BiliBili宣传帖</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">更多服务器</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://server.feather.qzz.io" target="_blank">Comet Java 私服</a></li>
+                        <li><a href="https://qm.qq.com/q/cMJbLsZi6c" target="_blank">SlimeCraft 互通服</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">联系我们</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-envelope"></i> 服务器邮箱: createtop@yeah.net</li>
+                        <li><i class="fab fa-qq"></i> QQ群: 674767893</li>
+                        <li><i class="fas fa-headset"></i>在线时间: 7*24运行</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 中国·江苏</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="server-uptime" id="serverUptime"></div>
+                <p class="copyright">&copy; 2026 Comet Minecraft 服务器. 保留所有权利. Minecraft是Mojang Studios的商标，本站与Mojang和Microsoft没有从属关系。</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <script>
+        let allDonors = null;
+        // 当前分页相关
+        let currentPage = 1;
+        const pageSize = 8;
+        let currentSort = "date";     // 'date' 或 'amount'
+        let currentSearch = "";
+
+        // 辅助函数：格式化日期
+        function formatDate(dateStr) {
+            return dateStr;
+        }
+
+        // 获取过滤+排序后的数据
+        function getFilteredAndSorted() {
+            let filtered = allDonors.filter(d => 
+                d.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                d.message.toLowerCase().includes(currentSearch.toLowerCase())
+            );
+            // 排序
+            if (currentSort === "amount") {
+                filtered.sort((a, b) => b.amount - a.amount);
+            } else {
+                filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+            return filtered;
+        }
+
+        // 渲染统计信息
+        function updateStats() {
+            const filtered = getFilteredAndSorted(); // 注意统计应基于全部数据（不过一般统计全体赞助者，不随搜索变化）
+            // 但按设计，统计总额和人数应该是全部数据，不受搜索影响更合理。这里使用全部数据。
+            const totalAmount = allDonors.reduce((sum, d) => sum + d.amount, 0);
+            const donorCount = allDonors.length;
+            const lastDate = allDonors.length ? [...allDonors].sort((a,b)=>new Date(b.date)-new Date(a.date))[0].date : "--";
+            document.getElementById("totalAmount").innerText = `¥${totalAmount}`;
+            document.getElementById("donorCount").innerText = donorCount;
+            document.getElementById("lastUpdate").innerText = lastDate;
+        }
+
+        // 渲染列表（分页）
+        function renderList() {
+            const filtered = getFilteredAndSorted();
+            const start = (currentPage - 1) * pageSize;
+            const paged = filtered.slice(0, start + pageSize);
+            const container = document.getElementById("donorsList");
+            if (!container) return;
+
+            if (paged.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align:center; padding:40px;"><i class="fas fa-inbox" style="font-size:1.5rem; margin-bottom:1rem;">
+                    </i><p>这里好像没有赞助记录...</p>
+                    <p style="opacity: 0.7; font-size: 0.9rem; margin-top: 3px;">成为第一个支持服务器的玩家吧！</p>
+                    </div>`;
+                return;
+            }
+
+            let html = "";
+            paged.forEach(d => {
+                let amountClass = "";
+                let levelIcon = "";
+                if (d.amount >= 100) { levelIcon = '<i class="fas fa-gem" style="color:#5EEBD2;"></i> '; }
+                else if (d.amount >= 50) { levelIcon = '<i class="fas fa-crown" style="color:#d4af37;"></i> '; }
+                else { levelIcon = '<i class="fas fa-medal" style="color:#dadada;"></i> '; }
+
+                html += `
+                    <div class="donor-item">
+                        <div class="donor-header">
+                            <span class="donor-name">${levelIcon} ${escapeHtml(d.name)}</span>
+                            <span class="donor-amount">¥${d.amount}</span>
+                        </div>
+                        ${d.message ? `<div class="donor-message">“${escapeHtml(d.message)}”</div>` : ""}
+                        <div class="donor-date"><i class="far fa-calendar-alt"></i> ${formatDate(d.date)}</div>
+                    </div>
+                `;
+            });
+            // 是否还有更多
+            const hasMore = (start + pageSize) < filtered.length;
+            const loadMoreBtn = document.getElementById("loadMoreBtn");
+            if (loadMoreBtn) {
+                loadMoreBtn.style.display = hasMore ? "flex" : "none";
+            }
+            container.innerHTML = html;
+        }
+
+        // 简单防XSS
+        function escapeHtml(str) {
+            if (!str) return "";
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+                return c;
+            });
+        }
+
+        // 重置分页并刷新
+        function refresh() {
+            currentPage = 1;
+            updateStats();
+            renderList();
+        }
+
+        // 加载更多
+        function loadMore() {
+            currentPage++;
+            renderList();
+        }
+
+        // 赞助列表绑定事件
+        function bindEvents() {
+            const sortAmountBtn = document.getElementById("sortByAmount");
+            const sortDateBtn = document.getElementById("sortByDate");
+            const searchInput = document.getElementById("searchInput");
+            const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+            if (sortAmountBtn) {
+                sortAmountBtn.addEventListener("click", () => {
+                    currentSort = "amount";
+                    sortAmountBtn.classList.add("active");
+                    sortDateBtn.classList.remove("active");
+                    refresh();
+                });
+            }
+            if (sortDateBtn) {
+                sortDateBtn.addEventListener("click", () => {
+                    currentSort = "date";
+                    sortDateBtn.classList.add("active");
+                    sortAmountBtn.classList.remove("active");
+                    refresh();
+                });
+            }
+            if (searchInput) {
+                searchInput.addEventListener("input", (e) => {
+                    currentSearch = e.target.value;
+                    refresh();
+                });
+            }
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener("click", loadMore);
+            }
+        }
+
+        (function() {
+            // 加载器隐藏
+            setTimeout(function() {
+                var loader = document.getElementById('siteLoader');
+                if (loader) loader.classList.add('loaded');
+            }, 500);
+
+            // 移动端菜单
+            var mobileToggle = document.getElementById('mobileToggle');
+            var navLinks = document.getElementById('navLinks');
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            // 导航点击：外部链接正常跳转，内部锚点平滑滚动并关闭菜单
+            function initNavLinks() {
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        var href = this.getAttribute('href');
+                        var isInternal = href && href.startsWith('#');
+                        // 先关闭移动菜单
+                        if (mobileToggle && navLinks) {
+                            mobileToggle.classList.remove('active');
+                            navLinks.classList.remove('active');
+                        }
+                        if (isInternal) {
+                            e.preventDefault();
+                            var targetId = href;
+                            var targetEl = document.querySelector(targetId);
+                            if (targetEl) {
+                                var headerHeight = document.querySelector('header').offsetHeight;
+                                var targetPos = targetEl.getBoundingClientRect().top + window.scrollY - headerHeight;
+                                window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                                history.pushState(null, null, targetId);
+                                updateActiveNavItem(targetId);
+                            }
+                        }
+                        // 外部链接不做任何阻止
+                    });
+                });
+            }
+
+            function updateActiveNavItem(forcedTarget) {
+                var current = forcedTarget || window.location.hash;
+                if (!current) current = '#donate';
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    var href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        link.classList.toggle('active', href === current);
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+
+            // 复制联系方式
+            function initCopyContact() {
+                document.querySelectorAll('.copy-contact').forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const contactInfo = this.getAttribute('data-copy');
+                        
+                        const tempInput = document.createElement('input');
+                        tempInput.value = contactInfo;
+                        tempInput.style.position = 'absolute';
+                        tempInput.style.left = '-9999px';
+                        document.body.appendChild(tempInput);
+                        
+                        tempInput.select();
+                        document.execCommand('copy');
+                        
+                        document.body.removeChild(tempInput);
+                        
+                        showNotification(`已复制: ${contactInfo}`, 'success');
+                        
+                        this.classList.add('copied');
+                        setTimeout(() => {
+                            this.classList.remove('copied');
+                        }, 700);
+                    });
+                });
+            }
+
+            // 通知
+            function showNotification(message, type = 'info') {
+                // 将消息中的 URL 转换为可点击链接
+                function linkify(text) {
+                    const urlRegex = /(https?:\/\/[^\s]+)/g;
+                    return text.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener" style="color: #0C6EA9; text-decoration: underline;">$1</a>');
+                }
+                
+                const notification = document.createElement('div');
+                notification.className = `notification notification-${type}`;
+                notification.innerHTML = `
+                    <div class="notification-icon">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+                    </div>
+                    <div class="notification-message">${linkify(message)}</div>
+                `;
+                
+                const container = document.getElementById('notificationContainer');
+                container.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 10);
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => {
+                        container.removeChild(notification);
+                    }, 300);
+                }, 5000);
+            }
+
+            // 返回顶部按钮
+            function initBackToTop() {
+                var btn = document.getElementById('backToTop');
+                if (!btn) return;
+                
+                window.addEventListener('scroll', function() {
+                    btn.classList.toggle('active', window.scrollY > 500);
+                });
+                btn.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                    this.classList.add('animate__animated', 'animate__fadeOutUp');
+                    setTimeout(() => {
+                        this.classList.remove('animate__animated', 'animate__fadeOutUp');
+                    }, 1000);
+                });
+            }
+
+            // 飘落方块装饰（简单版，避免报错）
+            function initFallingBlocks() {
+                var container = document.getElementById('fallingBlocks');
+                if (!container) return;
+                var colors = ['var(--primary)', 'var(--accent)', 'var(--info)', 'var(--stone)', 'var(--redstone)', 'var(--diamond)'];
+                var count = window.innerWidth < 768 ? 8 : 15;
+                for (var i = 0; i < count; i++) {
+                    var block = document.createElement('div');
+                    block.className = 'falling-block';
+                    var size = Math.random() * 15 + 10;
+                    block.style.width = size + 'px';
+                    block.style.height = size + 'px';
+                    block.style.left = Math.random() * 100 + '%';
+                    block.style.animationDuration = Math.random() * 20 + 10 + 's';
+                    block.style.animationDelay = Math.random() * 15 + 's';
+                    block.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    container.appendChild(block);
+                }
+            }
+
+            // 服务器成立正计时
+            function updateServerUptime() {
+                // 需要配置的部分：设置服务器成立日期和时间
+                const serverStartDate = new Date('2023-02-01T00:00:00'); // 格式：YYYY-MM-DDTHH:MM:SS，按需修改
+
+                const now = new Date();
+                const diffMs = now - serverStartDate; // 相差毫秒数
+
+                if (diffMs < 0) {
+                    document.getElementById('serverUptime').innerText = '服务器即将上线，敬请期待！';
+                    return;
+                }
+
+                const totalSeconds = Math.floor(diffMs / 1000);
+                const days = Math.floor(totalSeconds / 86400);
+                const hours = Math.floor((totalSeconds % 86400) / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+
+                document.getElementById('serverUptime').innerHTML = 
+                    `陆上彗星服务器已成立 <strong>${days}天${hours}小时${minutes}分${seconds}秒</strong>`;
+            }
+
+            // 立即执行一次
+            updateServerUptime();
+
+            // 每秒更新一次
+            setInterval(updateServerUptime, 1000);
+
+            function initDonors() {
+                fetch('./data/donors.json')
+                .then(res => res.json())
+                .then(data => {
+                    allDonors = data;
+                    bindEvents();    // 数据加载完成后再绑定事件
+                    refresh();       // 数据加载完成后再渲染
+                })
+                .catch(err => {
+                    console.error('加载赞助数据失败:', err);
+                    // 即使加载失败也要保证界面不报错
+                    allDonors = [];
+                    bindEvents();
+                    refresh();
+                });
+            }
+            
+            // 顶栏动态变化
+            function initNavigation() {
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                const scrollPosition = window.scrollY;
+                
+                header.classList.toggle('scrolled', scrollPosition > 10);
+            })}
+
+            // 页面启动
+            window.addEventListener('DOMContentLoaded', function() {
+                initNavLinks();
+                initCopyContact();
+                initBackToTop();
+                initFallingBlocks();
+                initNavigation();
+                initDonors();
+                updateActiveNavItem('#donate');
+                
+                // 如果页面滚动导致菜单残留，强制重置
+                window.addEventListener('scroll', function() {
+                    var mobileToggleElem = document.getElementById('mobileToggle');
+                    var navLinksElem = document.getElementById('navLinks');
+                    if (mobileToggleElem && navLinksElem && navLinksElem.classList.contains('active')) {
+                        mobileToggleElem.classList.remove('active');
+                        navLinksElem.classList.remove('active');
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
