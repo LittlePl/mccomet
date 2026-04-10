@@ -199,7 +199,7 @@
         bottom: 0.8px;
     }
     .level-badge-sub {
-        color: gray;
+        color: rgba(255, 255, 255, 0.5);
     }
     /* 搜索排序栏 */
     .search-sort-bar {
@@ -370,6 +370,17 @@
         margin-top: 2rem;
     }
     @media (max-width: 768px) {
+        .donate-intro-card {
+            margin: 0;
+            margin-bottom: 20px;
+        }
+        .donate-main {
+            padding: 0;
+            margin-top: 0;
+        }
+        .donate-card {
+            margin-bottom: 20px;
+        }
         .level-badge-container {
             flex-direction: column;
             gap: 8px;
@@ -480,7 +491,7 @@
                             </div>
                             <h4 style="margin: 12px 0;">微信支付</h4>
                             <img id="wechat-qrcode" class="qr-img" src="./assets/images/微信收款码.png" alt="微信收款码">
-                            <p class="donate-tips-text" style="font-size: 0.8rem;">扫码后备注<b>游戏ID+留言</b></p>
+                            <p class="donate-tips-text" style="font-size: 0.8rem;">扫码后备注<b>你的昵称+留言</b></p>
                         </div>
                         <!-- 支付宝卡片 -->
                         <div class="qr-card">
@@ -489,7 +500,7 @@
                             </div>
                             <h4 style="margin: 12px 0;">支付宝</h4>
                             <img id="alipay-qrcode" class="qr-img" src="./assets/images/支付宝收款码.png" alt="支付宝收款码">
-                            <p class="donate-tips-text" style="font-size: 0.8rem;">扫码后备注<b>游戏ID+留言</b></p>
+                            <p class="donate-tips-text" style="font-size: 0.8rem;">扫码后备注<b>你的昵称+留言</b></p>
                         </div>
                     </div>
                     <div class="donate-tips" style="margin-top: 15px;">
@@ -506,7 +517,7 @@
                     <ol style="margin-top: 18px; padding-left: 20px; color: rgba(255,255,255,0.85);">
                         <li>选择微信或支付宝扫描上方二维码</li>
                         <li>输入金额（≥10元可显示留言内容）</li>
-                        <li>备注栏填写：<strong>游戏ID + 想说的话</strong>（例如：彗星玩家_祝服务器越来越好）</li>
+                        <li>备注栏填写：<strong>你的昵称 + 想说的话</strong>（例如：彗星玩家_祝服务器越来越好）</li>
                         <li>完成支付，管理员审核后自动展示在赞助榜</li>
                     </ol>
                     <div class="donate-tips">
@@ -611,7 +622,7 @@
                         </div>
                         <div class="faq-item">
                             <strong><i class="fas fa-clock"></i> 如何确认我的赞助已被收到？</strong>
-                            <p style="font-size: 0.85rem; margin-top: 6px;">每日晚间统一审核处理，管理员会通过游戏内邮件或社区私信与你确认，赞助榜同步更新。</p>
+                            <p style="font-size: 0.85rem; margin-top: 6px;">每日晚间统一审核处理，管理员会通过邮件或社区私信与你确认，赞助榜同步更新。</p>
                         </div>
                     </div>
                 </div>
