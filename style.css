@@ -15,6 +15,10 @@
 }
 
 :root {
+    --ct: #65499B;
+    --mcg: #333333;
+    --mcg-light: #7d7d7d;
+
     --primary: #2c4a8b;
     --primary-light: #6083cf;
     --primary-dark: #13264e;
@@ -269,6 +273,56 @@ body::before {
     margin-right: auto;
     color: rgba(255, 255, 255, 0.8);
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.intro {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.intro h3{
+    font-size: 1.5rem;
+    margin: 0px 0 7px;
+}
+.intro-card {
+    text-align: center;
+    padding: 40px 33px;
+    margin: 0 2em 0;
+    max-width: 810px;
+}
+.intro-icon-container {
+    width: 80px;
+    height: 80px;
+    margin: -5px auto 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    font-size: 1.7rem;
+    color: var(--primary-light)
+}
+.intro-text-container {
+    display: flex; 
+    min-width: 600px; 
+    justify-content: center;
+}
+.intro-tips {
+    margin: 5px 5px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.intro-tips-text {
+    margin: 0 8px 0;
+    font-size: 0.85rem;
+}
+.intro-tips-text i {
+    position: relative;
+    color: #5ABD3C;
+    bottom: -0.09rem;
 }
 
 .row {
@@ -2399,24 +2453,6 @@ header.scrolled {
     margin: auto;
     margin-bottom: 20px;
     position: relative;
-}
-
-.subserver-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://image.baidu.com/search/down?url=https://wx4.sinaimg.cn/large/008EsglKly1ib5lqr9atqj31410u010i.jpg');
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.3s ease, filter 0.3s ease;
-    z-index: 0;
-}
-
-.subserver-bg.zoomed {
-    transform: scale(1.03);
-    filter: brightness(0.75);
 }
 
 .subserver-section .container {

@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comet 陆上彗星 - 时间线</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="timeline.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.7/viewer.min.css" integrity="sha512-vRbASHFS0JiM4xwX/iqr9mrD/pXGnOP2CLdmXSSNAjLdgQVFyt4qI+BIoUW7/81uSuKRj0cWv3Dov8vVQOTHLw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.7/viewer.min.js" integrity="sha512-lZD0JiwhtP4UkFD1mc96NiTZ14L7MjyX5Khk8PMxJszXMLvu7kjq1sp4bb0tcL6MY+/4sIuiUxubOqoueHrW4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<style>
+    body {
+        background-color: rgba(28, 21, 81, 0);
+        background: linear-gradient(180deg, rgb(28, 21, 81, 1), #333333 90%, var(--dark) 100%);
+    }
+</style>
+<script>
+    function previewImg() {
+        var viewer = new Viewer(document.getElementById('viewer'), {
+            button: true,
+            inline: false,
+            zoomable: true,
+            title: true,
+            tooltip: true,
+            minZoomRatio: 0.25,
+            maxZoomRatio: 2,
+            movable: true,
+            interval: 2000,
+            navbar: true,
+            loading: true,
+            rotatable: false,
+            scalable: false,
+            show: function () {
+                viewer.update();
+            }
+        });
+    }
+</script>
+<body>
+    <div class="loader" id="siteLoader">
+        <div class="minecraft-loader">
+            <div class="minecraft-loader-block"></div>
+            <div class="minecraft-loader-block"></div>
+            <div class="minecraft-loader-block"></div>
+            <div class="minecraft-loader-block"></div>
+        </div>
+    </div>
+
+    <div class="bg-decoration deco-1"></div>
+    <div class="bg-decoration deco-2"></div>
+    <div class="bg-decoration deco-3"></div>
+    <div class="bg-decoration deco-4"></div>
+    <div class="bg-decoration deco-diamond"></div>
+    <div class="bg-decoration deco-gold"></div>
+    <div class="bg-decoration deco-redstone"></div>
+    <div class="minecraft-bg"></div>
+    <div class="falling-blocks" id="fallingBlocks"></div>
+
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="assets/images/server-logo.png" alt="服务器 Logo">
+                    <div class="logo-text">陆上<span>彗星</span></div>
+                </a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html#home">首页</a></li>
+                    <li><a href="./team.html">玩家团体</a></li>
+                    <li><a href="#time-line">时间线</a></li>
+                    <li><a href="./donate.html" target="_blank">赞助支持</a></li>
+                    <li><a href="https://doc.mccomet.top/" target="_blank">文档站</a></li>
+                    <li><a href="index.html#join-us">加入服务器</a></li>
+                </ul>
+                <div class="mobile-toggle" id="mobileToggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <section id="time-line" class="time-line" style="padding-top: 200px;">
+        <div id="viewer" class="container" style="max-width: 1500px;">
+            <h2 class="section-title">服务器<span>时间线</span></h2>
+            <p class="section-subtitle" style="margin-bottom: 80px;">回顾我们一路走来的艰苦历程，万事从来没有一帆风顺。</p>
+
+            <div class="intro" style="margin-bottom: 80px;">
+                <div class="intro-card glass-card">
+                    <div class="intro-icon-container">
+                        <i class="fa fa-info"></i>
+                    </div>
+                    <h3>温馨提示</h3>
+                    <div class="intro-text-container">
+                        <span style="text-align: left;">
+                            <li>聊天记录截图中出现的用户头像不代表过往头像；</li>
+                            <li>点击图片可放大查看；</li>
+                            <li>有些图片截取日期可能不是当天，请注意；</li>
+                            <li>本页面图片内容较多，若加载较慢，可尝试更换网络环境。</li>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="timeline-title">梦开始的地方</h3>
+            
+            <div class="breaking-event-container">
+                <div class="visual-wrapper">
+                    <div class="tilt-container">
+                        <div class="device-frame">
+                            <div class="carousel-container">
+                                <div class="carousel-track">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic58bos1gmj30d907dad0.jpg" alt="一周目存档封面">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic59vmaohvj318g0p07wh.jpg" alt="一周目存档截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic59vo9efjj318g0p01kx.jpg" alt="一周目存档截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic59vnwajdj318g0p07wh.jpg" alt="一周目存档截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic59vnelegj318g0p0qv5.jpg" alt="一周目存档截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic59vmy0lnj318g0p01kx.jpg" alt="一周目存档截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic59vmpvymj318g0p0b1p.jpg" alt="一周目存档截图">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="breaking-content-wrapper">
+                    <h2 class="main-heading">2022年<span>2月16日</span></h2>
+                    <div class="description">
+                        <p>这是一个平凡的一天，Yanda 偶然在B站刷到了一条免费开服视频，Yanda 对此很感兴趣，于是便走上了一条不归路……
+                        <p>与此同时，Yanda 的同学 Kongtou 得知了这个消息，他邀请了他在其他服务器结识的几个最好的朋友和一个同学，创建了一个服务器QQ群。
+                        <p>服务器的一周目存档也在这一天被创建，版本为1.18.10。</p>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="timeline" style="--hexa-color: var(--ct);">
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6h4fp044j318g0p0k8m.jpg" alt="公告"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年2月16日</span>
+                        </div>
+                        <div class="desc">
+                            Yanda 正在研究资源包，实现游戏内唱片音乐的更换。这是后来服务器唱片包和其他服务器资源包的基础。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic57t6tk9oj30u01uo7c4.jpg" alt="公告"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年2月17日</span>
+                        </div>
+                        <div class="desc">
+                            服务器诞生了她的第一个公告，公告由 Yanda 撰写，记录了服务器的IP、端口、服务器上线人数、服务器配置（磁盘、内存、双核）等信息。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6hekkq7lj30u01uoqbs.jpg" alt="娱乐服务器开服公告"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic6h8co7vbj318g0p07wh.jpg" alt="娱乐服务器截图 - 躲猫猫"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic6ha7ggy4j318g0p0axj.jpg" alt="娱乐服务器截图 - 起床战争大厅"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic6hcdf77nj318g0p04qp.jpg" alt="娱乐服务器截图 - 躲猫猫：Yanda与🐮对话记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年2月21日</span>
+                        </div>
+                        <div class="desc">
+                            Yanda 开设了另外一个服务器，是一个娱乐性服务器，主要使用网上的玩法性存档（如起床战争、躲猫猫等）。这个行为也意味着服务器以后可能会成为一个群组服务器。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic6ixptdgmj31z61304oy.jpg" alt="LiteLoaderBDS在MineBBS论坛上的页面（2022年5月）"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic79maq9p7j30u01uo7m4.jpg" alt="增添插件支持公告"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年2月24日</span>
+                        </div>
+                        <div class="desc">
+                            Yanda 之前在网上了解到了 LiteLoaderBDS，知道了插件能为服务器带来很多的可能性之后，顿感兴奋，并在今天为服务器新增了插件支持。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6j2dlqwnj30u01a277v.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6j2dr4zuj30u00uvgnx.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年3月</span>
+                        </div>
+                        <div class="desc">
+                            由于服主需要上学，平日无法打理服务器，又因为该免费面板服在长时间无在线人数的情况下会自动关闭，因此服务器经历了一段时间的冷淡期。
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3 class="timeline-title">萌芽的生长</h3>
+
+            <div class="breaking-event-container">
+                <div class="visual-wrapper">
+                    <div class="tilt-container">
+                        <div class="device-frame">
+                            <div class="carousel-container">
+                                <div class="carousel-track">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6obm3ix5j30u00vs47r.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6obly74kj30u0188tif.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6obljbqsj30u01u11fs.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6obl6akgj30u01edao0.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6obkyc5hj30u019twrr.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6oblryc6j30u01enqhd.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6obkoq0oj30u02qbkim.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6obkcx2dj30u01ihqht.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6objugklj30u01jvaqd.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6objil18j30u01ujdz4.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6obj7k4jj30u016xqep.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6obixfxhj30u025ykd5.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6obij2lvj30u02q81kx.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6obhypyxj30u01fok81.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6obhkisuj30u01cxn9f.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic6olgkvtuj318g0p07wh.jpg" alt="Yanda 第一次使用行为日志">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="breaking-content-wrapper">
+                    <h2 class="main-heading">2022年<span>4月</span></h2>
+                    <div class="description">
+                        <p>Kongtou 当时也是其他服务器 MysteryGift （下称MG）的管理员，于是邀请了这个服务器的腐竹 Xiaoyou 和其他服务器的好友成鱼头到自己的服务器中，进行指导、宣传和担当技术支持。
+                        <p>Kongtou 和 Yanda 也在这段时间逐渐了解了<font color="00DFFF">VPS、面板、菜单、行为日志、反作弊、备份、云端黑名单</font>这些开服工具和必备插件。</p>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="timeline" style="--hexa-color: var(--ct);">
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic79noevgmj30j60rrjvx.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年4月17日</span>
+                        </div>
+                        <div class="desc">
+                            Kongtou 决定为服务商付费，以使用能长期在线的服务器。此时服务器仍为面板服。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6nqh61thj30u01a7gpg.jpg" alt="公告"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic6nqhb485j30tv0vmq5j.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年4月17日</span>
+                        </div>
+                        <div class="desc">
+                            <p>服务器的第一个兑换码横空出世。</p>
+                            同时，Kongtou 提出了一个当 OP 的要求：和他关系好的基本都给（必须对服务器很熟或者开服元老）。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic6nrxm4vzj30u00nk40n.jpg" alt="名场面"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年4月19日</span>
+                        </div>
+                        <div class="desc">
+                            Kongtou 励志要成为全能腐竹。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6nsvtxtnj30u01a041r.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="" alt="群头像"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年4月20日</span>
+                        </div>
+                        <div class="desc">
+                            服务器有了一个名称：Create top（下称CT），由成鱼头提出，群头像也在此时被设计出来，由成鱼头设计。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6o30lxwoj30u031q1kx.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年4月21日</span>
+                        </div>
+                        <div class="desc">
+                            Kongtou 预算吃紧，但与 Xiaoyou 和其他管理进行一段时间的讨论后，被VPS的自由性和可操作性深深吸引，决定下个月倾家荡产也要给服务器更换VPS。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6nvtyy6mj30u00eggml.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年4月23日</span>
+                        </div>
+                        <div class="desc">
+                            在 Xiaoyou 的帮助下，服务器有了第一个域名：mc-create.top，由 Xiaoyou 帮忙注册。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6nwuqzwmj30u00yjtbi.jpg" alt="公告"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6nwuzatnj30u01eq11m.jpg" alt="公告"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年4月30日</span>
+                        </div>
+                        <div class="desc">
+                            Kongtou 宣布娱乐服务器在节假日限时开放，进入方法为在主服跨服进入。这也是后来我们开设群组服的基础。
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="breaking-event-container">
+                <div class="visual-wrapper">
+                    <div class="tilt-container">
+                        <div class="device-frame">
+                            <div class="carousel-container">
+                                <div class="carousel-track">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic6ow69kybj318g0p07n3.jpg" alt="屏幕截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic6owmd1xyj318g0p0arz.jpg" alt="屏幕截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic6ox255vyj318g0p0nh2.jpg" alt="屏幕截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic6oxl6dn5j318g0p04j2.jpg" alt="屏幕截图">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="breaking-content-wrapper">
+                    <h2 class="main-heading">2022年<span>5月1日</span></h2>
+                    <div class="description">
+                        <p>服务器由面板服更换为VPS，标志着 Create top 服务器正式成立。（远程桌面真的是太神奇了）</p>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="timeline" style="--hexa-color: var(--ct);">
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7b4hyl8kj31hc0u0b29.jpg" alt=""></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年5月2日</span>
+                        </div>
+                        <div class="desc">
+                            <p>Yanda 设计了一个排版，用来展示服务器唱片包所用的音乐。</p>
+                            往后的日子里，此唱片包也是在不断迭代更新之中。
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3 class="timeline-title">并不总是顺利</h3>
+
+            <ul class="timeline" style="--hexa-color: var(--ct);">
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic79pw5i1dj30j61fsqbx.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6pwsor3ij31z914c4qr.jpg" alt="屏幕截图"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6pwtvy6dj31z115f1l0.jpg" alt="屏幕截图"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年5月5日</span>
+                        </div>
+                        <div class="desc">
+                            <p>服务器发生了第一次熊服事件，危及规模较大，出生点附近的建筑群均被炸毁或烧毁。</p>
+                            在 Xiaoyou 的帮助下，我们完善了日志和反作弊插件，并成功回档到了熊服的前一天。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6qge6o5zj30ty0o0jw8.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6qgepkb5j30u01jt780.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6qgejvj6j30u01mkafj.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic6qgec26ej30u014yada.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年5月18日</span>
+                        </div>
+                        <div class="desc">
+                            <p>MG 服主 Xiaoyou 宣布与CT解除一切合作关系。</p>原因为我服一位管理在对方服务器进行破坏，并试图分裂玩家组织、破坏服务器玩家生态。
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3 class="timeline-title">立足、发展、不断探索</h3>
+
+            <ul class="timeline" style="--hexa-color: var(--ct);">
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic79ejw8wfj30u01uowlv.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年5月29日</span>
+                        </div>
+                        <div class="desc">
+                            <p>服务器管理 Yanda 创建了一个QQ频道。</p>
+                            由于频道支持富文本发帖，Yanda 考虑今后在频道发布公告。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic79f4isyzj30ty0i5q7h.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic79ggi3ldj30u019vtcb.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年6月3日</span>
+                        </div>
+                        <div class="desc">
+                            这天服务器来了一位新成员。他是服务器现存最老公会的领主 xbh6661800 。与此同时……
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7a0lb04kj30u03cb7wh.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7a29esgwj30tv119115.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7a0kk652j30u045hb29.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7a5yj8i8j30u013dk45.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年6月3日</span>
+                        </div>
+                        <div class="desc">
+                            <p>服主 Kongtou 正在收拾烂摊子，将之前退出的代理服主 Xiaoyou 极力挽回。</p>
+                            后续 Xiaoyou 将涉事管理的账号送上云黑，此事件暂时平息。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7a7xt3t0j30tm0t00yz.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7kg4y9fcj30u01uodlb.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年6月7日</span>
+                        </div>
+                        <div class="desc">
+                            <p>FourWater，也是服务器后续管理的中坚力量，第一次进入服务器。</p>
+                            由于他对新玩家非常友好、时不时给新玩家建议、时间充裕，且有非常积极的管理服务器意向，他后来被 Kongtou 无条件选为了我们服务器的管理员。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7a7y1p3qj30u01myduc.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年6月8日</span>
+                        </div>
+                        <div class="desc">
+                            服主 Kongtou 宣布服务器将成立 Java 服务器分支，版本为1.12.2纯生存。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7a9s683ij30u01b07p8.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年6月19日</span>
+                        </div>
+                        <div class="desc">
+                            服务器管理员 Yanda 面临了一个困境：服务器因为插件适配无法升级至最新版本，因此 Yanda 考虑如何照顾与补偿玩家。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7aai02avj30u01yo7n9.jpg" alt="公告"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年7月1日</span>
+                        </div>
+                        <div class="desc">
+                            <p>服务器技术员 Yanda 尝试将服务器更新至最新版本（从1.18更新至1.19），历时三小时，最终成功无损更新。</p>
+                            这是 Yanda 第一次对服务端进行版本更新操作，Yanda 对本次升级感到非常兴奋。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7ac8uvvvj30u01g3k9h.jpg" alt="公告"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7airoqyaj30tw1j2nji.jpg" alt="频道公告"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年7月17日</span>
+                        </div>
+                        <div class="desc">
+                            <p>CT服务器管理层处理了一起服务器管理失职事件。</p>
+                            这是服务器第一次对管理员进行处罚，且如此严厉。涉事管理为服务器开服元老，也是服主的同学，该玩家现已离开服务器。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年<span>7月、8月</span></span>
+                        </div>
+                        <div class="desc">
+                            随着东方智障（xbh6661800）、凯露酱（Axolotl3613）、润太祖（Honest man）、堀与宫村第一共和国主席（UsingUnicorn872）等一代活跃玩家在服务器的牵头活跃，和服务器广泛投放的宣传，服务器变得愈发热闹起来，新玩家越来越多，服务器设施越来越全面，存档也在持续膨胀。
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="breaking-event-container">
+                <div class="visual-wrapper">
+                    <div class="tilt-container">
+                        <div class="device-frame">
+                            <div class="carousel-container">
+                                <div class="carousel-track">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7am7a93vj318g0p0h94.jpg" alt="屏幕截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7ac925fxj30u01igndd.jpg" alt="聊天记录"  class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic7b7hfs3mj318g0p0e11.jpg" alt="看Yanda操作">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7asu4d1nj318g0p01kx.jpg" alt="屏幕截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7astpxa9j318g0p01kx.jpg" alt="屏幕截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7astc0mbj318g0p01kx.jpg" alt="屏幕截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7bdruwtdj318g0p0e1c.jpg" alt="新徽标的设计">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic7avmfqb7j318g0p04gp.jpg" alt="服务器频道截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic7avw5zivj318g0p07ov.jpg" alt="试图在游戏内原神启动">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7ay8qfxpj318g0p0h53.jpg" alt="称号系统更新">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7ayqzdhdj318g0p0e08.jpg" alt="《嘎嘣脆》">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7airz895j30tv1j87n0.jpg" alt="频道公告"  class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7aisdbs4j30tv1krqq3.jpg" alt="频道公告"  class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7ayrf489j318g0p0hdt.jpg" alt="仅剩的一张新手村截图">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="breaking-content-wrapper">
+                    <h2 class="main-heading">2022年<span>8月</span></h2>
+                    <div class="description">
+                        <p>服务器持续发布五月更新、六月更新、七月更新、八月更新，包括众多功能性插件和资源包的变化，服务器越来越完善，资源包提供的音频也越来越丰富。</p>
+                        <p>Yanda 也在着手准备服务器主城，叫做新手村，里面包含许多功能性建筑，供玩家自主处理一些事务。</p>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="timeline" style="--hexa-color: var(--ct);">
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7cjq6tj4j30u01uon51.jpg" alt="公告"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年8月12日</span>
+                        </div>
+                        <div class="desc">
+                            服务器BOT第一次在群聊中发送消息，这是后续服务器自助白名单系统和群服互通的基础。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7cke2mdej30tq1cn7dm.jpg" alt="频道公告"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年8月13日</span>
+                        </div>
+                        <div class="desc">
+                            <p>Create top 环境资源包实装，该资源包负责向服务器添加音频或修改游戏中的音频和部分材质。</p>
+                            同期服务器的鸡叫被改为了坤叫。
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3 class="timeline-title">天塌了！</h3>
+
+            <div class="breaking-event-container">
+                <div class="visual-wrapper">
+                    <div class="tilt-container">
+                        <div class="device-frame">
+                            <div class="carousel-container">
+                                <div class="carousel-track">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic7b65l2c5j318g0p0dv6.jpg" alt="出事后与服务商沟通的聊天记录截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic7b65teo6j318g0p07jj.jpg" alt="出事后与服务商沟通的聊天记录截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic7b6614luj318g0p0dv9.jpg" alt="出事后与服务商沟通的聊天记录截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7cd2hm3tj30u02hr4gd.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7cd2qv9mj30u00y9jyh.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7cyickmpj30u03r34qp.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7cyjrpiqj30tz14sdnu.jpg" alt="与服务商的聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7cyk19taj30u01dbgyo.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7idra1gcj30tv1f5agn.jpg" alt="与服务商的聊天记录" class="img-contain">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="breaking-content-wrapper">
+                    <h2 class="main-heading">2022年<span>8月17日</span></h2>
+                    <div class="description">
+                        <p>这是一个与平常无两样的小暑假。常日挂着远程桌面进行游戏的 Yanda 在悠闲地建设新手村时，突然收到远程桌面断开连接的消息，同时服务器也断开连接。重新连接很多次之后仍然连不上。
+                        <p>意识到事情不妙的 Yanda 第一时间与服务商沟通，得知是服务商升级机器，但并未通知到我们，导致以前服务器的所有数据永久消失，且无法挽回。这无疑给了我们一个很大的打击。
+                        <p>全体管理心如死灰，对服务商大失所望。整个后半月，服务器管理没有在群聊内发送过一条消息。<s>（实际上是开学了）</s></p>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="timeline" style="--hexa-color: var(--ct);">
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7c7moulwj30u01kq16f.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7c7nbb4uj30u023t4ij.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年8月22日</span>
+                        </div>
+                        <div class="desc">
+                            Xiaoyou 在得知服务器数据全部被写 0 这件事后，好心地为CT服务器提供临时性服务器，等到CT的管理员回来之后，这些数据全都归CT所有。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7c7n0xe0j30u02y24qp.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022月8月24日</span>
+                        </div>
+                        <div class="desc">
+                            一个服务器活跃玩家（堀与宫村第一共和国主席）公开吐槽服务器近月发生的事情，为自己这段时间在服务器的辛勤付出感到惋惜。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年<span>9月</span></span>
+                        </div>
+                        <div class="desc">
+                            <p>一个惊喜的发现！Yanda 偶然发现自己的电脑上还存放着5月份服务器在升级测试资源包时拷贝下来的服务器存档。</p>
+                            在与 Kongtou 商量后，Yanda 决定在即将到来的一天半的中秋节假期中复活服务器（虽说插件全部要从0配置）。
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="breaking-event-container">
+                <div class="visual-wrapper">
+                    <div class="tilt-container">
+                        <div class="device-frame">
+                            <div class="carousel-container">
+                                <div class="carousel-track">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7cq74dncj30u01igqhv.jpg" alt="公告" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7cr90ya4j30x00ej779.jpg" alt="云盘界面" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7cyjewnaj30tu1mftiu.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7cp9gq0hj30u00hmtdf.jpg" alt="聊天记录" class="img-contain">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="breaking-content-wrapper">
+                    <h2 class="main-heading">2022年<span>9月10日</span></h2>
+                    <div class="description">
+                        <p>经过一段时间的平息，管理层决定更换服务商（与MG服务器的服务商一致）重新开服。
+                        <p>终于迎来了一次节假日，管理历时一晚上加一上午的鏖战，凭着本地测试拷贝的存档，和论坛上的插件资源，服务器基本成功复活，但存档从8月份回退到了5月份，众多活跃玩家数据无力挽回，新手村计划也无限期搁置。</p>
+                        <p>从此以后，服务器有了云端备份，Yanda 选用了当时不限速的阿里云盘作为存储媒介，不定期上传服务器存档。</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="timeline-title">沉住气</h3>
+
+            <ul class="timeline" style="--hexa-color: var(--ct);">
+                <li>
+                    <div class="direction-r">
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年9月11日</span>
+                        </div>
+                        <div class="desc">
+                            其他子服务器（如娱乐服务器）也渐渐开始恢复。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7kf4ylfoj30u017kaqa.jpg" alt="公告"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年9月28日</span>
+                        </div>
+                        <div class="desc">
+                            服主 Kongtou 突然宣布自己退学，并宣称自己将有更多时间管理服务器。这或许正是他人格转变的开端。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7kqnxt0zj30u00tawma.jpg" alt="公告"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年<span>10月</span></span>
+                        </div>
+                        <div class="desc">
+                            管理员 FourWater 开始为服务器投放宣传，主要通过在各个频道发布帖子的方式。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7kjgynjuj30u020r7nm.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7kjh6uzxj30tx14xjz1.jpg" alt="投票"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年11月12日</span>
+                        </div>
+                        <div class="desc">
+                            服务器决定上线公会系统。彼时服务器涌现出许多公会团体，玩家活跃度也开始回暖。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7kl6ixzdj30u01mg1bn.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7myacw7mj30u00icdl2.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2022年11月29日</span>
+                        </div>
+                        <div class="desc">
+                            因为服务器资源包，一个会长开始悄悄种下萌芽。又因为有了公会系统的辅助，服务器新晋公会《只因》开始迅速发展。
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3 class="timeline-title">友谊的结盟</h3>
+
+            <div class="breaking-event-container">
+                <div class="visual-wrapper">
+                    <div class="tilt-container">
+                        <div class="device-frame">
+                            <div class="carousel-container">
+                                <div class="carousel-track">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7l6frdanj30k018gtbk.jpg" alt="服务商聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7l6g8jdoj30k018gq6q.jpg" alt="服务商聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7l6gjlovj30u01wnndk.jpg" alt="聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7l6gtskrj30u01uowjf.jpg" alt="MG服主与服务商的聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7l6h5qs7j30u01uo79m.jpg" alt="MG服主与服务商的聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7l6hehiyj30u01uowjt.jpg" alt="MG服主与服务商的聊天记录" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7l50l0qtj30u01o6h2t.jpg" alt="合服公告" class="img-contain">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7lkmstxlj318g0p0kjl.jpg" alt="屏幕截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7lkm9c8tj318g0p0azw.jpg" alt="屏幕截图">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7lkn7eddj318g0p0hdt.jpg" alt="屏幕截图">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="breaking-content-wrapper">
+                    <h2 class="main-heading">2023年<span>1月7日</span></h2>
+                    <div class="description">
+                        <p>服务器面临停服危机。起因为：在联系服务商续费时，服务商竟坐地起价，原先沟通好的一个月80突然变成了第一个月80，这让我们很是费解。由于我们的合作服务器 MG 和我们使用的是相同的服务商，据 Xiaoyou 说，此服务商还有过超开的迹象。</p>
+                        <p>最终两服达成共识，强强合作，毅然决定合并服务器，并更换其他有资质的服务商，存档数据共享，由此 MyCreateGift 服务器（下称MCG）成立。</p>
+                    </div>
+                    <div class="btn-group">
+                        <a href="maintenance.html" class="btn btn-secondary" style="margin: unset unset 0; animation-delay: 0.4s;">
+                            简要回顾 MG 服务器历史
+                        </a>
+                    </div>
+                </div>                
+            </div>
+
+            <ul class="timeline" style="--hexa-color: var(--mcg-light);">
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7kw85r72j30u01myncd.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7kw8h3kwj30u024ftsp.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7kw8pahaj30u0154128.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper" style="--hexa-color: var(--ct);">
+                            <span class="hexa"></span>
+                            <span class="flag">2023年1月7日</span>
+                        </div>
+                        <div class="desc">
+                            面临停服危机，服务器群中的一个自建服务器的大佬主动提出为服务器贡献主机，Kongtou 封他为大股东。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7lac448mj30u00ovdh6.jpg" alt="公告"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7labygqdj30u013n461.jpg" alt="公告"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2023年1月8日</span>
+                        </div>
+                        <div class="desc">
+                            经讨论，服主 Xiaoyou 宣布保留原 CT 的生存服务器存档，原CT服务器空岛将与原MG空岛耦合，且CT空岛将会停服。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://www.helloimg.com/i/2026/04/15/69df57ddcf5b8.jpg" alt="服务器头像"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2023年1月9日</span>
+                        </div>
+                        <div class="desc">
+                            服务器的 Logo 被重新设计。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7le9k5p4j30u00y4n6y.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic7ljar7iaj318g0p0kjl.jpg" alt="屏幕截图"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2023年1月12日</span>
+                        </div>
+                        <div class="desc">
+                            MCG服务器新开设了一个大厅服，这是通往其他服务器的枢纽。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7leslxo5j30u01g3n8t.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7lesubu3j30u00zrn5d.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7let7997j30u02k1avm.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic7lffu93rj31hc0u01kz.jpg" alt="合照"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2023年1月15日</span>
+                        </div>
+                        <div class="desc">
+                            服务器管理层为庆祝 MG 服务器周年，在 MCG 服务器举办了周年庆活动，并诞生了服务器的第一个合照 —— 一周年合照。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7lqfcj90j30zk0hsdjt.jpg" alt="屏幕截图"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7lqf6wptj30zk0g0jum.jpg" alt="屏幕截图"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/large/008EsglKly1ic7lqeur83j32gw1e0b2d.jpg" alt="合照"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2023年1月22日</span>
+                        </div>
+                        <div class="desc">
+                            MCG 服务器新年合照在MCG大厅服拍摄。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7luurr70j30u00rhdlz.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7luuj966j30tz3fxe28.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2023年1月27日</span>
+                        </div>
+                        <div class="desc">
+                            Kongtou 第一次在服务器群聊发送“测你们码”，且以“@全体成员”形式发送，引起群内成员广泛讨论。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-r">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7lwa60rrj30u0117n7d.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7lwaeyysj30u013cgvp.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7lw9yhdrj30u00w9qb0.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2023年1月28日</span>
+                        </div>
+                        <div class="desc">
+                            一个新的服务器 —— 纷争势力服务器，计划在隔天开服，玩法类似于长期公会战。
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="direction-l">
+                        <div class="timeline-photos">
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7m03puw1j30u033fqp3.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7m04mmxhj30u01j8ds5.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7m04tsrwj30u01cvdqa.jpg" alt="聊天记录"></div>
+                            <div class="photo-item"><img src="https://cdn.ipfsscan.io/weibo/mw690/008EsglKly1ic7m0513egj30u00r345j.jpg" alt="聊天记录"></div>
+                        </div>
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="flag">2023年1月29日</span>
+                        </div>
+                        <div class="desc">
+                            纷争势力服务器还未开服，管理员 Kongtou 给一名玩家发放装备，然而却有人举报，事后这名被发装备的玩家在群内自爆，引起 Xiaoyou 注意。
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3 class="timeline-title">反骨</h3>
+
+            <div class="breaking-event-container">
+                <div class="visual-wrapper">
+                    <div class="tilt-container">
+                        <div class="device-frame">
+                            <div class="carousel-container">
+                                <div class="carousel-track">
+                                    <img src="https://cdn.ipfsscan.io/weibo/mw690/" alt="聊天记录" class="img-contain">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="breaking-content-wrapper">
+                    <h2 class="main-heading">2023年<span>1月31日</span></h2>
+                    <div class="description">
+                        <p>因服务器内部矛盾，原MG服主 Xiaoyou 与管理层爆发冲突。事件源于CT管理 Kongtou 因误操作引发的风波——其在未开放的纷争势力服务器中向玩家发放装备之后，该玩家却在交流群内"自爆"并暗示管理滥用权限，迫使 Kongtou 为平息事态将其移出群聊。然而Xiaoyou非但未调查真相，反而借机发难，意图剥夺 Kongtou 管理权限，其"护短"姿态与独断作风令团队深感忧虑。
+                        <p>谈判中，以MG高管 Cheyi 为首的CT方代表，与 Z 等人据理力争，逐一揭露 Xiaoyou 架空原服主、篡改群名抹除CT印记、默许恶意举报等行径。面对"踩你脸上你还征求别人意见"的跋扈言论与"我授权给我自己"的荒诞操作，CT方始终秉持理性，以聊天记录为铁证，驳斥其"改名即换壳"的诡辩。当 Xiaoyou 最终以"我懒得"彻底摆烂时，CT方已完整收回服务器数据，宣告合作破裂。此役CT方以玩家利益为先、以程序正义为盾，在舆论与实质层面均赢得主动，为新服务器的独立运营奠定基石。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="time-line-end">
+        <div class="container" style="margin: 5rem auto 0">
+            <h2 class="section-title">故事还在继续</h2>
+            <p class="section-subtitle">您已经看完了目前编写出的所有内容！后续内容我们正在尽力编写中，敬请期待！</p>
+            <div class="btn-group">
+                <a href="index.html" class="btn btn-primary" style="margin: 0 0 90px 0;">
+                    <i class="fas fa-angle-left"></i>返回官网
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <div class="minecraft-divider"></div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/images/server-logo.png" alt="服务器 Logo">
+                        <div class="footer-logo-text">Comet <span> 陆上彗星</span></div>
+                    </div>
+                    <p class="footer-desc">Comet（陆上彗星）是基于 Minecraft 基岩版环境（BDS）运维的云服务器群组。我们设置有生存服务器、小游戏服务器等，以丰富玩家的游戏体验，但我们仍然以打造稳定、清爽、原汁原味的基岩版生存服务器为主。</p>
+                    <div class="footer-social">
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="674767893"><i class="fab fa-qq"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="https://space.bilibili.com/535053377"><i class="fab fa-bilibili"></i></a>
+                        <a href="javascript:void(0)" class="social-icon copy-contact" data-copy="达达源"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://doc.mccomet.top/" target="_blank">服务器文档站</a></li>
+                        <li><a href="#">支持我们</a></li>
+                        <li><a href="https://uniteban.megastudio.cn/" target="_blank">UniteBan 联合封禁</a></li>
+                        <li><a href="https://klpbbs.com/thread-117741-1-1.html" target="_blank">苦力怕论坛宣传帖</a></li>
+                        <li><a href="https://www.minebbs.com/threads/comet.24000/" target="_blank">MineBBS宣传帖</a></li>
+                        <li><a href="https://www.bilibili.com/opus/1171471653064933381" target="_blank">BiliBili宣传帖</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">更多服务器</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://server.feather.qzz.io" target="_blank">Comet Java 私服</a></li>
+                        <li><a href="https://qm.qq.com/q/cMJbLsZi6c" target="_blank">SlimeCraft 互通服</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">联系我们</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-envelope"></i> 服务器邮箱: createtop@yeah.net</li>
+                        <li><i class="fab fa-qq"></i> QQ群: 674767893</li>
+                        <li><i class="fas fa-headset"></i>在线时间: 7*24运行</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 中国·江苏</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="server-uptime" id="serverUptime"></div>
+                <p class="copyright">&copy; 2026 Comet Minecraft 服务器. 保留所有权利. Minecraft是Mojang Studios的商标，本站与Mojang和Microsoft没有从属关系。</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <script>
+        (function() {
+            // 加载器隐藏
+            setTimeout(function() {
+                var loader = document.getElementById('siteLoader');
+                if (loader) loader.classList.add('loaded');
+            }, 500);
+
+            // 移动端菜单
+            var mobileToggle = document.getElementById('mobileToggle');
+            var navLinks = document.getElementById('navLinks');
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            // 导航点击：外部链接正常跳转，内部锚点平滑滚动并关闭菜单
+            function initNavLinks() {
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        var href = this.getAttribute('href');
+                        var isInternal = href && href.startsWith('#');
+                        // 先关闭移动菜单
+                        if (mobileToggle && navLinks) {
+                            mobileToggle.classList.remove('active');
+                            navLinks.classList.remove('active');
+                        }
+                        if (isInternal) {
+                            e.preventDefault();
+                            var targetId = href;
+                            var targetEl = document.querySelector(targetId);
+                            if (targetEl) {
+                                var headerHeight = document.querySelector('header').offsetHeight;
+                                var targetPos = targetEl.getBoundingClientRect().top + window.scrollY - headerHeight;
+                                window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                                history.pushState(null, null, targetId);
+                                updateActiveNavItem(targetId);
+                            }
+                        }
+                        // 外部链接不做任何阻止
+                    });
+                });
+            }
+
+            function updateActiveNavItem(forcedTarget) {
+                var current = forcedTarget || window.location.hash;
+                if (!current) current = '#time-line';
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    var href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        link.classList.toggle('active', href === current);
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+
+            // 复制联系方式
+            function initCopyContact() {
+                document.querySelectorAll('.copy-contact').forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const contactInfo = this.getAttribute('data-copy');
+                        
+                        const tempInput = document.createElement('input');
+                        tempInput.value = contactInfo;
+                        tempInput.style.position = 'absolute';
+                        tempInput.style.left = '-9999px';
+                        document.body.appendChild(tempInput);
+                        
+                        tempInput.select();
+                        document.execCommand('copy');
+                        
+                        document.body.removeChild(tempInput);
+                        
+                        showNotification(`已复制: ${contactInfo}`, 'success');
+                        
+                        this.classList.add('copied');
+                        setTimeout(() => {
+                            this.classList.remove('copied');
+                        }, 700);
+                    });
+                });
+            }
+
+            // 通知
+            function showNotification(message, type = 'info') {
+                // 将消息中的 URL 转换为可点击链接
+                function linkify(text) {
+                    const urlRegex = /(https?:\/\/[^\s]+)/g;
+                    return text.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener" style="color: #0C6EA9; text-decoration: underline;">$1</a>');
+                }
+                
+                const notification = document.createElement('div');
+                notification.className = `notification notification-${type}`;
+                notification.innerHTML = `
+                    <div class="notification-icon">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+                    </div>
+                    <div class="notification-message">${linkify(message)}</div>
+                `;
+                
+                const container = document.getElementById('notificationContainer');
+                container.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 10);
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => {
+                        container.removeChild(notification);
+                    }, 300);
+                }, 5000);
+            }
+
+            // 返回顶部按钮
+            function initBackToTop() {
+                var btn = document.getElementById('backToTop');
+                if (!btn) return;
+                
+                window.addEventListener('scroll', function() {
+                    btn.classList.toggle('active', window.scrollY > 500);
+                });
+                btn.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                    this.classList.add('animate__animated', 'animate__fadeOutUp');
+                    setTimeout(() => {
+                        this.classList.remove('animate__animated', 'animate__fadeOutUp');
+                    }, 1000);
+                });
+            }
+
+            // 飘落方块装饰（简单版，避免报错）
+            function initFallingBlocks() {
+                var container = document.getElementById('fallingBlocks');
+                if (!container) return;
+                var colors = ['var(--primary)', 'var(--accent)', 'var(--info)', 'var(--stone)', 'var(--redstone)', 'var(--diamond)'];
+                var count = window.innerWidth < 768 ? 8 : 15;
+                for (var i = 0; i < count; i++) {
+                    var block = document.createElement('div');
+                    block.className = 'falling-block';
+                    var size = Math.random() * 15 + 10;
+                    block.style.width = size + 'px';
+                    block.style.height = size + 'px';
+                    block.style.left = Math.random() * 100 + '%';
+                    block.style.animationDuration = Math.random() * 20 + 10 + 's';
+                    block.style.animationDelay = Math.random() * 15 + 's';
+                    block.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    container.appendChild(block);
+                }
+            }
+
+            // 星星装饰
+            function initPixelParticles() {
+                const heroSection = document.querySelector('.time-line');
+                if (!heroSection) return;
+                const particleCount = window.innerWidth < 768 ? 150 : 300;
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'pixel-particle';
+                    const x = Math.random() * 100;
+                    const y = Math.random() * 100;
+                    const duration = Math.random() * 40 + 20;
+                    const delay = Math.random() * 10;
+                    particle.style.left = `${x}%`;
+                    particle.style.top = `${y}%`;
+                    particle.style.backgroundColor = Math.random() > 0.5 ? 'var(--primary)' : 'var(--accent)';
+                    particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                    particle.style.opacity = Math.random() * 0.2 + 0.1;
+                    heroSection.appendChild(particle);
+                }
+            }
+
+            // 服务器成立正计时
+            function updateServerUptime() {
+                // 需要配置的部分：设置服务器成立日期和时间
+                const serverStartDate = new Date('2023-02-01T00:00:00'); // 格式：YYYY-MM-DDTHH:MM:SS，按需修改
+
+                const now = new Date();
+                const diffMs = now - serverStartDate; // 相差毫秒数
+
+                if (diffMs < 0) {
+                    document.getElementById('serverUptime').innerText = '服务器即将上线，敬请期待！';
+                    return;
+                }
+
+                const totalSeconds = Math.floor(diffMs / 1000);
+                const days = Math.floor(totalSeconds / 86400);
+                const hours = Math.floor((totalSeconds % 86400) / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+
+                document.getElementById('serverUptime').innerHTML = 
+                    `陆上彗星服务器已成立 <strong>${days}天${hours}小时${minutes}分${seconds}秒</strong>`;
+            }
+
+            // 立即执行一次
+            updateServerUptime();
+
+            // 每秒更新一次
+            setInterval(updateServerUptime, 1000);
+
+            // 滚动动画：为卡片添加入场动画，并控制轮播的启动/停止
+            function initScrollAnimations() {
+                if (!document.getElementById('tilt-animation-style')) {
+                    var tiltStyle = document.createElement('style');
+                    tiltStyle.id = 'tilt-animation-style';
+                    tiltStyle.textContent = `
+                        .tilt-container.in-view {
+                            transform: rotateY(12deg) rotateX(4deg);
+                        }
+                    `;
+                    document.head.appendChild(tiltStyle);
+                }
+                // 动态注入隐藏样式（控制 opacity）
+                if (!document.getElementById('dynamic-animation-style')) {
+                    var style = document.createElement('style');
+                    style.id = 'dynamic-animation-style';
+                    style.textContent = `
+                        .timeline-title, .visual-wrapper, .tilt-container, .main-heading, .description, .direction-l, .direction-r, .btn-secondary {
+                            opacity: 0;
+                        }
+                        .timeline-title.shown, .visual-wrapper.shown, .tilt-container.shown, .main-heading.shown, .description.shown, .direction-l.shown, .direction-r.shown, .btn-secondary.shown {
+                            opacity: 1;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+
+                // 辅助函数：启动某个元素内部的轮播
+                function startCarouselsInside(element) {
+                    if (!element) return;
+                    const carousels = element.querySelectorAll('.carousel-container');
+                    carousels.forEach(carousel => {
+                        if (carousel._startCarousel) {
+                            carousel._startCarousel();
+                            carousel._isActive = true;
+                        }
+                    });
+                }
+                
+                // 辅助函数：停止某个元素内部的轮播
+                function stopCarouselsInside(element) {
+                    if (!element) return;
+                    const carousels = element.querySelectorAll('.carousel-container');
+                    carousels.forEach(carousel => {
+                        if (carousel._stopCarousel) {
+                            carousel._stopCarousel();
+                            carousel._isActive = false;
+                        }
+                    });
+                }
+
+                // 为每个需要动画的元素（包括可能包含轮播的父级）添加动画完成监听
+                const animatedElements = document.querySelectorAll('.timeline-title, .visual-wrapper, .tilt-container, .main-heading, .description, .direction-l, .direction-r, .btn-secondary');
+                
+                animatedElements.forEach(el => {
+                    // 如果元素已经有 shown 类（可能是重复加载），直接启动其内部轮播
+                    if (el.classList.contains('shown')) {
+                        startCarouselsInside(el);
+                    } else {
+                        // 监听动画结束事件（仅一次）
+                        const onAnimEnd = function(e) {
+                            if (e.target !== el) return;
+                            el.classList.remove('animate__animated', 'animate__fadeInUp');
+                            el.classList.add('shown');
+                            // 动画完成后启动内部的轮播
+                            startCarouselsInside(el);
+                            el.removeEventListener('animationend', onAnimEnd);
+                        };
+                        el.addEventListener('animationend', onAnimEnd);
+                    }
+                });
+
+                // 使用 IntersectionObserver 控制轮播在离开视口时停止
+                if ('IntersectionObserver' in window) {
+                    // 观察所有可能包含轮播的父级区块（.visual-wrapper 或 .breaking-event-container）
+                    const carouselParents = document.querySelectorAll('.visual-wrapper, .breaking-event-container');
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            const parent = entry.target;
+                            if (entry.isIntersecting) {
+                                // 进入视口：如果父级已经完成动画（有 .shown 类），则立即启动轮播
+                                if (parent.classList.contains('shown')) {
+                                    startCarouselsInside(parent);
+                                } else {
+                                    // 否则等待动画完成（动画完成时已经调用 startCarouselsInside，这里只需确保不会重复）
+                                    // 但为了防止丢失，可以监听一次动画完成
+                                    if (!parent._animStartFlag) {
+                                        parent._animStartFlag = true;
+                                        const onFinish = function() {
+                                            if (parent.classList.contains('shown')) {
+                                                startCarouselsInside(parent);
+                                            }
+                                            parent.removeEventListener('animationend', onFinish);
+                                        };
+                                        parent.addEventListener('animationend', onFinish);
+                                    }
+                                }
+                            } else {
+                                // 离开视口：停止内部的轮播
+                                stopCarouselsInside(parent);
+                            }
+                        });
+                    }, { threshold: 0.1 }); // 稍微留一点阈值，避免频繁启停
+                    
+                    carouselParents.forEach(parent => observer.observe(parent));
+                }
+                
+                // 原有的淡入动画观察器（用于触发 animate.css 动画）
+                if ('IntersectionObserver' in window) {
+                    var animObserver = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                var el = entry.target;
+                                // 针对 tilt-container 特殊处理：添加 shown 和 in-view 类，不执行淡入动画
+                                if (el.classList.contains('tilt-container')) {
+                                    el.classList.add('shown', 'in-view');
+                                    animObserver.unobserve(el);
+                                    return;
+                                }
+                                if (el.classList.contains('timeline')) {
+                                    el.classList.add('shown');
+                                    animObserver.unobserve(el);
+                                    return;
+                                }
+                                // 其他元素执行淡入上浮动画
+                                el.classList.add('animate__animated', 'animate__fadeInUp');
+                                animObserver.unobserve(el);
+                            }
+                        });
+                    }, { threshold: 0.6 });
+                    
+                    // 观察所有需要入场动画的元素（不重复观察已经处理过的）
+                    document.querySelectorAll('.timeline-title, .visual-wrapper, .tilt-container, .main-heading, .description, .direction-l, .direction-r, .btn-secondary').forEach(function(el) {
+                        animObserver.observe(el);
+                    });
+                }
+            }
+            
+            // 顶栏动态变化
+            function initNavigation() {
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                const scrollPosition = window.scrollY;
+                
+                header.classList.toggle('scrolled', scrollPosition > 10);
+            })}
+
+            // 自动轮播：淡入淡出效果，支持每个 .carousel-container 独立轮播（仅在可见时启动）
+            function initCarousels() {
+                const containers = document.querySelectorAll('.carousel-container');
+                
+                containers.forEach(container => {
+                    // 清除可能存在的旧定时器
+                    if (container._carouselInterval) clearInterval(container._carouselInterval);
+                    
+                    const track = container.querySelector('.carousel-track');
+                    if (!track) return;
+                    
+                    // 获取所有图片
+                    const imgs = Array.from(track.querySelectorAll('img'));
+                    if (imgs.length <= 1) return; // 单张图片无需轮播
+                    
+                    // 记录当前索引
+                    let currentIndex = 0;
+                    
+                    // 创建幻灯片容器（相对定位，承载绝对定位的图片）
+                    const slidesWrapper = document.createElement('div');
+                    slidesWrapper.className = 'carousel-slides-wrapper';
+                    slidesWrapper.style.position = 'relative';
+                    slidesWrapper.style.width = '100%';
+                    slidesWrapper.style.height = '100%';
+                    
+                    // 清空 track，添加新的轮播结构
+                    track.innerHTML = '';
+                    track.style.display = 'block';
+                    track.style.position = 'relative';
+                    track.style.height = '100%';
+                    track.appendChild(slidesWrapper);
+                    
+                    // 创建每一张图片的容器（绝对定位 + 淡入淡出过渡）
+                    const slideItems = imgs.map((img, idx) => {
+                        const slideDiv = document.createElement('div');
+                        slideDiv.className = 'carousel-slide-item';
+                        slideDiv.style.position = 'absolute';
+                        slideDiv.style.top = '0';
+                        slideDiv.style.left = '0';
+                        slideDiv.style.width = '100%';
+                        slideDiv.style.height = '100%';
+                        slideDiv.style.opacity = idx === 0 ? '1' : '0';
+                        slideDiv.style.transition = 'opacity 0.25s ease-in-out';
+                        slideDiv.style.zIndex = idx === 0 ? '1' : '0';
+                        
+                        const newImg = document.createElement('img');
+                        newImg.src = img.src;
+                        newImg.alt = img.alt || '';
+                        newImg.className = img.className;
+                        
+                        const hasFit = img.classList.contains('img-contain');
+                        newImg.style.objectFit = hasFit ? 'contain' : 'cover';
+                        newImg.style.width = '100%';
+                        newImg.style.height = '100%';
+                        newImg.style.display = 'block';
+                        
+                        slideDiv.appendChild(newImg);
+                        slidesWrapper.appendChild(slideDiv);
+                        return slideDiv;
+                    });
+                    
+                    // 轮播切换函数
+                    function switchToNext() {
+                        const nextIndex = (currentIndex + 1) % slideItems.length;
+                        slideItems.forEach((item, i) => {
+                            item.style.opacity = i === nextIndex ? '1' : '0';
+                            item.style.zIndex = i === nextIndex ? '1' : '0';
+                        });
+                        currentIndex = nextIndex;
+                    }
+                    
+                    // 存储切换函数和定时器ID到容器属性上
+                    container._switchToNext = switchToNext;
+                    container._carouselInterval = null;
+                    
+                    // 启动轮播（仅当容器可见时由外部调用）
+                    function start() {
+                        if (container._carouselInterval) return;
+                        container._carouselInterval = setInterval(switchToNext, 2500);
+                    }
+                    
+                    function stop() {
+                        if (container._carouselInterval) {
+                            clearInterval(container._carouselInterval);
+                            container._carouselInterval = null;
+                        }
+                    }
+                    
+                    // 将 start/stop 挂载到容器上，方便外部控制
+                    container._startCarousel = start;
+                    container._stopCarousel = stop;
+                    
+                    // 鼠标悬停时暂停轮播
+                    container.addEventListener('mouseenter', () => {
+                        if (container._carouselInterval) {
+                            clearInterval(container._carouselInterval);
+                            container._carouselInterval = null;
+                        }
+                    });
+                    container.addEventListener('mouseleave', () => {
+                        if (container._carouselInterval === null && container._isActive) {
+                            container._carouselInterval = setInterval(switchToNext, 2500);
+                        }
+                    });
+                });
+            }
+
+            // 页面启动
+            window.addEventListener('DOMContentLoaded', function() {
+                initNavLinks();
+                initCopyContact();
+                initBackToTop();
+                initFallingBlocks();
+                initPixelParticles();
+                initCarousels(); 
+                initScrollAnimations();
+                initNavigation();
+                previewImg();
+                // 确保高亮
+                updateActiveNavItem('#time-line');
+                // 如果页面滚动导致菜单残留，强制重置
+                window.addEventListener('scroll', function() {
+                    if (mobileToggle && navLinks && navLinks.classList.contains('active')) {
+                        // 如果滚动时菜单开着，自动关闭（提升体验）
+                        mobileToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

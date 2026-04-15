@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comet 陆上彗星 - 我的世界基岩版服务器官网</title>
+    <title>Comet 陆上彗星 - 我的世界群组服务器官网</title>
     <link rel="icon" href="assets/images/logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -107,6 +107,24 @@
         gap: 10px;
         z-index: 10;
     }
+
+    .subserver-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://cdn.ipfsscan.io/weibo/large/008EsglKly1ib5lqr9atqj31410u010i.jpg');
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.3s ease, filter 0.3s ease;
+        z-index: 0;
+    }
+
+    .subserver-bg.zoomed {
+        transform: scale(1.03);
+        filter: brightness(0.75);
+    }
 </style>
 <body>
     <div class="loader" id="siteLoader">
@@ -139,7 +157,7 @@
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home">首页</a></li>
                     <li><a href="./team.html">玩家团体</a></li>
-                    <li><a href="./maintenance.html">时间线</a></li>
+                    <li><a href="./timeline.html">时间线</a></li>
                     <li><a href="./donate.html">赞助支持</a></li>
                     <li><a href="https://doc.mccomet.top/" target="_blank">文档站</a></li>
                     <li><a href="#join-us">加入服务器</a></li>
@@ -423,7 +441,7 @@
                 </div>
             </div>
             <h2 class="section-title">体验一下我们的 <span> Java 服务器</span></h2>
-            <p class="subserver-text"><span>Comet Java 私服 2.0 </span>—— 体验由社区强力驱动，且运行在物理机的插件模组混合的养老生存服，无论电脑手机均可（爱来自手机服主<font color="#ECBBBC">❤</font>）<br><strong>这是我们新的尝试！</strong></p>
+            <p class="subserver-text"><span>Comet Java 私服 2.0 </span>—— 体验由社区强力驱动，且运行在物理机的插件模组混合的休闲生存服，无论电脑手机均可（爱来自手机服主<font color="#ECBBBC">❤</font>）<br><strong>这是我们新的尝试！</strong></p>
 
             <div class="btn-group">
                 <a href="https://server.comet.qzz.io" target="_blank" class="btn btn-join">
