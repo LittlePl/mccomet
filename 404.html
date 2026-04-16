@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Comet 陆上彗星 - 网页不存在</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        /* 基础重置 & 全局样式 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', 'Arial', system-ui, sans-serif;
+            background-color: #9f0000;
+            background: radial-gradient(circle at 30% 10%, rgb(95, 0, 0), rgb(32, 0, 0));
+            color: #fff;
+            text-align: center;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 内容容器 - 微调垂直居中更好适配图片高度变化 */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 520px;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        /* ---- 图片区域重构：自适应+复古相框 ---- */
+        .img-container {
+            /* 移除原有固定高度，让容器由内容撑开 */
+            height: auto !important;
+            /* 控制相框最大宽度，保证不同屏幕下舒适且自适应父元素 */
+            max-width: 250px;
+            width: auto;
+            margin: 0 auto 20px auto;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        /* 复古相框核心样式 (模拟老式木框 + 卡纸衬边) */
+        .img-frame {
+            display: inline-block;
+            /* 相框整体背景为仿旧亚麻纸色 */
+            background: #ede0c8;
+            /* 内衬卡纸留白 (复古照片常见的白/米黄边框) */
+            padding: 14px 12px 18px 12px;
+            /* 木质主边框: 粗粝的深胡桃木色 */
+            border: 9px solid #6b3e1c;
+            border-radius: 6px;
+            /* 多重阴影: 外阴影营造悬挂感，内阴影增加浮雕复古感 */
+            box-shadow: 0 20px 28px -12px rgba(0, 0, 0, 0.5),
+                        0 0 0 2px rgba(230, 200, 140, 0.6) inset,
+                        0 0 0 4px rgba(90, 45, 20, 0.3) inset;
+            position: relative;
+            /* 让相框随图片宽度自然缩放 */
+            max-width: 100%;
+            box-sizing: border-box;
+            transition: transform 0.2s ease;
+        }
+
+        /* 增加复古细节：仿旧蚀刻纹理（伪元素增加质感） */
+        .img-frame::before {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            border: 1px solid rgba(160, 100, 40, 0.45);
+            border-radius: 3px;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        /* 增加轻微磨损点状噪点 (复古做旧) */
+        .img-frame::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 2px, transparent 2px, transparent 6px);
+            pointer-events: none;
+            border-radius: 4px;
+        }
+
+        /* 图片本体: 完全自适应父容器宽度，保持比例，移除所有原有边框 */
+        .img-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0;
+            border: none !important;
+            box-shadow: none !important;
+            border-radius: 2px;
+            /* 柔和投影让图片与相框融合 */
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) !important;
+            transition: filter 0.2s;
+            /* 微微暖色复古调（可选，不影响主体） */
+            filter: brightness(1.01) contrast(1.02);
+        }
+
+        /* 增加相框悬浮微动效（优雅交互） */
+        .img-frame:hover {
+            transform: scale(1.01);
+            box-shadow: 0 24px 32px -14px rgba(0, 0, 0, 0.6),
+                        0 0 0 2px rgba(245, 220, 150, 0.8) inset,
+                        0 0 0 4px rgba(70, 35, 10, 0.4) inset;
+        }
+
+        /* 标题与文本复古风格增强 */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff2cf, #ffd89a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: none;
+        }
+        /* 回退纯色 */
+        @supports not (background-clip: text) {
+            h1 {
+                color: #ffecb3;
+                text-shadow: 2px 2px 0 #5a1e1e;
+            }
+        }
+
+        p {
+            font-size: 1.3rem;
+            background: rgba(0,0,0,0.45);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* 按钮复古风格 (与原设计系统协调) */
+        .btn-group {
+            margin: 25px auto 15px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #2c2118;
+            color: #f7e5c2;
+            text-decoration: none;
+            padding: 12px 28px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+            border: 1px solid #c9aa6f;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            backdrop-filter: blur(2px);
+        }
+        .btn i {
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            background: #4f2f1c;
+            color: #fff2df;
+            border-color: #e9c891;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+        }
+        .btn:hover i {
+            transform: translateX(-4px);
+        }
+
+        /* 保留原始闪烁动画用于某些元素（可复用） */
+        .blink-text {
+            animation: blink 1.5s linear infinite;
+        }
+
+        .section-title-bg {
+            font-size: 20rem;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @media (max-width: 768px) {
+            .section-title-bg {
+                font-size: 15rem;
+            }
+        }
+
+        /* 兼容小屏幕: 缩小相框最大宽度，保证布局舒适 */
+        @media (max-width: 560px) {
+            .section-title-bg {
+                font-size: 10rem;
+            }
+            .img-container {
+                max-width: 220px;
+            }
+            .img-frame {
+                padding: 10px 8px 14px 8px;
+                border-width: 7px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+                padding: 6px 16px;
+            }
+            .btn {
+                padding: 8px 20px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .img-container {
+                max-width: 180px;
+            }
+            .img-frame {
+                padding: 8px 6px 12px 6px;
+                border-width: 6px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* 移除任何可能残留的旧图片边框干扰 */
+        .img-container img {
+            border: none !important;
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <!-- 图片区域：完全自适应 + 复古手工相框 -->
+            <div class="img-container">
+                <div class="img-frame">
+                    <img src="./assets/images/Kongtou.png" alt="复古破碎感插画" loading="lazy">
+                </div>
+            </div>
+            <h1>✦ 网页不存在！✦</h1>
+            <div class="section-title-bg">4 0 4</div>
+            <p id="random-quote">🐮</p>
+            <div class="btn-group">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-angle-left"></i> 带我回官网
+                </a>
+            </div>
+            <!-- 一点复古小点缀 (动态闪烁) -->
+            <div style="margin-top: 20px; font-size: 0.85rem; opacity: 0.7;">
+                <i class="fas fa-camera-retro"></i>  vintage frame · lost comet
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const quotes = [
+        "🐮：测你们码",
+        "🐮：发福利了",
+        "🐮：不用谢",
+        "🐮：为人民服务",
+        "🐮：＊你摩洛哥炒饼",
+        "🐮：雪豹闭嘴",
+        "🐮：我测试你的码，发配你到原神当星怒",
+    ];
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    document.getElementById("random-quote").textContent = quotes[randomIndex];
+</script>
+</html>
