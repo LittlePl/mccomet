@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
-        /* 基础重置 & 全局样式 */
         body, html {
             margin: 0;
             padding: 0;
@@ -27,7 +26,6 @@
             overflow-x: hidden;
         }
 
-        /* 内容容器 - 微调垂直居中更好适配图片高度变化 */
         .content {
             position: absolute;
             top: 50%;
@@ -39,11 +37,8 @@
             box-sizing: border-box;
         }
 
-        /* ---- 图片区域重构：自适应+复古相框 ---- */
         .img-container {
-            /* 移除原有固定高度，让容器由内容撑开 */
             height: auto !important;
-            /* 控制相框最大宽度，保证不同屏幕下舒适且自适应父元素 */
             max-width: 250px;
             width: auto;
             margin: 0 auto 20px auto;
@@ -127,6 +122,7 @@
         /* 标题与文本复古风格增强 */
         h1 {
             font-size: 2.5em;
+            font-family: 'Minecraft', sans-serif;
             margin-bottom: 10px;
             letter-spacing: 2px;
             text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
@@ -261,20 +257,19 @@
 <body>
     <div class="container">
         <div class="content">
-            <!-- 图片区域：完全自适应 + 复古手工相框 -->
             <div class="img-container">
                 <div class="img-frame">
                     <img src="./assets/images/Kongtou.png" alt="复古破碎感插画" loading="lazy">
                 </div>
             </div>
             <h1>✦ 网页不存在！✦</h1>
-            <div class="section-title-bg">4 0 4</div>
             <p id="random-quote">🐮</p>
             <div class="btn-group">
                 <a href="index.html" class="btn btn-primary">
                     <i class="fas fa-angle-left"></i> 带我回官网
                 </a>
             </div>
+            <div class="section-title-bg">4 0 4</div>
             <!-- 一点复古小点缀 (动态闪烁) -->
             <div style="margin-top: 20px; font-size: 0.85rem; opacity: 0.7;">
                 <i class="fas fa-camera-retro"></i>  vintage frame · lost comet

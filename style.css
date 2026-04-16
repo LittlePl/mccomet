@@ -261,7 +261,7 @@ body::before {
     opacity: 0.03;
     white-space: nowrap;
     text-transform: uppercase;
-    z-index: 0;
+    z-index: -1;
 }
 
 .section-subtitle {
