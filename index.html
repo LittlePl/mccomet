@@ -484,6 +484,7 @@
                     <h3 class="footer-title">快速链接</h3>
                     <ul class="footer-links">
                         <li><a href="https://doc.mccomet.top/" target="_blank">服务器文档站</a></li>
+                        <li><a href="./team.html#admin-group">服务器管理组</a></li>
                         <li><a href="./donate.html">支持我们</a></li>
                         <li><a href="https://uniteban.megastudio.cn/" target="_blank">UniteBan 联合封禁</a></li>
                         <li><a href="https://klpbbs.com/thread-117741-1-1.html" target="_blank">苦力怕论坛宣传帖</a></li>
@@ -493,8 +494,10 @@
                 </div>
                 
                 <div class="footer-col">
-                    <h3 class="footer-title">更多服务器</h3>
+                    <h3 class="footer-title">推荐服务器</h3>
                     <ul class="footer-links">
+                        <li><a href="https://doc.mccomet.top/server/subs/main.html" target="_blank">Comet 生存服务器</a></li>
+                        <li><a href="https://doc.mccomet.top/server/subs/cge.html" target="_blank">Comet 枪战服务器</a></li>
                         <li><a href="https://server.feather.qzz.io" target="_blank">Comet Java 私服</a></li>
                         <li><a href="https://qm.qq.com/q/cMJbLsZi6c" target="_blank">SlimeCraft 互通服</a></li>
                     </ul>
@@ -1137,6 +1140,8 @@
             const totalSlides = slides.length;
             let autoPlayInterval = null;
             const autoPlayDelay = 5000; // 5秒自动轮播
+            let isVisible = false;      // 轮播图容器是否在视口中
+            let isHovered = false;      // 鼠标是否悬停在容器上
 
             // 更新轮播显示
             function updateGallery() {
@@ -1165,12 +1170,13 @@
             function resetAutoPlay() {
                 if (autoPlayInterval) {
                     clearInterval(autoPlayInterval);
+                    autoPlayInterval = null;
                 }
-                autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
+                // 仅在容器可见且鼠标未悬停时启动自动轮播
+                if (isVisible && !isHovered) {
+                    autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
+                }
             }
-
-            // 启动自动轮播
-            resetAutoPlay();
 
             // 按钮事件（重置定时器）
             if (prevBtn) {
@@ -1223,17 +1229,27 @@
                 }
             }
 
-            // 当页面隐藏时暂停自动轮播（可选优化）
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    if (autoPlayInterval) {
-                        clearInterval(autoPlayInterval);
-                        autoPlayInterval = null;
-                    }
-                } else {
-                    resetAutoPlay();
-                }
-            });
+            // 监听轮播图容器是否进入视口
+            const galleryContainer = document.querySelector('.gallery-container');
+            if (galleryContainer) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        isVisible = entry.isIntersecting;
+                        resetAutoPlay();   // 可见性变化时重启轮播（根据当前状态决定是否启动）
+                    });
+                }, { threshold: 0.1 });
+                observer.observe(galleryContainer);
+
+                // 鼠标悬停时暂停轮播
+                galleryContainer.addEventListener('mouseenter', () => {
+                    isHovered = true;
+                    resetAutoPlay();      // 清除定时器，停止轮播
+                });
+                galleryContainer.addEventListener('mouseleave', () => {
+                    isHovered = false;
+                    resetAutoPlay();      // 若容器可见则恢复轮播
+                });
+            }
 
             // 初始化显示
             updateGallery();
