@@ -1,5 +1,6 @@
 [
     { "id": 1, "name": "鸡蛋", "amount": 17, "message": "坚持，创造奇迹", "date": "2026-02-15" },
     { "id": 2, "name": "BarterMoss63052", "amount": 20, "message": "祝POTATO越来越好,永不爆炸", "date": "2026-04-19" },
-    { "id": 3, "name": "HereIsSoil", "amount": 25, "message": "助服务器长命百岁", "date": "2026-04-19" }
+    { "id": 3, "name": "HereIsSoil", "amount": 25, "message": "助服务器长命百岁", "date": "2026-04-19" },
+    { "id": 4, "name": "BarterMoss63052", "amount": 5, "message": "祝服务器越来越好,早日升级1.26", "date": "2026-04-20" }
 ]
