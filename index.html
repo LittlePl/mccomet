@@ -253,6 +253,7 @@
         <div class="container">
             <h2 class="section-title">服务器<span>风采</span></h2>
             <div class="section-title-bg">GALLERY</div>
+            <p class="section-subtitle">探索我们服务器中的精彩瞬间！注意：我们会在 Java 版 MC 中拍摄光影图片，背景均取自服务器存档，仅供创意展示，请以实际情况为准。</p>
             <p class="section-subtitle"></p>
             
             <div class="gallery-container">
@@ -394,7 +395,7 @@
             <div class="video-container">
                 <div class="video-player glass-card" id="videoPlayer">
                     <div class="video-wrapper">
-                        <iframe id="videoFrame" src="https://player.bilibili.com/player.html?bvid=BV1jfZHBvEEb&autoplay=0&danmaku=1&muted=0" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="videoFrame" src="https://player.bilibili.com/player.html?bvid=BV1jfZHBvEEb&autoplay=1&danmaku=1&muted=1" frameborder="0" allowfullscreen></iframe>
                     </div>
                     
                 </div>
@@ -420,7 +421,10 @@
             
             <div class="btn-group">
                 <a href="minecraft://?addExternalServer=Comet 陆上彗星|mcbe.mccomet.top:34004" class="btn btn-join">
-                    <i class="fas fa-gamepad"></i>立即加入服务器
+                    <i class="fas fa-gamepad"></i>启动游戏
+                </a>
+                <a href="https://doc.mccomet.top/server/#🚲-开始加入服务器" target="_blank" class="btn btn-secondary">
+                    <i class="fas fa-rectangle-list"></i>进服步骤
                 </a>
                 <a href="https://qm.qq.com/q/WfAt2eh7u6" target="_blank" class="btn btn-secondary">
                     <i class="fab fa-qq"></i>加入官方QQ群
@@ -1146,7 +1150,7 @@
             let currentIndex = 0;
             const totalSlides = slides.length;
             let autoPlayInterval = null;
-            const autoPlayDelay = 5000; // 5秒自动轮播
+            const autoPlayDelay = 3000; // 3秒自动轮播
             let isVisible = false;      // 轮播图容器是否在视口中
             let isHovered = false;      // 鼠标是否悬停在容器上
 
