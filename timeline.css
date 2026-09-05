@@ -167,7 +167,7 @@ p {
     width: 16px;
     height: 10px;
     position: absolute;
-    background: var(--hexa-color, #00c4f3);
+    background: var(--hexa-color, var(--primary-light));
     z-index: 5;
     left: 0;
     right: 0;
@@ -178,7 +178,7 @@ p {
 }
 
 .timeline .hexa:before {
-    border-bottom: 4px solid var(--hexa-color, #00c4f3);
+    border-bottom: 4px solid var(--hexa-color, var(--primary-light));
     border-left-width: 8px;
     border-right-width: 8px;
     top: -4px;
@@ -187,7 +187,7 @@ p {
 .timeline .hexa:after {
     border-left-width: 8px;
     border-right-width: 8px;
-    border-top: 4px solid var(--hexa-color, #00c4f3);
+    border-top: 4px solid var(--hexa-color, var(--primary-light));
     bottom: -4px;
 }
 
